@@ -1,0 +1,64 @@
+﻿@section Styles {
+    <link href="~/Theme/HTML/dist/assets/libs/simplebar/simplebar.min.css" rel="stylesheet">
+}
+<div class="row justify-content-center">
+    <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-xm-12">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-body p-0">
+                <div class="contact-page-banner" st>
+                    <div class="text-center">
+                        <h3 class="fw-semibold text-fixed-white">Destek</h3>
+                        <h6 class="text-fixed-white mb-4 px-sm-0 px-3">Bir sorunuz mu var? Size destek olalım. </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-10 col-sm-10 col-12">
+        <div class="row">
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <form asp-action="Support" asp-asp-controller="Account" method="post">
+                    <div class="card custom-card contactus-form overflow-hidden">
+                        <div class="card-header">
+                            <div class="card-title">
+                                Destek
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row gy-3">
+                                <div class="col-xl-12">
+                                    <label for="contact-address-firstname" class="form-label">Kategori :</label>
+                                    <select class="form-control role-select">
+                                        <option value="value">Kategori 1</option>
+                                        <option value="value">Kategori 2</option>
+                                        <option value="value">Kategori 3</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-xl-12">
+                                    <label for="contact-mail-message" class="form-label">Mesaj :</label>
+                                    <textarea class="form-control form-control-light" id="contact-mail-message"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-center">
+                                <button class="btn btn-konfrut-light-2 btn-wave waves-effect waves-light">Mesajı gönder</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <link href="~/Theme/HTML/dist/assets/libs/simplebar/simplebar.min.js" rel="stylesheet">
+
+
+    <!-- Simplebar JS -->
+    <script src="~/Theme/HTML/dist/assets/js/simplebar.js"></script>
+
+    <!-- Color Picker JS -->
+    <script src="~/Theme/HTML/dist/assets/libs/simonwep/pickr/pickr.es5.min.js"></script>
+}

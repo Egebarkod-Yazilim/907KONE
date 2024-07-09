@@ -1,0 +1,99 @@
+﻿@model AddOrUpdateUser
+@section Styles {
+    <link href="~/lib/cropper/cropper.css" rel="stylesheet">
+
+    <style>
+        .cropper-view-box,
+        .cropper-face {
+            border-radius: 0.45rem;
+        }
+    </style>
+}
+<div class="col-12">
+    <div class="card custom-card shadow">
+        <form id="userform" asp-controller="User" asp-action="AddOrUpdateUser" enctype="multipart/form-data">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Kullanıcı
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    <button type="submit" class="btn btn-green-knfrt btn-wave waves-effect waves-light"><span class="bi bi-cjeck-all"></span>Kaydet</button>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <input type="hidden" asp-for="Id" />
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <div class="card-header konfrut-backgroundcolor-important">
+                                <h6><span class="bi bi-person-fill"></span> Kullanıcı Bilgileri</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Kullanıcı Resmi</label>
+                                            <input type="file" accept=".png,.jpg,.jpeg,.gif,.tif" class="form-control form-control-light user-image" asp-for="Image">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Adı</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Adı" aria-label="Adı" asp-for="@Model.FirstName">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Soyadı</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Soyadı" aria-label="Soyadı" asp-for="@Model.LastName">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Kimlik Numarası</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Kimlik Numarası" aria-label="Kimlik Numarası" asp-for="@Model.IdentifierNumber">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">KGK Kayıt Numarası</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="KGK Kayıt Numarası" aria-label="KGK Kayıt Numarası" asp-for="@Model.KGKRegistrationNumber">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Seri Numarası</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Seri Numarası" aria-label="Seri Numarası" asp-for="@Model.SerialNumber">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control form-control-light" placeholder="Email" aria-label="Email" asp-for="@Model.Email">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Doğum Günü</label>
+                                        <input type="date" class="form-control form-control-light" placeholder="Doğum Günü" aria-label="Doğum Günü" asp-for="@Model.BirthDate">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Telefon Numarası</label>
+                                        <input type="number" class="form-control form-control-light" placeholder="Telefon Numarası" aria-label="Telefon Numarası" asp-for="@Model.PhoneNumber">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Roller</label>
+                                        <select class="form-control role-select" multiple asp-for="SelectedRoleIds" asp-items="@(new SelectList(Model.Roles, "Id", "Name"))"></select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Firmalar</label>
+                                        <select class="form-control firm-select" multiple asp-for="SelectedFirmIds" asp-items="@(new SelectList(Model.Firms, "Id", "Name"))"></select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Şifre</label>
+                                        <input type="password" class="form-control form-control-light" placeholder="Şifre" aria-label="Şife" asp-for="@Model.Password">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/cropper/cropper.js" defer></script>
+   
+}
+
+<script src="~/js/addorupdateuser.js" defer></script>

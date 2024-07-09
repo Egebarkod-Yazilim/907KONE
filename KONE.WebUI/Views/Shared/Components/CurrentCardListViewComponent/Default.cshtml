@@ -1,0 +1,90 @@
+﻿
+<style>
+    /* Yukarıda verdiğimiz CSS kodlarını buraya ekleyin */
+    .table-responsive {
+        overflow-x: auto;
+        position: relative;
+    }
+
+    .table thead {
+        position: sticky;
+        top: 0;
+        z-index: 2; /* Diğer içeriklerin üstünde kalması için */
+        background-color: #fff; /* Beyaz arka plan */
+    }
+
+        .table tbody td:last-child,
+        .table thead th:last-child {
+            position: sticky;
+            right: 0;
+            background-color: #fff; /* Beyaz arka plan */
+            z-index: 1; /* Diğer sütunların üstünde kalması için */
+            box-shadow: -1px 0 0 #ccc; /* Ayrıştırıcı çizgi */
+        }
+</style>
+
+<div class="table-responsive">
+    <table id="currentCarddatatable" class="table table-bordered text-nowrap w-100">
+        <thead>
+            <tr>
+                <th class="nonsearchable" style="width:10px;">
+                    <div class="form-check form-check-md d-flex align-items-center">
+                        <input class="form-check-input" type="checkbox" value="" id="checkebox-md">
+                    </div>
+                </th>
+                <th class="nonsearchable">#</th>
+                <th>İsim</th>
+                <th>Soyisim</th>
+                <th>Ticari Unvan</th>
+                <th>Tür</th>
+                <th>Şirket Durumu</th>
+                <th>Şirket Türü</th>
+                <th>GSM</th>
+                <th>Mevcut Kod</th>
+                <th>E-posta</th>
+                <th class="nonsearchable">Aktif Durumu</th>
+                <th class="nonsearchable">İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+@*<script src="~/js/currentcard.js" defer></script>*@
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const tableContainer = document.querySelector('.table-responsive');
+        let isRightMouseDown = false;
+        let startX;
+        let scrollLeft;
+
+        tableContainer.addEventListener('contextmenu', (e) => {
+            e.preventDefault(); // Sağ tık menüsünü devre dışı bırak
+        });
+
+        tableContainer.addEventListener('mousedown', (e) => {
+            if (e.button === 2) { // Sağ tık
+                isRightMouseDown = true;
+                startX = e.pageX - tableContainer.offsetLeft;
+                scrollLeft = tableContainer.scrollLeft;
+            }
+        });
+
+        tableContainer.addEventListener('mouseleave', () => {
+            isRightMouseDown = false; // Fare tablo alanından çıkarsa sağ tık kaydırmayı durdur
+        });
+
+        tableContainer.addEventListener('mouseup', () => {
+            isRightMouseDown = false; // Sağ tık bırakıldığında kaydırmayı durdur
+        });
+
+        tableContainer.addEventListener('mousemove', (e) => {
+            if (!isRightMouseDown) return; // Sağ tık basılı değilse işlem yapma
+            e.preventDefault(); // Varsayılan sürükleme davranışını engelle
+            const x = e.pageX - tableContainer.offsetLeft;
+            const walk = (x - startX) * 1; // Kaydırma hızı
+            tableContainer.scrollLeft = scrollLeft - walk;
+        });
+    });
+</script>

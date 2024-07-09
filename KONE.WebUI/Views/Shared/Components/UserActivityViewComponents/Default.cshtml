@@ -1,0 +1,41 @@
+﻿@model UserActivityModel
+
+<div class="col-xl-12">
+    <div class="card custom-card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="useractivitylisttable" class="table table-bordered text-nowrap w-100">
+                    <thead class="table-korgun-light">
+                        <tr>
+                            <th class="nonsearchable">#</th>
+                            <th>İşlem</th>
+                            <th>Tarih</th>
+                            <th>Ip Adresi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var activityLog in Model.UserActivities)
+                        {
+                            <tr>
+                                <th>
+                                    @activityLog.Id
+                                </th>
+                                <th>
+                                    @activityLog.Activity
+                                </th>
+                                <th>
+                                    @activityLog.CreatedDate
+                                </th>
+                                <td>
+                                    @activityLog.IpAddress
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/activityloglist.js" defer></script>

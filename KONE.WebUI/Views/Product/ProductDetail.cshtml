@@ -1,0 +1,469 @@
+﻿@{
+    Layout = "_Layout";
+}
+@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Ürünler",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Ürün", "Detay" },
+    Url = "/Admin/Home/Index"
+})
+
+<div class="row">
+    <div class="col-xxl-4 col-xl-12">
+        <div class="card custom-card overflow-hidden">
+            <div class="card-body p-0">
+                <div class="d-sm-flex align-items-top p-4 border-bottom-0 main-profile-cover">
+                    <div>
+                        <span class="avatar avatar-xxl avatar-rounded online me-3">
+                            <img src="~/images/assets/cilek.jpg" />
+                        </span>
+                    </div>
+                    <div class="flex-fill main-profile-info">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h6 class="fw-semibold mb-1 text-fixed-white">Çilek</h6>
+                            <button class="btn btn-light btn-wave waves-effect waves-light" disabled><i class="ri-star-line me-1 align-middle d-inline-block"></i>8.5</button>
+                        </div>
+                        <p class="mb-1 text-muted text-fixed-white op-7">Çilek Fuji</p>
+                        <p class="fs-12 text-fixed-white mb-4 op-5">
+                            <span class="me-3"><i class="ri-code-line me-1 align-middle"></i>ERP KODU: ERP15619484</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="p-4 border-bottom border-block-end-dashed">
+                    <div class="mb-4">
+                        <p class="fs-15 mb-2 fw-semibold">Çilek Hakkında :</p>
+                        <p class="fs-12 text-muted op-7 mb-0">
+                            Ben <b class="text-default">Çilek</b>, kırmızı ve tatlı bir meyveyim. Sağlıklı bir atıştırmalık olarak
+                            tüketilebilir ve birçok tatlıda kullanılabilirim. Vitamin ve antioksidan açısından zenginim.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <th>Ürün Adı</th>
+                                    <td>Çilek</td>
+                                </tr>
+                                <tr>
+                                    <th>Ürün Tipi</th>
+                                    <td>Meyve</td>
+                                </tr>
+                                <tr>
+                                    <th>ERP No</th>
+                                    <td>ERP1234</td>
+                                </tr>
+                                <tr>
+                                    <th>Açıklama</th>
+                                    <td>Vitamin deposu ve antioksidan kaynağı olan tatlı ve sulu bir meyve.</td>
+                                </tr>
+                                <tr>
+                                    <th>Depo Ömrü</th>
+                                    <td>7 gün</td>
+                                </tr>
+                                <tr>
+                                    <th>Raf Ömrü</th>
+                                    <td>5 gün</td>
+                                </tr>
+                                <tr>
+                                    <th>Birim</th>
+                                    <td>Adet</td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-8 col-xl-12">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-body p-0">
+                        <div class="p-3 border-bottom border-block-end-dashed d-flex align-items-center justify-content-between">
+                            <div>
+                                <ul class="nav nav-tabs mb-0 tab-style-6 justify-content-start" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity-tab-pane" type="button" role="tab" aria-controls="activity-tab-pane" aria-selected="true"><i class="ri-gift-line me-1 align-middle d-inline-block"></i>Son Hareketler</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts-tab-pane" type="button" role="tab" aria-controls="posts-tab-pane" aria-selected="false" tabindex="-1"><i class="ri-bill-line me-1 align-middle d-inline-block"></i>Stok Hareketleri</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="followers-tab" data-bs-toggle="tab" data-bs-target="#followers-tab-pane" type="button" role="tab" aria-controls="followers-tab-pane" aria-selected="false" tabindex="-1"><i class="ri-money-dollar-box-line me-1 align-middle d-inline-block"></i>Mevcut Stoklar Tablosu</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane show active fade p-0 border-0" id="activity-tab-pane" role="tabpanel" aria-labelledby="activity-tab" tabindex="0">
+                                    <ul class="list-unstyled profile-timeline">
+                                        <ul class="profile-timeline list-unstyled">
+                                            <li>
+                                                <div>
+                                                    <span class="avatar avatar-sm bg-primary-transparent avatar-rounded profile-timeline-avatar">
+                                                        Ç
+                                                    </span>
+                                                    <p class="mb-2">
+                                                        <b>Çilek</b> DP18884 Manisa Deposuna Girdi.<span class="float-end fs-11 text-muted">01, Tem 2024 - 09:30</span>
+                                                    </p>
+                                                    <p class="profile-activity-media mb-0">
+                                                        <a href="javascript:void(0);">
+                                                            <img src="~/images/assets/capraz-sevkiyat-cozumleri.jpeg" />
+                                                        </a>
+                                                        <a href="javascript:void(0);">
+                                                            <img src="~/images/assets/depo-yonetimi-otomasyon.jpg" />
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <span class="avatar avatar-sm avatar-rounded profile-timeline-avatar">
+                                                        <img src="~/images/assets/profileman.jpg" />
+                                                    </span>
+                                                    <p class="text-muted mb-2">
+                                                        <span class="text-default"><b>Orhan Mahmut</b>, Müstahsil Tarlasından Çilek Alındı 👍</span>.<span class="float-end fs-11 text-muted">02, Tem 2024 - 10:15</span>
+                                                    </p>
+                                                    <p class="text-muted mb-0">
+                                                        Çilek tarladan alındı ve işleme başlandı.
+                                                    </p>
+                                                </div>
+                                            </li>
+                                           
+                                            <li>
+                                                <div>
+                                                    <span class="avatar avatar-sm bg-success-transparent avatar-rounded profile-timeline-avatar">
+                                                        Ç
+                                                    </span>
+                                                    <p class="text-muted mb-2">
+                                                        <span class="text-default"><b>Çilek</b>, Dursun Bayram Kişiden Alındı: <b>DP8796</b> Manisa/Turgutlu sevkiyatı başlandı.  </span>.<span class="float-end fs-11 text-muted">04, Tem 2024 - 13:20</span>
+                                                    </p>
+                                                    <p class="profile-activity-media mb-2">
+                                                        <a href="javascript:void(0);">
+                                                            <img src="~/images/assets/cilek.jpg" />
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <span class="avatar avatar-sm avatar-rounded profile-timeline-avatar">
+                                                        <img src="~/images/assets/cilek.jpg" />
+                                                    </span>
+                                                    <p class="text-muted mb-1">
+                                                        <span class="text-default"><b>Zeynep Çelik</b>, Çilek Teslim Edildi. Teslim Alan: <b>Ali</b></span>.<span class="float-end fs-11 text-muted">05, Tem 2024 - 15:00</span>
+                                                    </p>
+                                                    <p class="text-muted">Çilekler Ali'ye teslim edildi.</p>
+                                                </div>
+                                            </li>
+
+
+                                         </ul>
+                                    </ul>
+                                </div>
+                                <div class="tab-pane fade p-0 border-0" id="posts-tab-pane" role="tabpanel" aria-labelledby="posts-tab" tabindex="0">
+                                    <div class="table-responsive">
+                                        <table id="stockHistoryDataTable" class="table table-bordered text-nowrap w-100">
+                                            <thead>
+                                                <tr>
+                                                    <th class="nonsearchable" style="width:10px;">
+                                                        <div class="form-check form-check-md d-flex align-items-center">
+                                                            <input class="form-check-input" type="checkbox" value="" id="checkebox-md">
+                                                        </div>
+                                                    </th>
+
+                                                    <th class="nonsearchable">#</th>
+                                                    <th>Ürü Adı</th>
+                                                    <th>Ürü Tipi</th>
+                                                    <th>İşlem Tarihi</th>
+                                                    <th>Ton Miktarı</th>
+                                                    <th>İşlem Türü</th>
+                                                    <th>Lokasyon</th>
+                                                    <th>İşlem Yapan Kişi</th>
+                                                    <th class="nonsearchable">İşlemler</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade p-0 border-0" id="followers-tab-pane" role="tabpanel" aria-labelledby="followers-tab" tabindex="0">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <div class="table-responsive">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th rowspan="6">M00001</th>
+                                                                <th colspan="6">Renk Kırmızı Çilek</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="3"><strong>KONFRUT AG</strong></td>
+                                                                <td colspan="3"><strong>KONFRUT GAP</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>LOKASYON(SİTE )</strong></td>
+                                                                <td><strong>ERP Kodu</strong></td>
+                                                                <td><strong>Stok</strong></td>
+                                                                <td><strong>LOKASYON(SİTE )</strong></td>
+                                                                <td><strong>ERP Kodu</strong></td>
+                                                                <td><strong>Stok</strong></td>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td>Çukurova</td>
+                                                                <td>6308894</td>
+                                                                <td>650 KG</td>
+                                                                <td>İstanbul</td>
+                                                                <td>6308895</td>
+                                                                <td>650 KG</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td>Tarsus</td>
+                                                                <td>6308693</td>
+                                                                <td>1563 KG</td>
+                                                                <td>Urfa</td>
+                                                                <td>6308894</td>
+                                                                <td>2000 KG</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td>Amasya</td>
+                                                                <td>6308692</td>
+                                                                <td>2630 KG</td>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+
+     $(document).ready(function() {
+    var datatable = $('#stockHistoryDataTable').DataTable({
+        "orderCellsTop": true,
+        "fixedHeader": true,
+        "pageLength": 25,
+        "pagingType": "full_numbers", // Tüm sayfaları göster
+        "lengthMenu": [
+            [25, 50, 100, -1],
+            [25, 50, 100, "Tümü"]
+        ],
+        "columnDefs": [{
+            "targets": [9],
+            "render": function(data, type, row, meta) {
+                return '<div class="hstack gap-2">' +
+                    '<a aria-label="anchor" href="/Product/ProductUpdate/" class="btn btn-icon btn-wave waves-effect waves-light btn-sm btn-primary-light"><i class="ri-edit-line" data-bs-toggle="tooltip" data-bs-placement="top" title="Cari Detay"></i></a>' +
+                    '<a aria-label="anchor" href="/Product/ProductDetail/" class="btn btn-icon btn-wave waves-effect waves-light btn-sm btn-success-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Cari Kart Ozeti"><i class="ri-file-edit-fill"></i>></a>' +
+                    '</div>';
+            }
+        }],
+        language: {
+            "url": "https://cdn.datatables.net/plug-ins/1.12.0/i18n/tr.json"
+        },
+        layout: {
+            topStart: {
+                "buttons": [{
+                        extend: 'colvis',
+                        columns: ':not(.noVis)',
+                        popoverTitle: 'Sütunlar'
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: ':visible' // Sadece görünür sütunları dışa aktar
+                        }
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        text: 'PDF',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        customize: function(doc) {
+                            doc.pageSize = 'A3'; // PDF boyutunu A3 olarak ayarla
+                            doc.defaultStyle.fontSize = 10; // Yazı tipi boyutunu küçült
+                        }
+                    },
+                    {
+                        extend: 'csv',
+                        exportOptions: {
+                            columns: ':visible' // Sadece görünür sütunları dışa aktar
+                        }
+                    }
+                ]
+            }
+        },
+        "buttonsDom": {
+            "button": {
+                "tag": "button",
+                "className": "btn btn-outline-secondary"
+            },
+            "buttonLiner": {
+                "tag": null
+            }
+        }
+    });
+
+    $('#stockHistoryDataTable thead th').each(function() {
+        var title = $(this).text();
+        var classList = $(this).attr('class'); // Öğenin sınıf listesini al
+
+        if (classList && classList.indexOf('nonsearchable') !== -1) {
+            $(this).text(title);
+        } else {
+            $(this).html('<input type="text" class="form-control rounded-pill" placeholder="' + title + '" />');
+
+            $('input', this).on('keyup change', function() {
+                var i = $(this).closest('th').index();
+                if (datatable.column(i).search() !== this.value) {
+                    datatable
+                        .column(i)
+                        .search(this.value)
+                        .draw();
+                }
+            });
+        }
+    });
+
+    // Rastgele isim oluşturma fonksiyonu
+    function getRandomName() {
+        var names = ['Ahmet', 'Mehmet', 'Ayşe', 'Fatma', 'Mustafa', 'Zeynep', 'Emir', 'Aslı', 'Can', 'İpek'];
+        return names[Math.floor(Math.random() * names.length)];
+    }
+
+    // Rastgele harf/sayı dizisi oluşturma fonksiyonu
+    function getRandomString(length) {
+        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var result = '';
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return result;
+    }
+
+    // Rastgele tarih oluşturma fonksiyonu
+    function getRandomDate() {
+        var year = 2024;
+        var month = Math.floor(Math.random() * 12) + 1;
+        var day = Math.floor(Math.random() * 28) + 1; // Şubat ayı için sadece
+        return year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
+    }
+
+    // Rastgele veri oluşturma fonksiyonu
+    function getRandomData() {
+        var status = Math.random();
+        var statusHtml;
+        if (status < 0.3) {
+            statusHtml = '<span class="badge bg-primary-transparent"><i class="ri-check-line"></i> Sözleşme Yapıldı</span>';
+        } else if (status < 0.6) {
+            statusHtml = '<span class="badge bg-warning-transparent"><i class="ri-time-line"></i> Bekliyor</span>';
+        } else {
+            statusHtml = '<span class="badge bg-success-transparent"><i class="ri-close-line"></i> Sözleşme Tamamlandı</span>';
+        }
+
+        function getRandomFruitType() {
+            var fruits = ['Elma', 'Armut', 'Muz', 'Kiraz', 'Karpuz', 'Çilek', 'Portakal', 'Mandalina', 'Üzüm', 'Ananas'];
+            return fruits[Math.floor(Math.random() * fruits.length)];
+        }
+
+        function getRandomFruitName() {
+            var fruits = ['Golden Delicious', 'Red Delicious', 'Granny Smith', 'Fuji', 'Gala', 'Honeycrisp', 'Braeburn', 'Cortland', 'Jonagold', 'Honeycrisp'];
+            return fruits[Math.floor(Math.random() * fruits.length)];
+        }
+
+        function getRandomDescription() {
+            var descriptions = [
+                'Lezzetli ve taze',
+                'Vitamin deposu',
+                'Doğal ve organik',
+                'Çocuklar için sağlıklı atıştırmalık',
+                'Serinletici ve besleyici',
+                'Mevsiminde toplanmış',
+                'Diyet dostu',
+                'Enerji verici',
+                'Lif kaynağı',
+                'Sağlıklı yaşam için ideal'
+            ];
+            return descriptions[Math.floor(Math.random() * descriptions.length)];
+        }
+
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var currentDate = dd + '.' + mm + '.' + yyyy;
+
+        var randomTon = Math.floor(Math.random() * 100);
+
+        var islemler = ['Stok Giriş', 'Stok Çıkış'];
+        var randomIslem = islemler[Math.floor(Math.random() * islemler.length)];
+
+        var lokasyonlar = ['Çukurova', 'İstanbul', 'Tarsus', 'Urfa', 'Amasya'];
+        var randomLokasyon = lokasyonlar[Math.floor(Math.random() * lokasyonlar.length)];
+
+        var kisiler = ['Ali Yılmaz', 'Ayşe Kaya', 'Mehmet Aksoy', 'Fatma Yıldırım', 'Hasan Demir'];
+        var randomKisi = kisiler[Math.floor(Math.random() * kisiler.length)];
+
+        return {
+            urunAdi: 'Çilek',
+            urunTipi: 'Fuji',
+            ton: randomTon + ' Ton',
+            tarih: currentDate,
+            islemTuru: randomIslem,
+            lokasyon: randomLokasyon,
+            islemYapanKisi: randomKisi,
+        };
+    }
+
+    // 100 satır için örneğin tabloyu doldurma
+    for (var i = 0; i < 100; i++) {
+        var data = getRandomData();
+        datatable.row.add([
+            '<div class="form-check form-check-md d-flex align-items-center"><input class="form-check-input" type="checkbox" value="" id="checkebox-md"></div>',
+            i + 1,
+            data.urunAdi,
+            data.urunTipi,
+            data.tarih,
+            data.ton,
+            data.islemTuru,
+            data.lokasyon,
+            data.islemYapanKisi,
+            ''
+        ]).draw(false);
+    }
+
+});
+
+    </script>
+}

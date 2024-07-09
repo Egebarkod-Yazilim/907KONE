@@ -1,0 +1,464 @@
+﻿@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Kalite Kontrol - Bahçe Kontrol Formu",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Kalite Kontrol", "Bahçe Kontrol Formu" },
+    Url = "/Admin/Home/Index"
+})
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Select2 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- Custom CSS -->
+<!-- Bootstrap Css -->
+<link id="style" href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* Select2 form-control-light ile uyumlu hale getirmek için ek stil */
+    .select2-container--default .select2-selection--multiple {
+        background-color: #f7f7f7; /* Form-control-light ile uyumlu renk */
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+    }
+    .checkbox-group {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+        .checkbox-group label {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            transition: all 0.3s ease; /* Geçiş efekti */
+        }
+
+        .checkbox-group img {
+            max-width: 100px;
+            border: 2px solid transparent;
+            margin-bottom: 5px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            display: none;
+        }
+
+    .check-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        color: transparent; /* Başlangıçta görünmez yapalım */
+        transition: all 0.3s ease; /* Geçiş efekti */
+    }
+
+    .checkbox-group label:hover img {
+        border-color: #007bff; /* Hovarda sınır rengi */
+    }
+
+    .checkbox-group input[type="checkbox"]:checked + label img {
+        border-color: #28a745; /* Kontrollü durumda sınır rengi */
+    }
+
+    .checkbox-group input[type="checkbox"]:checked + label .check-icon {
+        color: #28a745; /* Yeşil renk */
+    }
+</style>
+<link rel="stylesheet" href="../libs/flatpickr/flatpickr.min.css">
+<link rel="stylesheet" href="../libs/dropzone/dropzone.css">
+<div class="col-12">
+    <div class="card custom-card shadow">
+        <div class="card-header justify-content-between">
+            <div class="card-title">
+                <div class="card-title">
+                        @("Müstahsil Bahçe Ön Formu")
+                </div>
+            </div>
+
+        </div>
+        <div class="card-body">
+                <input type="hidden"  />
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <div class="card-header konfrut-backgroundcolor-important">
+                                <h6><span class="bi bi-person-fill"></span> Müstahsil - Üretici Bilgileri </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label class="form-label">Müstahsil Seçiniz</label>
+                                    <select id="mustahsil-select" class="select2 form-control form-control-light">
+                                            <option value="0">Lütfen bir firma seçin</option>
+                                            <option value="1">Fresh Fruit Ltd.</option>
+                                            <option value="2">Green Valley Organics</option>
+                                            <option value="3">Golden Apple Co.</option>
+                                            <option value="4">Sunshine Citrus Farm</option>
+                                            <option value="5">Tropical Harvest</option>
+                                            <option value="6">Meyve Bahçesi Tarım</option>
+                                            <option value="7">Yeşil Bahar Çiftliği</option>
+                                            <option value="8">Naturel Sebze Ltd. Şti.</option>
+                                            <option value="9">Hale Manav</option>
+                                            <option value="10">Ahmet Yılmaz Tarım</option>
+                                            <option value="11">Bahar Meyve Bahçesi</option>
+                                            <option value="12">Elif Çiftliği</option>
+                                            <option value="13">Toprak Organik Ürünler</option>
+                                            <option value="14">Eko Tarım A.Ş.</option>
+                                            <option value="15">Murat Kaya Bahçesi</option>
+
+                                    </select>
+
+                                </div>
+
+                                    <div class="col-md-3 mb-3">
+                                    <label class="form-label">İl Seçin:</label>
+                                        <select id="il-select" class="select2 form-control form-control-light">
+                                            <!-- İller buraya eklenecek -->
+                                        <option value="">Lütfen bir il seçin</option>
+                                        <option value="Şanlıurfa">Şanlıurfa</option>
+                                        <option value="Adana">Adana</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                    <label class="form-label">İlçe Seçin:</label>
+                                        <select id="ilce-select" class="select2 form-control form-control-light">
+                                            <option value="">Lütfen önce bir il seçin</option>
+                                            <!-- İlçeler buraya dinamik olarak eklenecek -->
+                                        </select>
+                                    </div>
+                          
+                                <div class="col-md-3 mb-3">
+                                    <label class="form-label">Ada-Parsel Seçin:</label>
+                                    <select id="ada-parsel-select" class="select2 form-control form-control-light">
+                                        <option value="">Lütfen önce bir ilçe seçin</option>
+                                        <!-- Ada ve Parseller buraya dinamik olarak eklenecek -->
+                                    </select>
+                                </div>                       
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <div class="card-header bg-primary" id="headingSecondaryTwo">
+                                <h6><span class="bi bi-building"></span> Yetiştirilen Ürün(ler)</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="elma" name="fruit" value="elma">
+                                    <label for="elma">
+                                        <img src="~/images/elma.png" alt="Elma">
+                                        <i class="fas fa-check-circle check-icon"></i>
+                                    </label>
+
+                                    <input type="checkbox" id="nar" name="fruit" value="nar">
+                                    <label for="nar">
+                                        <img src="~/images/nar.png" alt="Nar">
+                                        <i class="fas fa-check-circle check-icon"></i>
+                                    </label>
+
+                                    <input type="checkbox" id="karpuz" name="fruit" value="karpuz">
+                                    <label for="karpuz">
+                                        <img src="~/images/karpuz.png" alt="Karpuz">
+                                        <i class="fas fa-check-circle check-icon"></i>
+                                    </label>
+
+                                    <input type="checkbox" id="cilek" name="fruit" value="cilek">
+                                    <label for="cilek">
+                                        <img src="~/images/cilek.png" alt="Çilek">
+                                        <i class="fas fa-check-circle check-icon"></i>
+                                    </label>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <div class="card-header" >
+                                <h6><span class="bi bi-list-check"></span> Fotoğraflar, Çevresi ve Alan</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="card custom-card">
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                Dosyaları Seçiniz
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form data-single="true" method="post" action="https://httpbin.org/post" class="dropzone"></form>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <div class="card-header" >
+                                <h6> <span class="bi bi-credit-card"></span> Bahçe / Tarla Bilgiler</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                    <label class="form-label">GGN</label>
+                                    <input type="text" class="form-control form-control-light" placeholder="GGN Giriniz" aria-label="GGN Giriniz">
+                                    </div>
+
+                                    <div class="col-md-4 mb-3">
+                                    <label class="form-label">Dekar </label>
+                                    <input type="text" class="form-control form-control-light" placeholder="Dekar Giriniz" aria-label="Dekar Giriniz">
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                    <label class="form-label">Brix Değeri</label>
+                                    <input type="number" step="0.01" class="form-control form-control-light" placeholder="Brix Değeri Giriniz" aria-label="Brix Değeri Giriniz">
+                                    </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Kullanılan Pestisit İsimleri</label>
+                                    <textarea class="form-control form-control-light">
+                                        </textarea>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <label class="form-label">İlaçlama Tarihleri</label>
+
+                                        <div class="input-group">
+
+                                            <div class="input-group-text text-muted"> <i class="ri-calendar-line"></i> </div>
+                                            <input type="text" class="form-control" id="daterange" placeholder="İlaçla Tarihleri Seçiniz">
+                                        </div>
+                                    </div>
+                                </div>                           
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Lütfen Çevrede Yetiştirilen Ürünleri Seçiniz</label>
+
+                                        <select class="select2 form-control form-control-light" multiple="multiple">
+
+                                            <option value="elma">Elma</option>
+                                            <option value="armut">Armut</option>
+                                            <option value="çilek">Çilek</option>
+                                            <option value="domates">Domates</option>
+                                            <option value="salatalık">Salatalık</option>
+                                            <option value="patates">Patates</option>
+                                            <option value="kabak">Kabak</option>
+                                            <option value="havuç">Havuç</option>
+                                            <option value="marul">Marul</option>
+                                            <option value="ıspanak">Ispanak</option>
+                                        </select>
+                                </div>                            
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label"></label>
+
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                               id="flexSwitchCheckChecked" checked="">
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">
+                                            Çevresinden Yol Geçiyor Mu ? 
+                                        </label>
+                                    </div>                            
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                               id="flexSwitchCheckChecked" checked="">
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">
+                                            Spray Kayıtlarına Ulaşılabiliyor Mu ? 
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Yıllık Ortalama Kapasite/Tonaj</label>
+                                    <input type="number" step="0.01" class="form-control form-control-light" placeholder="Yıllık Ortalama Kapasite/Tonaj Giriniz" aria-label="Yıllık Ortalama Kapasite/Tonaj Giriniz">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">İhracat Kapasite Yüzdesi</label>
+                                    <input type="number" step="0.01" class="form-control form-control-light" placeholder="İhracat Kapasite Yüzdesi Giriniz" aria-label="İhracat Kapasite Yüzdesi Giriniz">
+                                </div>
+
+
+
+                                </div>            
+                                
+                                <div class="col-md-4 mb-3">
+
+                                <label class="form-label">Durum</label>
+
+                                    <div class="custom-toggle-switch d-flex align-items-center mb-4">
+                                        <input id="toggleswitchSuccess" name="toggleswitch001" type="checkbox" checked="">
+                                        <label for="toggleswitchSuccess" class="label-success"></label><span class="ms-3">Kontrol Durum Uygun</span>
+                                    </div>
+                                
+                                </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                <div class="d-flex flex-wrap gap-2">
+                    <button id="savebutton" type="button" class="btn btn-green-knfrt"><span class="bi bi-check-all"></span><span class="bi bi-check-all"></span> Kaydet</button>
+
+                </div>
+
+                    </div>
+
+
+                </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function () {
+        // Select2 özelliğini etkinleştirelim
+        $('.select2').select2();
+
+        // Checkbox için tıklama olayını yönetelim
+        $('.checkbox-group label img').click(function () {
+            const $checkbox = $(this).prev('input[type="checkbox"]');
+            $checkbox.prop('checked', !$checkbox.prop('checked')).trigger('change');
+        });
+    });
+</script>
+<!-- jQuery ve Select2 JS dosyalarını dahil edelim -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Select2 özelliğini etkinleştirelim
+        $('.select2').select2();
+
+        // İl ve ilçe veritabanı
+        const ilceler = {
+            Şanlıurfa: ["Eyyübiye", "Haliliye", "Karaköprü", "Suruç", "Viranşehir"],
+            Adana: ["Seyhan", "Yüreğir", "Çukurova", "Sarıçam", "Ceyhan"]
+        };
+
+        // İlçe ve ada-parsel veritabanı
+        const adaParseller = {
+            Eyyübiye: [
+                { ada: "Ada 1", parsel: "Parsel 101" },
+                { ada: "Ada 2", parsel: "Parsel 102" },
+                { ada: "Ada 3", parsel: "Parsel 103" }
+            ],
+            Haliliye: [
+                { ada: "Ada 4", parsel: "Parsel 104" },
+                { ada: "Ada 5", parsel: "Parsel 105" },
+                { ada: "Ada 6", parsel: "Parsel 106" }
+            ],
+            Karaköprü: [
+                { ada: "Ada 7", parsel: "Parsel 107" },
+                { ada: "Ada 8", parsel: "Parsel 108" },
+                { ada: "Ada 9", parsel: "Parsel 109" }
+            ],
+            Suruç: [
+                { ada: "Ada 10", parsel: "Parsel 110" },
+                { ada: "Ada 11", parsel: "Parsel 111" },
+                { ada: "Ada 12", parsel: "Parsel 112" }
+            ],
+            Viranşehir: [
+                { ada: "Ada 13", parsel: "Parsel 113" },
+                { ada: "Ada 14", parsel: "Parsel 114" },
+                { ada: "Ada 15", parsel: "Parsel 115" }
+            ],
+            Seyhan: [
+                { ada: "Ada 16", parsel: "Parsel 116" },
+                { ada: "Ada 17", parsel: "Parsel 117" },
+                { ada: "Ada 18", parsel: "Parsel 118" }
+            ],
+            Yüreğir: [
+                { ada: "Ada 19", parsel: "Parsel 119" },
+                { ada: "Ada 20", parsel: "Parsel 120" },
+                { ada: "Ada 21", parsel: "Parsel 121" }
+            ],
+            Çukurova: [
+                { ada: "Ada 22", parsel: "Parsel 122" },
+                { ada: "Ada 23", parsel: "Parsel 123" },
+                { ada: "Ada 24", parsel: "Parsel 124" }
+            ],
+            Sarıçam: [
+                { ada: "Ada 25", parsel: "Parsel 125" },
+                { ada: "Ada 26", parsel: "Parsel 126" },
+                { ada: "Ada 27", parsel: "Parsel 127" }
+            ],
+            Ceyhan: [
+                { ada: "Ada 28", parsel: "Parsel 128" },
+                { ada: "Ada 29", parsel: "Parsel 129" },
+                { ada: "Ada 30", parsel: "Parsel 130" }
+            ]
+        };
+
+        // İl seçildiğinde ilçe listesini doldur
+        $('#il-select').change(function () {
+            const il = $(this).val();
+            const $ilceSelect = $('#ilce-select');
+            const $adaParselSelect = $('#ada-parsel-select');
+
+            $ilceSelect.empty();
+            $adaParselSelect.empty();
+
+            if (il) {
+                $ilceSelect.append('<option value="">Lütfen bir ilçe seçin</option>');
+                ilceler[il].forEach(function (ilce) {
+                    $ilceSelect.append('<option value="' + ilce + '">' + ilce + '</option>');
+                });
+            } else {
+                $ilceSelect.append('<option value="">Lütfen önce bir il seçin</option>');
+            }
+
+            // İlçe ve ada-parsel seçimini sıfırlayalım
+            $ilceSelect.val(null).trigger('change');
+            $adaParselSelect.append('<option value="">Lütfen önce bir ilçe seçin</option>');
+        });
+
+        // İlçe seçildiğinde ada-parsel listesini doldur
+        $('#ilce-select').change(function () {
+            const ilce = $(this).val();
+            const $adaParselSelect = $('#ada-parsel-select');
+
+            $adaParselSelect.empty();
+
+            if (ilce) {
+                $adaParselSelect.append('<option value="">Lütfen bir ada-parsel seçin</option>');
+                adaParseller[ilce].forEach(function (item) {
+                    const adaParsel = item.ada + " - " + item.parsel;
+                    $adaParselSelect.append('<option value="' + adaParsel + '">' + adaParsel + '</option>');
+                });
+            } else {
+                $adaParselSelect.append('<option value="">Lütfen önce bir ilçe seçin</option>');
+            }
+
+            // Ada-parsel seçimini sıfırlayalım
+            $adaParselSelect.val(null).trigger('change');
+        });
+    });
+</script>
+<!-- Dropzone JS -->
+<script src="../libs/dropzone/dropzone-min.js"></script>
+
+<!-- Fileupload JS -->
+<script src="../js/fileupload.js"></script>
+
+<!-- Date & Time Picker JS -->
+<script src="../libs/flatpickr/flatpickr.min.js"></script>
+<script src="../js/date&time_pickers.js"></script>

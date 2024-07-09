@@ -1,0 +1,684 @@
+﻿@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Kalite Kontrol - Hammadde Girdi Kontrol",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Kalite Kontrol", "Hammadde Girdi Kontrol" },
+    Url = "/Admin/Home/Index"
+})
+<link rel="stylesheet" href="../libs/dropzone/dropzone.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet">
+
+<div class="row">
+
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+            </div>
+            <div class="card-body">
+                <div class="row">
+
+                    <ul class="nav nav-tabs justify-content-center mb-5 tab-style-3" id="myTab2" role="tablist">
+                        <li class="nav-item me-0" role="presentation">
+                            <button class="nav-link home py-1 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Genel Bilgiler</button>
+                        </li>
+                        <li class="nav-item me-0" role="presentation">
+                            <button class="nav-link about py-1" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false" tabindex="-1">Analizler</button>
+                        </li>
+                        <li class="nav-item me-0" role="presentation">
+                            <button class="nav-link services py-1" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false" tabindex="-1">Sonuç Çıktısı</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent1">
+                        <div class="tab-pane fade text-muted active show" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+
+
+
+                            <div class="row">
+
+                                <div class="col-xl-6" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Sistemde Tanımlı Ürünü Seçiniz</label>
+
+                                    <select class="select2 form-control form-control-light" id="specificSizeSelect1">
+                                        <option selected="uruns2">Ürünü Seçiniz</option>
+                                        <option value="1">Elma</option>
+                                        <option value="2">Nar</option>
+                                        <option value="2">Karpuz</option>
+                                        <option value="2">Limon</option>
+                                        <option value="2">Portakal</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-xl-6" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Gelen Sevkiyatı Seçiniz</label>
+
+                                    <select class="select2 form-control form-control-light" id="specificSizeSelect2">
+                                        <option selected="sevkyts2">Sevkiyat Seçiniz</option>
+                                        <option value="1">Emre Mutaf - 05 NLB 09 - 18.07.2024</option>
+                                        <option value="1">Ali Veli - 06 AC 25 - 11.01.2024</option>
+                                        <option value="1">Cumhur Nur - 35 DCL 29 - 01.12.2024</option>
+
+                                    </select>
+                                </div>
+                                <br />
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Numune Adet</label>
+                                    <input type="number" class="form-control" id="input-placeholder" placeholder="Numune Adet">
+                                </div>
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Kutu Ağırlığı (Net Kg)</label>
+                                    <input type="number" class="form-control" id="input-placeholder" placeholder="Kutu Ağırlığı (Net Kg)">
+                                </div>
+
+                                <div class="col-xl-6" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Ürün Depo No Seçiniz</label>
+
+                                    <select class="select2 form-control form-control-light" id="specificSizeSelect3">
+                                        <option selected="depos2">Depo No Seçiniz</option>
+                                        <option value="1">AC1/1</option>
+                                        <option value="1">AC1/2</option>
+                                        <option value="1">AC2/1</option>
+                                        <option value="1">AC2/2</option>
+                                        <option value="1">AC2/3</option>
+
+                                    </select>
+                                </div>
+
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Brix Değeri</label>
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" placeholder="Brix Değeri" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <button class="btn btn-primary" type="button" id="button-addon2">Hesapla</button>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-xl-6" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Anahtarkar</label>
+
+                                    <select class="select2 form-control form-control-light" id="specificSizeSelect4">
+                                        <option selected="as2">Anahtarlar</option>
+                                        <option value="1">Tanımlamalardan Tanımlayınız</option>
+
+
+                                    </select>
+                                </div>
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Kalibre Değeri</label>
+                                    <div class="input-group mb-3">
+                                        <input type="number" class="form-control" placeholder="Brix Değeri" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <button class="btn btn-primary" type="button" id="button-addon2">Ekle</button>
+                                    </div>
+
+                                </div>
+
+
+
+
+                                <div class="col-xl-12">
+                                    <div class="card custom-card">
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                Dosyaları Seçiniz
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form data-single="true" method="post" action="https://httpbin.org/post" class="dropzone"></form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn btn-green-knfrt" onclick="nextTab('profile-tab')"><span class="bi bi-check-all"></span> Kaydet</button>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+                        </div>
+                        <div class="tab-pane fade text-muted" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+
+
+
+
+
+
+
+
+
+
+                            <div class="row">
+
+
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Alternaria</label>
+                                    <input type="number" class="form-control" id="input-placeholder" placeholder="Alternaria">
+                                </div>
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Çatlak Majör</label>
+                                    <input type="number" class="form-control" id="input-placeholder" placeholder="Alternaria">
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Çürük</label>
+                                    <input type="number" class="form-control" id="input-placeholder" placeholder="Çürük">
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Güneş Yanığı Majör</label>
+                                    <input type="number" class="form-control" id="input-placeholder" placeholder="Güneş Yanığı Majör">
+                                </div>
+
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Hasat Hatası Majör</label>
+                                    <input type="number" class="form-control" id="input-placeholder" placeholder="Hasat Hatası Majör">
+                                </div>
+
+
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Kozmetik Kusur Majör</label>
+                                    <input type="number" class="form-control" id="input-placeholder" placeholder="Kozmetik Kusur Majör">
+                                </div>
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Pas Majör</label>
+                                    <input type="number" class="form-control" id="input-placeholder" placeholder="Pas Majör">
+                                </div>
+
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12" style="padding:5px;">
+                                    <label for="input-placeholder" class="form-label">Unlu Bit Zararı</label>
+                                    <input type="number" class="form-control" id="input-placeholder" placeholder="Unlu Bit Zararı">
+                                </div>
+
+
+                                <br />
+                                <div class="col-auto">
+
+                                    <button class="btn btn-green-knfrt" onclick="nextTab('contact-tab')"> <span class="bi bi-check-all"></span> Kaydet</button>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        </div>
+                        <div class="tab-pane fade text-muted" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+
+
+                            <div class="col-12 mt-3">
+                                <div class="card custom-card shadow">
+                                    <div class="card-header justify-content-between">
+                                        <div class="card-title">
+                                            <div class="card-title">
+                                                <i class="bi bi-file-earmark-bar-graph"></i>  Numune Rapor Detayı
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <button id="printPdf" type="button" class="btn btn-soil-knfrt"><span class="bi bi-printer"></span> Yazdır</button>
+                                        </div>
+                                    </div>
+                                    <div id="printArea">
+                                        <div class="card-body">
+                                            <table style="width: 100%; border-collapse: collapse;">
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <div class="card">
+                                                            <div class="card-header konfrut-backgroundcolor-important">
+                                                                <h6><span class="bi bi-file-check"></span> Genel bilgiler</h6>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <table style="width: 100%; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td style="width: 33%;">
+                                                                            <label class="form-label"><span class="bx bx-calendar"></span> Inceleme Tarihi: </label>
+                                                                            <label class="form-label" id="inspectionDate"></label>
+                                                                            <br><br>
+                                                                            <label class="form-label"><span class="bx bx-calendar"></span> Hasat Tarihi: </label>
+                                                                            <label class="form-label" id="harvestDate"></label>
+                                                                            <br><br>
+                                                                            <label class="form-label"><span class="bx bx-key"></span> Üretici GGN: </label>
+                                                                            <label class="form-label" id="ggnNumber"></label>
+                                                                        </td>
+                                                                        <td style="width: 33%;">
+                                                                            <label class="form-label"><span class="bx bxl-apple"></span> Ürün Adı - Çeşit: </label>
+                                                                            <label class="form-label" id="productVariant"></label>
+                                                                            <br><br>
+                                                                            <label class="form-label"><span class="bx bx-user"></span> Yetiştirici (Grower): </label>
+                                                                            <label class="form-label" id="grower"></label>
+                                                                            <br><br>
+                                                                            <label class="form-label"><span class="bx bx-key"></span> T.C. NO - ID NO: </label>
+                                                                            <label class="form-label" id="identificationnumber"></label>
+                                                                        </td>
+                                                                        <td style="width: 33%;">
+                                                                            <label class="form-label"><span class="bx bx-car"></span> Araç Plakası: </label>
+                                                                            <label class="form-label" id="plateNumber"></label>
+                                                                            <br><br>
+                                                                            <label class="form-label"><span class="bx bx-file"></span> İrsaliye Numarası: </label>
+                                                                            <label class="form-label" id="irsNo"></label>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3">
+                                                        <div class="card">
+                                                            <div class="card-header bg-primary" id="headingSecondaryTwo">
+                                                                <h6><span class="bi bi-image"></span> Numune Fotoğrafları</h6>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <table style="width: 100%; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td style="width: 33%;">
+                                                                            <img class="img-fluid rounded" style="height:250px;" src="~/images/samples/apple.jpg" />
+                                                                        </td>
+                                                                        <td style="width: 33%;">
+                                                                            <img class="img-fluid rounded" style="height:250px;" src="~/images/samples/apple.jpg" />
+                                                                        </td>
+                                                                        <td style="width: 33%;">
+                                                                            <img class="img-fluid rounded" style="height:250px;" src="~/images/samples/apple.jpg" />
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width: 33%;">
+                                                                            <p>
+                                                                                <span class="fw-bold fs-14"><span class="bx bx-calculator"></span> Brix Değeri: </span> <span id="brixValue"></span>
+                                                                            </p>
+                                                                            <p>
+                                                                                <span class="fw-bold fs-14"><span class="bx bx-abacus"></span> STD: </span> <span id="std"></span>
+                                                                            </p>
+                                                                            <p>
+                                                                                <span class="fw-bold fs-14"><span class="bx bx-arrow-from-bottom"></span> Maximum: </span> <span id="maximumVal"></span>
+                                                                            </p>
+                                                                            <p>
+                                                                                <span class="fw-bold fs-14"><span class="bx bx-abacus"></span> Count: </span> <span id="count"></span>
+                                                                            </p>
+                                                                        </td>
+                                                                        <td style="width: 33%;">
+                                                                            <p>
+                                                                                <span class="fw-bold fs-14"><span class="bx bx-arrow-from-top"></span> Minimum: </span> <span id="minimumVal"></span>
+                                                                            </p>
+                                                                            <p>
+                                                                                <span class="fw-bold fs-14"><span class="bx bx-circle"></span> Kalibre Bilgileri: </span> <span id="caliberInfo"></span>
+                                                                            </p>
+                                                                        </td>
+                                                                        <td style="width: 33%;">
+                                                                            <p>
+                                                                                <span class="fw-bold fs-14"><span class="bx bx-check"></span> Durum: </span> <span id="status"></span>
+                                                                            </p>
+                                                                            <p>
+                                                                                <span class="fw-bold fs-14"><span class="bx bx-note"></span> NOTLAR: </span> <span id="notes"></span>
+                                                                            </p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="width: 50%;">
+                                                        <div class="card">
+                                                            <div class="card-header" id="headingSecondaryThree">
+                                                                <h6><span class="bi bi-list-check"></span> Majör Kusurlar</h6>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <h6>Majör Kusurlar - Kontrol Fotoğrafları 1</h6>
+                                                                <table style="width: 100%; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/apples1.png" /></td>
+                                                                        <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/apples2.jpeg" /></td>
+                                                                        <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/rottenapple.jpeg" /></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="3">
+                                                                            <p class="fs-14 fw-semibold mt-3" id="defact1"></p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td style="width: 50%;">
+                                                        <div class="card">
+                                                            <div class="card-header" id="headingSecondaryFour">
+                                                                <h6><span class="bi bi-credit-card"></span> Minör Kusurlar</h6>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <h6>Minör Kusurlar - Kontrol Fotoğrafları 2</h6>
+                                                                <table style="width: 100%; border-collapse: collapse;">
+                                                                    <tr>
+                                                                        <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/apples1.png" /></td>
+                                                                        <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/apples2.jpeg" /></td>
+                                                                        <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/rottenapple.jpeg" /></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="3">
+                                                                            <p class="fs-14 fw-semibold mt-3" id="defact2"></p>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+<!-- Dropzone JS -->
+<script src="../libs/dropzone/dropzone-min.js"></script>
+
+<!-- Fileupload JS -->
+<script src="../js/fileupload.js"></script>
+
+
+
+
+
+
+@section Scripts {
+    <script>
+
+
+
+
+
+
+
+
+
+
+
+
+        // Gelecek sekmeye geçiş yapma işlevi
+        function nextTab(tabId) {
+            // Sekme düğmesine tıklama işlemi
+            document.getElementById(tabId).click();
+        }
+
+        // İlk tab'da "Kaydet" butonuna tıklanınca ikinci tab'a geçiş yap
+        document.querySelector('#home-tab-pane .btn-success').addEventListener('click', function () {
+            nextTab('profile-tab');
+        });
+
+        // İkinci tab'da "Kaydet" butonuna tıklanınca üçüncü tab'a geçiş yap
+        document.querySelector('#profile-tab-pane .btn-success').addEventListener('click', function () {
+            nextTab('contact-tab');
+        });
+
+
+
+
+
+
+
+
+
+
+        $(document).ready(function () {
+            var suppliers = ["Ahmet Yılmaz", "Ayşe Kaya", "Mehmet Demir", "Fatma Öztürk", "Mustafa Arslan"];
+            var products = ["Elma", "Portakal", "Muz", "Armut", "Çilek"];
+            var drivers = ["Ali Yılmaz", "Aylin Kaya", "Hakan Demir", "Gülay Öztürk", "Can Arslan"];
+            var transportTypes = ["Kamyon", "Van", "Konteyner", "Tır", "Tren"];
+            var plates = ["34 ABC 123", "35 XYZ 789", "06 DEF 456", "16 GHI 789", "67 JKL 234"];
+            const notes = [
+                "Ürün çürümemiş, gayet güzel.",
+                "Ürün taze, canlı durmakta. (Ürün meyve olduğu için buna dikkat et)",
+                "Ürün kalitesi mükemmel, hiçbir sorun yok.",
+                "Ürünler tam zamanında geldi, sağlam ve doğru şartlarda depolandı.",
+                "Ürünler beklenenden daha hızlı tedarik edildi, teşekkürler."
+            ];
+            var status = ["Onaylandı", "Onaylanmadı", "İşlemde", "Beklemede"]
+            var brixValues = [10.0, 12.0, 14.0, 16.0, 18.0]; // Decimal değerler
+            var colorValues = ["Kırmızı", "Yeşil", "Sarı", "Mavi", "Mor"];
+
+            // Rastgele veri oluşturmak için kullanacağımız fonksiyonlar
+            function getRandomDate(start, end) {
+                var date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+                return date.toISOString().split('T')[0];
+            }
+            function getRandomNumber(min, max) {
+                return (Math.random() * (max - min) + min).toFixed(2);
+            }
+            function getRandomNumber2(min, max) {
+                return (Math.random() * (max - min) + min).toFixed(0);
+            }
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function getRandomItem(arr) {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+            function generateRandomInvoiceNumber() {
+                const currentYear = new Date().getFullYear();
+                const prefix = `IRS${currentYear}`;
+                const baseNumberLength = 8;
+
+                // Rastgele bir sayı üret
+                const randomNumber = Math.floor(Math.random() * Math.pow(10, baseNumberLength));
+
+                // Rastgele sayıyı uygun formatta oluştur
+                const invoiceNumber = `${prefix}${randomNumber.toString().padStart(baseNumberLength, '0')}`;
+                return invoiceNumber;
+            }
+            function generateTC() {
+                let tc = [];
+
+                // İlk 9 haneyi rastgele oluştur
+                for (let i = 0; i < 9; i++) {
+                    tc[i] = getRandomInt(0, 9);
+                }
+
+                // TC Kimlik Numarası kuralları
+                tc[0] = getRandomInt(1, 9); // İlk hane 0 olamaz
+
+                let tenthDigit = (
+                    (tc[0] + tc[2] + tc[4] + tc[6] + tc[8]) * 7 -
+                    (tc[1] + tc[3] + tc[5] + tc[7])
+                ) % 10;
+                tc[9] = tenthDigit;
+
+                let eleventhDigit = (
+                    tc[0] + tc[1] + tc[2] + tc[3] + tc[4] + tc[5] + tc[6] + tc[7] + tc[8] + tc[9]
+                ) % 10;
+                tc[10] = eleventhDigit;
+
+                return tc.join('');
+            }
+            function generateCaliberData() {
+                const caliberRanges = [
+                    { range: "81-90 mm", count: 0, percentage: 0 },
+                    { range: "91-100 mm", count: 0, percentage: 0 },
+                    { range: "101-110 mm", count: 0, percentage: 0 },
+                ];
+
+                // Rastgele adet sayıları oluştur
+                const totalItems = 100;
+                let remainingItems = totalItems;
+
+                for (let i = 0; i < caliberRanges.length; i++) {
+                    if (i === caliberRanges.length - 1) {
+                        caliberRanges[i].count = remainingItems;
+                    } else {
+                        const count = Math.floor(Math.random() * remainingItems);
+                        caliberRanges[i].count = count;
+                        remainingItems -= count;
+                    }
+                }
+
+                // Yüzdelik değerleri hesapla
+                caliberRanges.forEach(item => {
+                    item.percentage = ((item.count / totalItems) * 100).toFixed(2);
+                });
+
+                // Toplam yüzdelik değeri hesapla
+                const totalPercentage = caliberRanges.reduce((sum, item) => sum + parseFloat(item.percentage), 0).toFixed(2);
+
+                // Sonuçları string olarak birleştir
+                let resultString = "";
+                caliberRanges.forEach(item => {
+                    resultString += `${item.range} : ${item.count} (adet sayısı) / ${item.percentage} % </br>`;
+                });
+                resultString += `Total : ${totalPercentage} % </br>`;
+
+                return resultString;
+            }
+            function generateDefectData1() {
+                const defects = [
+                    { name: "Çatlak Majör", count: getRandomInt(1, 10), percentage: getRandomFloat(1, 5).toFixed(1) },
+                    { name: "Çürükt", count: getRandomInt(1, 5), percentage: getRandomFloat(0.5, 1).toFixed(1) },
+                    { name: "Güneş Yanığı Majör", count: getRandomInt(10, 30), percentage: getRandomFloat(13, 25).toFixed(1) },
+                    { name: "Hasat hatası Majör", count: getRandomInt(1, 5), percentage: getRandomFloat(2, 3).toFixed(1) }
+                ];
+
+                // Toplam kusur yüzdesini hesapla
+                const totalPercentage = defects.reduce((sum, defect) => sum + parseFloat(defect.percentage), 0).toFixed(1);
+
+                // Sonuçları string olarak birleştir
+                let resultString = "";
+                defects.forEach(defect => {
+                    resultString += `${defect.name} (${defect.count}/${defect.percentage}%),</br>`;
+                });
+                resultString += `Total %: ${totalPercentage}%\n\n`;
+                resultString += `Total Defects % Format:\n${(totalPercentage * 2).toFixed(2)}</br>`;
+
+                return resultString;
+            }
+            function generateDefectData2() {
+                const defects = [
+                    { name: "Çatlak Minör", count: getRandomInt(1, 10), percentage: getRandomFloat(1, 5).toFixed(1) },
+                    { name: "Çürükt", count: getRandomInt(1, 5), percentage: getRandomFloat(0.5, 1).toFixed(1) },
+                    { name: "Güneş Yanığı Minör", count: getRandomInt(10, 30), percentage: getRandomFloat(13, 25).toFixed(1) },
+                    { name: "Hasat hatası Minör", count: getRandomInt(1, 5), percentage: getRandomFloat(2, 3).toFixed(1) }
+                ];
+
+                // Toplam kusur yüzdesini hesapla
+                const totalPercentage = defects.reduce((sum, defect) => sum + parseFloat(defect.percentage), 0).toFixed(1);
+
+                // Sonuçları string olarak birleştir
+                let resultString = "";
+                defects.forEach(defect => {
+                    resultString += `${defect.name} (${defect.count}/${defect.percentage}%),</br>`;
+                });
+                resultString += `Total %: ${totalPercentage}%\n\n`;
+                resultString += `Total Defects % Format:\n${(totalPercentage * 2).toFixed(2)}</br>`;
+
+                return resultString;
+            }
+
+            function getRandomFloat(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+
+            $('#inspectionDate').text(getRandomDate(new Date(2023, 0, 1), new Date()));
+            $('#harvestDate').text(getRandomDate(new Date(2023, 0, 1), new Date()));
+            $('#ggnNumber').text(getRandomNumber2(1000, 9999));
+            $('#productVariant').text(getRandomItem(products));
+            $('#grower').text(getRandomItem(suppliers));
+            $('#identificationnumber').text(getRandomNumber2(10000000000, 99999999999));
+            $('#plateNumber').text(getRandomItem(plates));
+            $('#irsNo').text(generateRandomInvoiceNumber());
+            $('#brixValue').text(getRandomItem(brixValues));
+            $('#minimumVal').text(getRandomNumber2(1, 100));
+            $('#maximumVal').text(getRandomNumber2(1, 100));
+            $('#count').text(getRandomNumber2(1, 100));
+            $('#status').text(getRandomItem(status));
+            $('#std').text(getRandomItem(brixValues));
+            $('#notes').text(getRandomItem(notes));
+            document.getElementById('caliberInfo').innerHTML = generateCaliberData();
+            document.getElementById('defact1').innerHTML = generateDefectData1();
+            document.getElementById('defact2').innerHTML = generateDefectData2();
+
+            $('#printPdf').click(function () {
+                var printContents = document.getElementById('printArea').innerHTML;
+                var originalContents = document.body.innerHTML;
+
+                document.body.innerHTML = printContents;
+
+                window.print();
+
+                document.body.innerHTML = originalContents;
+                window.location.reload();
+            });
+
+
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Select2 özelliğini etkinleştirelim
+            $('.select2').select2();
+
+            // Checkbox için tıklama olayını yönetelim
+            $('.checkbox-group label img').click(function () {
+                const $checkbox = $(this).prev('input[type="checkbox"]');
+                $checkbox.prop('checked', !$checkbox.prop('checked')).trigger('change');
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#specificSizeSelect1').select2();
+            $('#specificSizeSelect2').select2();
+            $('#specificSizeSelect3').select2();
+            $('#specificSizeSelect4').select2();
+        });
+
+    </script>
+}
+
+@section Styles{
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}

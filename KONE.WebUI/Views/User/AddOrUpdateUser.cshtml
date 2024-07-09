@@ -1,0 +1,16 @@
+﻿@model AddOrUpdateUser
+@{
+    Layout = "_Layout";
+}
+@section Styles {
+    <link rel="stylesheet" href="~/Theme/HTML/dist/assets/libs/choices.js/public/assets/styles/choices.min.css" />
+}
+
+@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Kullanıcı Güncelle",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Index", "Cari Kartlar" },
+    Url = "/Admin/Home/Index"
+})
+
+@await Component.InvokeAsync("AddOrUpdateUserViewComponents")

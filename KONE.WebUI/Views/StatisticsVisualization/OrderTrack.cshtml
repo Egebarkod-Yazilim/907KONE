@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "_Layout";
+}
+@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Sipariş Takip",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Siparişler", "Sipariş Takip" },
+    Url = "/Admin/Home/Index"
+})
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card custom-card overlay-card">
+            <video autoplay muted loop class="card-img" style="max-height: 100%; width: 100%; object-fit: cover;">
+                <source src="~/images/assets/videos/slider.mp4" type="video/mp4">
+            </video>
+            <div class="card-img-overlay d-flex flex-column p-0">
+                <div class="card-header">
+                    <div class="card-title text-fixed-white">
+                        Konfrut Sipariş Takip Ekranı!
+                    </div>
+                </div>
+                <div class="card-body text-fixed-white">
+                    <div class="row justify-content-center align-items-center h-100">
+                        <div class="col-xxl-6 col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                            <h6 class="card-title fw-semibold">Sipariş Takip Ekranı</h6>
+                            <p class="card-text mb-3 text-muted">
+                                Barkod Numarası girerek veya okutarak sipariş detaylarını aratabilirsiniz!
+                            </p>
+                            <div class="input-group mb-5">
+                                <input type="text" class="form-control form-control-lg" placeholder="Barkod Numarası Giriniz" aria-describedby="button-addon2">
+                                <button class="btn btn-primary" type="button" id="searchbarcodedetail"><span class="bx bx-search"></span> Ara</button>
+                                <button class="btn btn-success" type="button" id="button-addon2"><span class="bx bx-camera"></span></button>
+                            </div>
+                            <div id="loadingAnimation" class="d-none">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <div class="mt-2">Aranıyor...</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@section Scripts{ 
+    <script>
+        document.getElementById('searchbarcodedetail').addEventListener('click', function () {
+            // Simülasyon için loading animasyonunu göster
+            const loadingAnimation = document.getElementById('loadingAnimation');
+            loadingAnimation.classList.remove('d-none');
+
+            // Örnek bir AJAX veya yüklenme süreci simülasyonu
+            setTimeout(function () {
+                // Simülasyon bitince loading animasyonunu gizle
+                loadingAnimation.classList.add('d-none');
+
+                // Yönlendirme işlemi
+                window.location.href = '/StatisticsVisualization/OrderTrackDetail';
+            }, 3000); // Örnek bir bekleme süresi, gerçek bir yükleme işlemi süresine göre ayarlayın
+        });
+    </script>
+}

@@ -1,0 +1,181 @@
+﻿@{
+    Layout = "_Layout";
+}
+@await Component.InvokeAsync("GeneralPurchasingReportViewComponent")
+
+@section Scripts{
+    <script defer>
+        $(document).ready(function () {
+            var table = $('#purchaseReport').DataTable({
+                "orderCellsTop": true,
+                "fixedHeader": true,
+                "pageLength": 25,
+                "pagingType": "full_numbers", // Tüm sayfaları göster
+                "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Tümü"]],
+                language: {
+                    "url": "https://cdn.datatables.net/plug-ins/1.12.0/i18n/tr.json"
+                },
+                "columnDefs": [
+                    {
+                        targets: 1,
+                        className: 'noVis'
+                    },
+                    {
+                        "targets": [11], // Renk değeri sütunu (11. sütun, index 10)
+                        "render": function (data, type, row, meta) {
+                            var colorValue = data.toLowerCase();
+
+                            switch (colorValue) {
+                                case 'kırmızı':
+                                    return '<span class="badge bg-danger-transparent">Kırmızı</span>';
+                                case 'yeşil':
+                                    return '<span class="badge bg-success-transparent">Yeşil</span>';
+                                case 'sarı':
+                                    return '<span class="badge bg-warning-transparent">Sarı</span>';
+                                case 'mavi':
+                                    return '<span class="badge bg-primary-transparent">Mavi</span>';
+                                case 'mor':
+                                    return '<span class="badge bg-purple-transparent">Mor</span>';
+                                default:
+                                    return '<span class="badge bg-light">Diğer</span>'; // Varsayılan durum
+                            }
+                        }
+                    },
+                    {
+                        "targets": [12], // Taşıma türü sütunu (12. sütun, index 11)
+                        "render": function (data, type, row, meta) {
+                            var transportType = data.toLowerCase();
+
+                            switch (transportType) {
+                                case 'kamyon':
+                                    return '<span class="badge bg-primary-transparent">Kamyon</span>';
+                                case 'tır':
+                                    return '<span class="badge bg-warning-transparent">Tır</span>';
+                                case 'van':
+                                    return '<span class="badge bg-info-transparent">Van</span>';
+                                case 'konteyner':
+                                    return '<span class="badge bg-success-transparent">Konteyner</span>';
+                                case 'tren':
+                                    return '<span class="badge bg-secondary-transparent">Tren</span>';
+                                default:
+                                    return '<span class="badge bg-light">Diğer</span>'; // Varsayılan durum
+                            }
+                        }
+                    },
+                    {
+                        "targets": [2], // Ürün adı sütunu (3. sütun, index 2)
+                        "render": function (data, type, row, meta) {
+                            var fruitName = data.toLowerCase();
+
+                            switch (fruitName) {
+                                case 'elma':
+                                    return '<span class="badge bg-danger-transparent">Elma</span>';
+                                case 'portakal':
+                                    return '<span class="badge bg-warning-transparent">Portakal</span>';
+                                case 'muz':
+                                    return '<span class="badge bg-warning-transparent">Muz</span>';
+                                case 'armut':
+                                    return '<span class="badge bg-success-transparent">Armut</span>';
+                                case 'çilek':
+                                    return '<span class="badge bg-primary-transparent">Çilek</span>';
+                                default:
+                                    return '<span class="badge bg-light">' + fruitName + '</span>'; // Varsayılan durum
+                            }
+                        }
+                    }
+                ],
+                layout: {
+                    topStart: {
+                        "buttons": [
+                            {
+                                extend: 'colvis',
+                                columns: ':not(.noVis)',
+                                popoverTitle: 'Sütunlar'
+                            },
+                            {
+                                extend: 'excel',
+                                exportOptions: {
+                                    columns: ':visible' // Sadece görünür sütunları dışa aktar
+                                }
+                            },
+                            {
+                                extend: 'pdfHtml5',
+                                text: 'PDF',
+                                exportOptions: {
+                                    columns: ':visible'
+                                },
+                                customize: function (doc) {
+                                    doc.pageSize = 'A3'; // PDF boyutunu A3 olarak ayarla
+                                    doc.defaultStyle.fontSize = 10; // Yazı tipi boyutunu küçült
+                                }
+                            },
+                            {
+                                extend: 'csv',
+                                exportOptions: {
+                                    columns: ':visible' // Sadece görünür sütunları dışa aktar
+                                }
+                            }
+                        ]
+                    }
+                },
+                "buttonsDom": {
+                    "button": {
+                        "tag": "button",
+                        "className": "btn btn-outline-secondary"
+                    },
+                    "buttonLiner": {
+                        "tag": null
+                    }
+                }
+
+            });
+
+            // Rastgele veri oluşturmak için kullanacağımız fonksiyonlar
+            function getRandomDate(start, end) {
+                var date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+                return date.toISOString().split('T')[0];
+            }
+
+            function getRandomNumber(min, max) {
+                return (Math.random() * (max - min) + min).toFixed(2);
+            }
+
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            function getRandomItem(arr) {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+
+            var suppliers = ["Ahmet Yılmaz", "Ayşe Kaya", "Mehmet Demir", "Fatma Öztürk", "Mustafa Arslan"];
+            var products = ["Elma", "Portakal", "Muz", "Armut", "Çilek"];
+            var drivers = ["Ali Yılmaz", "Aylin Kaya", "Hakan Demir", "Gülay Öztürk", "Can Arslan"];
+            var transportTypes = ["Kamyon", "Van", "Konteyner", "Tır", "Tren"];
+            var plates = ["34 ABC 123", "35 XYZ 789", "06 DEF 456", "16 GHI 789", "67 JKL 234"];
+            var brixValues = [10.0, 12.0, 14.0, 16.0, 18.0]; // Decimal değerler
+            var colorValues = ["Kırmızı", "Yeşil", "Sarı", "Mavi", "Mor"];
+
+
+            // Rastgele 100 satır veri ekleyelim
+            for (var i = 0; i < 100; i++) {
+                table.row.add([
+                    getRandomDate(new Date(2023, 0, 1), new Date()),
+                    getRandomItem(suppliers),
+                    getRandomItem(products),
+                    getRandomItem(plates),
+                    getRandomItem(drivers),
+                    getRandomDate(new Date(2023, 0, 1), new Date()) + " - " + getRandomDate(new Date(2023, 0, 1), new Date()),
+                    getRandomNumber(1, 20),
+                    getRandomNumber(0, 5),
+                    getRandomNumber(1, 100),
+                    getRandomNumber(1, 1000),
+                    getRandomItem(brixValues),
+                    getRandomItem(colorValues),
+                    getRandomItem(transportTypes),
+                    getRandomInt(0, 100) + "%"
+                ]).draw(false);
+            }
+        });
+    </script>
+}

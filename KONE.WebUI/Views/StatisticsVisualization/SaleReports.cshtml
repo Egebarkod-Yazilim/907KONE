@@ -1,0 +1,123 @@
+﻿@{
+    Layout = "_Layout";
+}
+@await Component.InvokeAsync("GeneralSalesReportViewComponent")
+
+@section Scripts{
+    <script defer>
+        $(document).ready(function () {
+            var table = $('#salesReport').DataTable({
+                "orderCellsTop": true,
+                "fixedHeader": true,
+                "pageLength": 25,
+                "pagingType": "full_numbers", // Tüm sayfaları göster
+                "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Tümü"]],
+                language: {
+                    "url": "https://cdn.datatables.net/plug-ins/1.12.0/i18n/tr.json"
+                },
+                "columnDefs": [
+                    {
+                        targets: 1,
+                        className: 'noVis'
+                    },
+                    //{
+                    //    "targets": [5], // Soğuk Hava Depo Çıkış Tarihi sütunu (6. sütun, index 5)
+                    //    "render": function (data, type, row, meta) {
+                    //        // Burada data formatlama yapabilirsiniz, örneğin:
+                    //        return data ? new Date(data).toLocaleDateString('tr-TR') : '';
+                    //    }
+                    //}
+                    // Diğer sütun render işlemleri buraya eklenebilir
+                ],
+                layout: {
+                    topStart: {
+                        "buttons": [
+                            {
+                                extend: 'colvis',
+                                columns: ':not(.noVis)',
+                                popoverTitle: 'Sütunlar'
+                            },
+                            {
+                                extend: 'excel',
+                                exportOptions: {
+                                    columns: ':visible' // Sadece görünür sütunları dışa aktar
+                                }
+                            },
+                            {
+                                extend: 'pdfHtml5',
+                                text: 'PDF',
+                                exportOptions: {
+                                    columns: ':visible'
+                                },
+                                customize: function (doc) {
+                                    doc.pageSize = 'A3'; // PDF boyutunu A3 olarak ayarla
+                                    doc.defaultStyle.fontSize = 10; // Yazı tipi boyutunu küçült
+                                }
+                            },
+                            {
+                                extend: 'csv',
+                                exportOptions: {
+                                    columns: ':visible' // Sadece görünür sütunları dışa aktar
+                                }
+                            }
+                        ]
+                    }
+                },
+                "buttonsDom": {
+                    "button": {
+                        "tag": "button",
+                        "className": "btn btn-outline-secondary"
+                    },
+                    "buttonLiner": {
+                        "tag": null
+                    }
+                }
+            });
+
+            var suppliers = ["Ahmet Yılmaz", "Ayşe Kaya", "Mehmet Demir", "Fatma Öztürk", "Mustafa Arslan"];
+            var products = ["Elma", "Portakal", "Muz", "Armut", "Çilek"];
+            var drivers = ["Ali Yılmaz", "Aylin Kaya", "Hakan Demir", "Gülay Öztürk", "Can Arslan"];
+            var transportTypes = ["Kamyon", "Van", "Konteyner", "Tır", "Tren"];
+            var plates = ["34 ABC 123", "35 XYZ 789", "06 DEF 456", "16 GHI 789", "67 JKL 234"];
+            var brixValues = [10.0, 12.0, 14.0, 16.0, 18.0]; // Decimal değerler
+            var colorValues = ["Kırmızı", "Yeşil", "Sarı", "Mavi", "Mor"];
+
+            // Rastgele veri oluşturmak için kullanacağımız fonksiyonlar
+            function getRandomDate(start, end) {
+                var date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+                return date.toISOString().split('T')[0];
+            }
+
+            function getRandomNumber(min, max) {
+                return (Math.random() * (max - min) + min).toFixed(2);
+            }
+
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            function getRandomItem(arr) {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+
+            // Rastgele 100 satır veri ekleyelim
+            for (var i = 0; i < 100; i++) {
+                table.row.add([
+                    getRandomItem(suppliers),                    // Müşteri Bilgi
+                    getRandomDate(new Date(2023, 0, 1), new Date()),                            // Sipariş Tarihi
+                    getRandomDate(new Date(2023, 0, 1), new Date()),                            // Sevk Tarihi
+                    getRandomDate(new Date(2023, 0, 1), new Date()),                            // Soğuk Hava Deposundan Çıkış Tarihi
+                    getRandomDate(new Date(2023, 0, 1), new Date()),                            // Sipariş Teslim Tarihi
+                    getRandomItem(plates),
+                    getRandomItem(drivers),                     // Şoför Bilgisi
+                    getRandomNumber(1, 20),                                                     // Sipariş Tonajı
+                    getRandomNumber(1, 100),                                                    // Sipariş Kutu Palet Sayısı
+                    getRandomNumber(1, 1000),                                                   // Sipariş Tutarı
+                    getRandomInt(0, 100) + "%"                                                  // Sipariş Kusur Oranı
+                ]).draw(false);
+            }
+
+        });
+
+    </script>
+}

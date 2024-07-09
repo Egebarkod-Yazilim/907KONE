@@ -1,0 +1,193 @@
+﻿@{
+    Layout = "_Layout";
+}
+@await Component.InvokeAsync("WareHouseListViewComponent")
+
+@section Scripts{
+    <script defer>
+        $(document).ready(function () {
+            var table = $('#wareHouseReports').DataTable({
+                "orderCellsTop": true,
+                "fixedHeader": true,
+                "pageLength": 25,
+                "pagingType": "full_numbers", // Tüm sayfaları göster
+                "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Tümü"]],
+                language: {
+                    "url": "https://cdn.datatables.net/plug-ins/1.12.0/i18n/tr.json"
+                },
+                "columnDefs": [
+                    {
+                        targets: 1,
+                        className: 'noVis'
+                    }
+                ],
+                layout: {
+                    topStart: {
+                        "buttons": [
+                            {
+                                extend: 'colvis',
+                                columns: ':not(.noVis)',
+                                popoverTitle: 'Sütunlar'
+                            },
+                            {
+                                extend: 'excel',
+                                exportOptions: {
+                                    columns: ':visible' // Sadece görünür sütunları dışa aktar
+                                }
+                            },
+                            {
+                                extend: 'pdfHtml5',
+                                text: 'PDF',
+                                exportOptions: {
+                                    columns: ':visible'
+                                },
+                                customize: function (doc) {
+                                    doc.pageSize = 'A3'; // PDF boyutunu A3 olarak ayarla
+                                    doc.defaultStyle.fontSize = 10; // Yazı tipi boyutunu küçült
+                                }
+                            },
+                            {
+                                extend: 'csv',
+                                exportOptions: {
+                                    columns: ':visible' // Sadece görünür sütunları dışa aktar
+                                }
+                            }
+                        ]
+                    }
+                },
+                "buttonsDom": {
+                    "button": {
+                        "tag": "button",
+                        "className": "btn btn-outline-secondary"
+                    },
+                    "buttonLiner": {
+                        "tag": null
+                    }
+                }
+            });
+
+            var suppliers = ["Ahmet Yılmaz", "Ayşe Kaya", "Mehmet Demir", "Fatma Öztürk", "Mustafa Arslan"];
+            var products = ["Elma", "Portakal", "Muz", "Armut", "Çilek"];
+            var drivers = ["Ali Yılmaz", "Aylin Kaya", "Hakan Demir", "Gülay Öztürk", "Can Arslan"];
+            var transportTypes = ["Kamyon", "Van", "Konteyner", "Tır", "Tren"];
+            var plates = ["34 ABC 123", "35 XYZ 789", "06 DEF 456", "16 GHI 789", "67 JKL 234"];
+            var brixValues = [10.0, 12.0, 14.0, 16.0, 18.0]; // Decimal değerler
+            var colorValues = ["Kırmızı", "Yeşil", "Sarı", "Mavi", "Mor"];
+
+            // Rastgele veri oluşturmak için kullanacağımız fonksiyonlar
+            function getRandomDate(start, end) {
+                var date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+                return date.toISOString().split('T')[0];
+            }
+            function getRandomNumber(min, max) {
+                return (Math.random() * (max - min) + min).toFixed(2);
+            }
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function getRandomItem(arr) {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+            function generateRandomInvoiceNumber() {
+                const currentYear = new Date().getFullYear();
+                const prefix = `IRS${currentYear}`;
+                const baseNumberLength = 8;
+
+                // Rastgele bir sayı üret
+                const randomNumber = Math.floor(Math.random() * Math.pow(10, baseNumberLength));
+
+                // Rastgele sayıyı uygun formatta oluştur
+                const invoiceNumber = `${prefix}${randomNumber.toString().padStart(baseNumberLength, '0')}`;
+                return invoiceNumber;
+            }
+            function generateTC() {
+                let tc = [];
+
+                // İlk 9 haneyi rastgele oluştur
+                for (let i = 0; i < 9; i++) {
+                    tc[i] = getRandomInt(0, 9);
+                }
+
+                // TC Kimlik Numarası kuralları
+                tc[0] = getRandomInt(1, 9); // İlk hane 0 olamaz
+
+                let tenthDigit = (
+                    (tc[0] + tc[2] + tc[4] + tc[6] + tc[8]) * 7 -
+                    (tc[1] + tc[3] + tc[5] + tc[7])
+                ) % 10;
+                tc[9] = tenthDigit;
+
+                let eleventhDigit = (
+                    tc[0] + tc[1] + tc[2] + tc[3] + tc[4] + tc[5] + tc[6] + tc[7] + tc[8] + tc[9]
+                ) % 10;
+                tc[10] = eleventhDigit;
+
+                return tc.join('');
+            }
+            function generateCaliberData() {
+                const caliberRanges = [
+                    { range: "81-90 mm", count: 0, percentage: 0 },
+                    { range: "91-100 mm", count: 0, percentage: 0 },
+                    { range: "101-110 mm", count: 0, percentage: 0 },
+                ];
+
+                // Rastgele adet sayıları oluştur
+                const totalItems = 100;
+                let remainingItems = totalItems;
+
+                for (let i = 0; i < caliberRanges.length; i++) {
+                    if (i === caliberRanges.length - 1) {
+                        caliberRanges[i].count = remainingItems;
+                    } else {
+                        const count = Math.floor(Math.random() * remainingItems);
+                        caliberRanges[i].count = count;
+                        remainingItems -= count;
+                    }
+                }
+
+                // Yüzdelik değerleri hesapla
+                caliberRanges.forEach(item => {
+                    item.percentage = ((item.count / totalItems) * 100).toFixed(2);
+                });
+
+                // Toplam yüzdelik değeri hesapla
+                const totalPercentage = caliberRanges.reduce((sum, item) => sum + parseFloat(item.percentage), 0).toFixed(2);
+
+                // Sonuçları string olarak birleştir
+                let resultString = "";
+                caliberRanges.forEach(item => {
+                    resultString += `${item.range} : ${item.count} (adet sayısı) / ${item.percentage} % </br>`;
+                });
+                resultString += `Total : ${totalPercentage} % </br>`;
+
+                return resultString;
+            }
+            function generateSingleCaliberData() {
+                const caliberRanges = [
+                    "81-90 mm",
+                    "91-100 mm",
+                    "101-110 mm"
+                ];
+
+                // Rastgele bir kalibre seç
+                const randomIndex = Math.floor(Math.random() * caliberRanges.length);
+                const selectedRange = caliberRanges[randomIndex];
+
+                return selectedRange;
+            }
+            // Rastgele 100 satır veri ekleyelim
+            for (var i = 0; i < 100; i++) {
+                table.row.add([
+                    getRandomDate(new Date(2023, 0, 1), new Date()),
+                    getRandomItem(products),
+                    getRandomItem(plates),
+                    getRandomItem(suppliers),
+                    getRandomItem(suppliers),
+                    generateSingleCaliberData(),
+                    getRandomInt(1, 9999),
+                    '<a aria-label="anchor" href="/StatisticsVisualization/WareHouseReportsDetail/" class="btn btn-icon btn-wave waves-effect waves-light btn-sm btn-primary-light"><i class="ri-file-chart-line" data-bs-toggle="tooltip" data-bs-placement="top" title="Cari Detay"></i></a>'
+                ]).draw(false);
+            }
+        });
+    </script>
+}

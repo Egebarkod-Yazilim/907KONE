@@ -1,0 +1,110 @@
+﻿<div class="row">
+    <div class="col-md-3">
+        <div class="card custom-card">
+            <div class="card-header  justify-content-between">
+                <div class="card-title">
+                    Ürünler
+                </div>
+                <div class="dropdown">
+                    <a aria-label="anchor" href="javascript:void(0);" class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="javascript:void(0);">Haftalık</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Aylık</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Yıllık</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled crm-top-deals mb-0">
+                    <li>
+                        <button id="elmaButton" type="button" class="list-group-item list-group-item-action active rounded" aria-current="true">
+                            <div class="d-flex align-items-top flex-wrap">
+                                <div class="me-2">
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="~/images/apple.png" />
+                                    </span>
+                                </div>
+                                <div class="flex-fill" style="margin-top:5px;">
+                                    <p class="fw-semibold mb-0">Elma</p>
+                                </div>
+                            </div>
+                        </button>
+                    </li>
+                    <li>
+                        <button id="portakalButton" type="button" class="list-group-item list-group-item-action rounded" aria-current="true">
+                            <div class="d-flex align-items-top flex-wrap">
+                                <div class="me-2">
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="~/images/karpuz.png" />
+
+                                    </span>
+                                </div>
+                                <div class="flex-fill" style="margin-top:5px;">
+                                    <p class="fw-semibold mb-0">Karpuz</p>
+                                </div>
+                            </div>
+                        </button>
+
+                    </li>
+                    <li>
+                        <button id="narButton" type="button" class="list-group-item list-group-item-action rounded" aria-current="true">
+                            <div class="d-flex align-items-top flex-wrap">
+                                <div class="me-2">
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="~/images/pomegranate.png" />
+                                    </span>
+                                </div>
+                                <div class="flex-fill" style="margin-top:5px;">
+                                    <p class="fw-semibold mb-0">Nar</p>
+                                </div>
+                            </div>
+                        </button>
+
+                    </li>
+                    <li>
+                        <button id="cilekButton" type="button" class="list-group-item list-group-item-action rounded" aria-current="true">
+                            <div class="d-flex align-items-top flex-wrap">
+                                <div class="me-2">
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="~/images/strawberry.png" />
+                                    </span>
+                                </div>
+                                <div class="flex-fill" style="margin-top:5px;">
+                                    <p class="fw-semibold mb-0">Çilek</p>
+                                </div>
+                            </div>
+                        </button>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card custom-card">
+            <div class="card-header d-md-flex d-block">
+                <div class="h5 mb-0 d-sm-flex d-bllock align-items-center">
+                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-2">
+                        <div class="h6 fw-semibold mb-0">Ürüne Göre Kişi Bazında Satış Bar Grafiği</div>
+                        <div class="dropdown">
+                            <select id="chartType">
+                                <option value="bar">Sütun Grafiği</option>
+                                <option value="line">Çizgi Grafiği</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-auto mt-md-0 mt-2">
+                        <button id="printPdf1" type="button" class="btn btn-soil-knfrt btn-wave waves-effect waves-light"><span class="bi bi-printer"></span> Yazdır</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="printArea1">
+                <div id="echart1" class="echart-charts" _echarts_instance_="ec_1718866577205" style="user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><div style="position: relative; width: 748px; height: 320px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="748" height="320" style="position: absolute; left: 0px; top: 0px; width: 748px; height: 320px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

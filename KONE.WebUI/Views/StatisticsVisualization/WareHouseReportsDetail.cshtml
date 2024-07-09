@@ -1,0 +1,486 @@
+﻿@{
+    Layout = "_Layout";
+}
+@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Depo Raporları",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Depo Raporları", "Rapor Detay" },
+    Url = "/Admin/Home/Index"
+})
+<div class="col-12 mt-3">
+    <div class="card custom-card shadow">
+        <div class="card-header justify-content-between">
+            <div class="card-title">
+                <div class="card-title">
+                    Depo Rapor Detayı
+                </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <button id="printPdf" type="button" class="btn btn-warning btn-wave waves-effect waves-light"><span class="bi bi-printer"></span> Yazdır</button>
+            </div>
+        </div>
+        <div id="printArea">
+            <div class="card-body">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td colspan="3">
+                            <div class="card">
+                                <div class="card-header konfrut-backgroundcolor-important">
+                                    <h6><span class="bi bi-file-check"></span> Genel bilgiler</h6>
+                                </div>
+                                <div class="card-body">
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <tr>
+                                            <td style="width: 33%;">
+                                                <label class="form-label"><span class="bx bx-calendar"></span> Inceleme Tarihi: </label>
+                                                <label class="form-label" id="inspectionDate"></label>
+                                                <br><br>
+                                                <label class="form-label"><span class="bx bx-calendar"></span> Hasat Tarihi: </label>
+                                                <label class="form-label" id="harvestDate"></label>
+                                                <br><br>
+                                                <label class="form-label"><span class="bx bx-circle"></span> Kalibre Bilgileri: </label>
+                                                <label class="form-label" id="caliberInfoDetail"></label>
+                                                <br><br>
+                                            </td>
+                                            <td style="width: 33%;">
+                                                <label class="form-label"><span class="bx bxl-apple"></span> Ürün Adı - Çeşit: </label>
+                                                <label class="form-label" id="productVariant"></label>
+                                                <br><br>
+                                                <label class="form-label"><span class="bx bx-user"></span> Yetiştirici (Grower): </label>
+                                                <label class="form-label" id="grower"></label>
+                                                <br><br>
+                                                <label class="form-label"><span class="bx bx-cloud-snow"></span> Tonaj: </label>
+                                                <label class="form-label" id="tonnage"></label>
+                                            </td>
+                                            <td style="width: 33%;">
+                                                <label class="form-label"><span class="bx bx-car"></span> Araç Plakası: </label>
+                                                <label class="form-label" id="plateNumber"></label>
+                                                <br><br>
+                                                <label class="form-label"><span class="bx bx-cloud-snow"></span> Derece: </label>
+                                                <label class="form-label" id="degree"></label>
+                                                <br><br>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div class="card">
+                                <div class="card-header bg-primary" id="headingSecondaryTwo">
+                                    <h6><span class="bi bi-circle"></span> Ürün Dağılımları</h6>
+                                </div>
+                                <div class="card-body">
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <tr>
+                                            <td style="width: 50%;">
+                                                <h6>Ürün Piyasa Dağılım Grafiği</h6>
+                                                <div id="warehouseGraph" class="echart-charts" _echarts_instance_="ec_1718866577205" style="user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><div style="position: relative; width: 748px; height: 320px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="748" height="320" style="position: absolute; left: 0px; top: 0px; width: 748px; height: 320px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div></div>
+                                            </td>
+
+                                            <td style="width: 50%;">
+                                                <h6>Ürün Kalite Dağılım Grafiği</h6>
+                                                <div id="warehouseGraph2" class="echart-charts" _echarts_instance_="ec_1718866577205" style="user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><div style="position: relative; width: 748px; height: 320px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="748" height="320" style="position: absolute; left: 0px; top: 0px; width: 748px; height: 320px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%;">
+                            <div class="card">
+                                <div class="card-header" id="headingSecondaryThree">
+                                    <h6><span class="bi bi-list-check"></span> Ürün Resimleri</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h6>Ürün Depo Fotoğrafları 1</h6>
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <tr>
+                                            <td><img class="img-fluid rounded" style="height:250px" src="~/images/samples/apples1.png" /></td>
+                                            <td><img class="img-fluid rounded" style="height:250px" src="~/images/samples/apples2.jpeg" /></td>
+                                            <td><img class="img-fluid rounded" style="height:250px" src="~/images/samples/rottenapple.jpeg" /></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var suppliers = ["Ahmet Yılmaz", "Ayşe Kaya", "Mehmet Demir", "Fatma Öztürk", "Mustafa Arslan"];
+            var products = ["Elma", "Portakal", "Muz", "Armut", "Çilek"];
+            var drivers = ["Ali Yılmaz", "Aylin Kaya", "Hakan Demir", "Gülay Öztürk", "Can Arslan"];
+            var transportTypes = ["Kamyon", "Van", "Konteyner", "Tır", "Tren"];
+            var plates = ["34 ABC 123", "35 XYZ 789", "06 DEF 456", "16 GHI 789", "67 JKL 234"];
+            const notes = [
+                "Ürün çürümemiş, gayet güzel.",
+                "Ürün taze, canlı durmakta. (Ürün meyve olduğu için buna dikkat et)",
+                "Ürün kalitesi mükemmel, hiçbir sorun yok.",
+                "Ürünler tam zamanında geldi, sağlam ve doğru şartlarda depolandı.",
+                "Ürünler beklenenden daha hızlı tedarik edildi, teşekkürler."
+            ];
+            var status = ["Onaylandı", "Onaylanmadı", "İşlemde", "Beklemede"]
+            var brixValues = [10.0, 12.0, 14.0, 16.0, 18.0]; // Decimal değerler
+            var colorValues = ["Kırmızı", "Yeşil", "Sarı", "Mavi", "Mor"];
+
+            // Rastgele veri oluşturmak için kullanacağımız fonksiyonlar
+            function getRandomDate(start, end) {
+                var date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+                return date.toISOString().split('T')[0];
+            }
+            function getRandomNumber(min, max) {
+                return (Math.random() * (max - min) + min).toFixed(2);
+            }
+            function getRandomNumber2(min, max) {
+                return (Math.random() * (max - min) + min).toFixed(0);
+            }
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function getRandomItem(arr) {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+            function generateRandomInvoiceNumber() {
+                const currentYear = new Date().getFullYear();
+                const prefix = `IRS${currentYear}`;
+                const baseNumberLength = 8;
+
+                // Rastgele bir sayı üret
+                const randomNumber = Math.floor(Math.random() * Math.pow(10, baseNumberLength));
+
+                // Rastgele sayıyı uygun formatta oluştur
+                const invoiceNumber = `${prefix}${randomNumber.toString().padStart(baseNumberLength, '0')}`;
+                return invoiceNumber;
+            }
+            function generateTC() {
+                let tc = [];
+
+                // İlk 9 haneyi rastgele oluştur
+                for (let i = 0; i < 9; i++) {
+                    tc[i] = getRandomInt(0, 9);
+                }
+
+                // TC Kimlik Numarası kuralları
+                tc[0] = getRandomInt(1, 9); // İlk hane 0 olamaz
+
+                let tenthDigit = (
+                    (tc[0] + tc[2] + tc[4] + tc[6] + tc[8]) * 7 -
+                    (tc[1] + tc[3] + tc[5] + tc[7])
+                ) % 10;
+                tc[9] = tenthDigit;
+
+                let eleventhDigit = (
+                    tc[0] + tc[1] + tc[2] + tc[3] + tc[4] + tc[5] + tc[6] + tc[7] + tc[8] + tc[9]
+                ) % 10;
+                tc[10] = eleventhDigit;
+
+                return tc.join('');
+            }
+            function generateSingleCaliberData() {
+                const caliberRanges = [
+                    "81-90 mm",
+                    "91-100 mm",
+                    "101-110 mm"
+                ];
+
+                // Rastgele bir kalibre seç
+                const randomIndex = Math.floor(Math.random() * caliberRanges.length);
+                const selectedRange = caliberRanges[randomIndex];
+
+                return selectedRange;
+            }
+            function generateCaliberData() {
+                const caliberRanges = [
+                    { range: "81-90 mm", count: 0, percentage: 0 },
+                    { range: "91-100 mm", count: 0, percentage: 0 },
+                    { range: "101-110 mm", count: 0, percentage: 0 },
+                ];
+
+                // Rastgele adet sayıları oluştur
+                const totalItems = 100;
+                let remainingItems = totalItems;
+
+                for (let i = 0; i < caliberRanges.length; i++) {
+                    if (i === caliberRanges.length - 1) {
+                        caliberRanges[i].count = remainingItems;
+                    } else {
+                        const count = Math.floor(Math.random() * remainingItems);
+                        caliberRanges[i].count = count;
+                        remainingItems -= count;
+                    }
+                }
+
+                // Yüzdelik değerleri hesapla
+                caliberRanges.forEach(item => {
+                    item.percentage = ((item.count / totalItems) * 100).toFixed(2);
+                });
+
+                // Toplam yüzdelik değeri hesapla
+                const totalPercentage = caliberRanges.reduce((sum, item) => sum + parseFloat(item.percentage), 0).toFixed(2);
+
+                // Sonuçları string olarak birleştir
+                let resultString = "";
+                caliberRanges.forEach(item => {
+                    resultString += `${item.range} : ${item.count} (adet sayısı) / ${item.percentage} % </br>`;
+                });
+                resultString += `Total : ${totalPercentage} % </br>`;
+
+                return resultString;
+            }
+            function generateDefectData1() {
+                const defects = [
+                    { name: "Çatlak Majör", count: getRandomInt(1, 10), percentage: getRandomFloat(1, 5).toFixed(1) },
+                    { name: "Çürükt", count: getRandomInt(1, 5), percentage: getRandomFloat(0.5, 1).toFixed(1) },
+                    { name: "Güneş Yanığı Majör", count: getRandomInt(10, 30), percentage: getRandomFloat(13, 25).toFixed(1) },
+                    { name: "Hasat hatası Majör", count: getRandomInt(1, 5), percentage: getRandomFloat(2, 3).toFixed(1) }
+                ];
+
+                // Toplam kusur yüzdesini hesapla
+                const totalPercentage = defects.reduce((sum, defect) => sum + parseFloat(defect.percentage), 0).toFixed(1);
+
+                // Sonuçları string olarak birleştir
+                let resultString = "";
+                defects.forEach(defect => {
+                    resultString += `${defect.name} (${defect.count}/${defect.percentage}%),</br>`;
+                });
+                resultString += `Total %: ${totalPercentage}%\n\n`;
+                resultString += `Total Defects % Format:\n${(totalPercentage * 2).toFixed(2)}</br>`;
+
+                return resultString;
+            }
+            function generateDefectData2() {
+                const defects = [
+                    { name: "Çatlak Minör", count: getRandomInt(1, 10), percentage: getRandomFloat(1, 5).toFixed(1) },
+                    { name: "Çürükt", count: getRandomInt(1, 5), percentage: getRandomFloat(0.5, 1).toFixed(1) },
+                    { name: "Güneş Yanığı Minör", count: getRandomInt(10, 30), percentage: getRandomFloat(13, 25).toFixed(1) },
+                    { name: "Hasat hatası Minör", count: getRandomInt(1, 5), percentage: getRandomFloat(2, 3).toFixed(1) }
+                ];
+
+                // Toplam kusur yüzdesini hesapla
+                const totalPercentage = defects.reduce((sum, defect) => sum + parseFloat(defect.percentage), 0).toFixed(1);
+
+                // Sonuçları string olarak birleştir
+                let resultString = "";
+                defects.forEach(defect => {
+                    resultString += `${defect.name} (${defect.count}/${defect.percentage}%),</br>`;
+                });
+                resultString += `Total %: ${totalPercentage}%\n\n`;
+                resultString += `Total Defects % Format:\n${(totalPercentage * 2).toFixed(2)}</br>`;
+
+                return resultString;
+            }
+
+            function getRandomFloat(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+
+            $('#inspectionDate').text(getRandomDate(new Date(2023, 0, 1), new Date()));
+            $('#harvestDate').text(getRandomDate(new Date(2023, 0, 1), new Date()));
+            $('#ggnNumber').text(getRandomNumber2(1000, 9999));
+            $('#productVariant').text(getRandomItem(products));
+            $('#grower').text(getRandomItem(suppliers));
+            $('#identificationnumber').text(getRandomNumber2(10000000000, 99999999999));
+            $('#plateNumber').text(getRandomItem(plates));
+            $('#irsNo').text(generateRandomInvoiceNumber());
+            $('#brixValue').text(getRandomItem(brixValues));
+            $('#minimumVal').text(getRandomNumber2(1, 100));
+            $('#maximumVal').text(getRandomNumber2(1, 100));
+            $('#degree').text(getRandomNumber2(-30, 50));
+            $('#tonnage').text(getRandomNumber2(1, 1000));
+            $('#count').text(getRandomNumber2(1, 100));
+            $('#status').text(getRandomItem(status));
+            $('#std').text(getRandomItem(brixValues));
+            $('#notes').text(getRandomItem(notes));
+            $('#caliberInfoDetail').text(generateSingleCaliberData());
+            document.getElementById('caliberInfo').innerHTML = generateCaliberData();
+            document.getElementById('defact1').innerHTML = generateDefectData1();
+            document.getElementById('defact2').innerHTML = generateDefectData2();
+
+
+        });
+        $('#printPdf').click(function () {
+            var printContents = document.getElementById('printArea').innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+            window.location.reload();
+        });
+        var productDistributionChartContainer = document.getElementById('warehouseGraph');
+        var productDistributionChart = echarts.init(productDistributionChartContainer);
+        var productDistributionChartOptions;
+
+        productDistributionChartOptions = {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b}: {c} ({d}%)'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 10,
+                data: ['İhracat', 'İç Piyasa', 'Suluk']
+            },
+            series: [
+                {
+                    name: 'Müstahsil Ürün Dağılımı',
+                    type: 'pie', // Pie olarak bırakılıyor
+                    radius: ['50%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        show: true,
+                        formatter: '{b}: {d}%', // Her dilim üzerinde kategori adı ve yüzdelik değeri gösteriliyor
+                        fontSize: 14,
+                        fontWeight: 'bold'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: 20,
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: []
+                }
+            ]
+        };
+
+        var farmersData = {
+            '1': [60, 20, 20],
+            '2': [50, 30, 20],
+            '3': [40, 40, 20],
+            '4': [70, 15, 15],
+            '5': [55, 25, 20],
+            '6': [45, 35, 20],
+            '7': [65, 20, 15],
+            '8': [75, 15, 10],
+            '9': [60, 25, 15],
+            '10': [50, 30, 20]
+        };
+
+        function updateProductDistributionChart(data) {
+            productDistributionChartOptions.series[0].data = [
+                { value: data[0], name: 'İhracat' },
+                { value: data[1], name: 'İç Piyasa' },
+                { value: data[2], name: 'Suluk' }
+            ];
+            productDistributionChart.setOption(productDistributionChartOptions);
+        }
+        updateProductDistributionChart(farmersData[2]);
+
+        window.addEventListener('resize', function () {
+            productDistributionChart.resize();
+        });
+
+
+        var productDistributionChartContainer2 = document.getElementById('warehouseGraph2');
+        var productDistributionChart2 = echarts.init(productDistributionChartContainer2);
+        var productDistributionChartOptions2;
+
+        productDistributionChartOptions2 = {
+            tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b}: {c} ({d}%)'
+            },
+            legend: {
+                orient: 'vertical',
+                left: 10,
+                data: ['İyi', 'Normal', 'Kötü']
+            },
+            series: [
+                {
+                    name: 'Müstahsil Ürün Dağılımı',
+                    type: 'pie', // Pie olarak bırakılıyor
+                    radius: ['50%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        show: true,
+                        formatter: '{b}: {d}%', // Her dilim üzerinde kategori adı ve yüzdelik değeri gösteriliyor
+                        fontSize: 14,
+                        fontWeight: 'bold'
+                    },
+                    emphasis: {
+                        label: {
+                            show: true,
+                            fontSize: 20,
+                            fontWeight: 'bold'
+                        }
+                    },
+                    labelLine: {
+                        show: false
+                    },
+                    data: []
+                }
+            ]
+        };
+
+        var farmersData2 = {
+            '1': [60, 20, 20],
+            '2': [50, 30, 20],
+            '3': [40, 40, 20],
+            '4': [70, 15, 15],
+            '5': [55, 25, 20],
+            '6': [45, 35, 20],
+            '7': [65, 20, 15],
+            '8': [75, 15, 10],
+            '9': [60, 25, 15],
+            '10': [50, 30, 20]
+        };
+
+        function updateProductDistributionChart2(data) {
+            productDistributionChartOptions2.series[0].data = [
+                { value: data[0], name: 'İyi' },
+                { value: data[1], name: 'Normal' },
+                { value: data[2], name: 'Kötü' }
+            ];
+            productDistributionChart2.setOption(productDistributionChartOptions2);
+        }
+        updateProductDistributionChart2(farmersData2[5]);
+
+        window.addEventListener('resize', function () {
+            productDistributionChart2.resize();
+        });
+
+        // PDF oluşturma işlemi
+        document.getElementById('printPdf').addEventListener('click', function () {
+            const pdf = new jsPDF();
+            const printArea = document.getElementById('printArea');
+
+            // HTML içeriğini PDF'e ekleme
+            pdf.html(printArea, {
+                callback: function (pdf) {
+                    // PDF'i kaydetme veya açma işlemleri
+                    pdf.save('depo_rapor.pdf');
+                },
+                x: 10,
+                y: 10
+            });
+        });
+
+        function getBase64Image(chart) {
+            const canvas = chart.getRenderedCanvas({
+                backgroundColor: '#fff'
+            });
+            return canvas.toDataURL('image/png');
+        }
+    </script>
+}

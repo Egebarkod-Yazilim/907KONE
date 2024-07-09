@@ -1,0 +1,99 @@
+﻿@using System.Globalization;
+@model UserLoginHistoryModel
+
+<div class="col-xl-12">
+    <div class="card custom-card">
+        <div class="col-xl-4">
+            <div class="form-check form-switch mb-2">
+                <input class="form-check-input form-checked-secondary" type="checkbox" role="switch"
+                       id="switch-calender">
+                <label class="form-check-label" for="switch-secondary">Takvim Görünümü</label>
+            </div>
+        </div>
+        <div class="card-body userlogintable-card">
+            <div class="table-responsive">
+                <table id="userlogininfotable" class="table table-bordered text-nowrap w-100">
+                    <thead>
+                        <tr>
+                            <th class="nonsearchable">#</th>
+                            <th>İşlem</th>
+                            <th>Tarih</th>
+                            <th>Ip Adresi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var userLoginHistory in Model.UserLoginHistoryDetails)
+                        {
+                            <tr>
+                                <th>
+                                    @userLoginHistory.Id
+                                </th>
+                                <th>
+                                    @userLoginHistory.Process
+                                </th>
+                                <th>
+                                    @userLoginHistory.LoginDate
+                                </th>
+                                <td>
+                                    @userLoginHistory.IpAddress
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-xl-12">
+            <div class="card-body userlogincalender-card" hidden="hidden">
+                <div class="card-body">
+                    <nav class="nav nav-style-1 nav-pills mb-4 nav-justified" role="tablist">
+                        @foreach (var loginDate in Model.LoginDates)
+                        {
+                            <a class="nav-link px-2" data-bs-toggle="tab" role="tab" aria-current="page" href='#@loginDate'>
+                                <span class="d-block mb-1">
+                                    @Convert.ToDateTime(loginDate).ToString("dd",
+                                             CultureInfo.CreateSpecificCulture("tr-TR")).
+                                </span>
+                                <span class="d-block mb-0 op-7 fs-12">
+                                    @Convert.ToDateTime(loginDate).ToString("MMM",
+                                             CultureInfo.CreateSpecificCulture("tr-TR"))
+                                </span>
+                            </a>
+                        }
+
+                    </nav>
+                    <div class="tab-content pt-3 my-3">
+                        @foreach (var userLoginHistoryCalender in Model.UserLoginHistoryCalenders)
+                        {
+                            <div class="tab-pane border-0 p-0" id="@userLoginHistoryCalender.LoginDate" role="tabpanel">
+                                <ul class="list-unstyled mb-0 upcoming-events-list">
+                                    @foreach (var userLoginListHistory in @userLoginHistoryCalender.UserLoginHistoriesList)
+                                    {
+                                        <li>
+                                            <div class="d-flex align-items-top justify-conent-between">
+                                                <div class="flex-fill">
+                                                    <p class="mb-0 fs-14">@userLoginListHistory.Process</p>
+                                                    <p class="mb-0 text-muted">@userLoginListHistory.IpAddress</p>
+                                                </div>
+                                                <div>
+                                                    <span class="text-muted">
+                                                        <i class="ri-time-line align-middle me-1 d-inline-block "></i>@userLoginListHistory.LoginDate.ToString("HH:mm",
+                                                CultureInfo.CreateSpecificCulture("tr-TR"))
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+
+                                </ul>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/userlogininfolist.js" defer></script>

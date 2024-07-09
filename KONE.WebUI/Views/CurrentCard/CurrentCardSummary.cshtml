@@ -1,0 +1,1087 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Cari Özet",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Index", "Cari Kartlar", "Cari Özet" },
+    Url = "/Admin/Home/Index"
+})
+
+<div class="row">
+    <div class="col-xxl-4 col-xl-12">
+        <div class="card custom-card overflow-hidden">
+            <div class="card custom-card">
+                <div class="card-body p-0">
+                    <div class="d-sm-flex align-items-top p-4 border-bottom-0 main-profile-cover">
+                        <div>
+                            <span class="avatar avatar-xxl avatar-rounded online me-3">
+                                <img src="~/images/assets/profileman.jpg" />
+                            </span>
+                        </div>
+                        <div class="flex-fill main-profile-info">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <h6 class="fw-semibold mb-1 text-fixed-white">Orhan Sezen</h6>
+                                <button class="btn btn-light btn-wave waves-effect waves-light" disabled>Cari Skor 7.5</button>
+                            </div>
+                            <p class="mb-1 text-muted text-fixed-white op-7">İcra Kurulu Başkanı (CEO)</p>
+                            <p class="fs-12 text-fixed-white mb-4 op-5">
+                                <span class="me-3"><i class="ri-building-line me-1 align-middle"></i>Amasya</span>
+                                <span><i class="ri-map-pin-line me-1 align-middle"></i>Merkez</span>
+                            </p>
+                            @*<div class="d-flex mb-0">
+                                    <div class="me-4">
+                                        <p class="fw-bold fs-20 text-fixed-white text-shadow mb-0">113</p>
+                                        <p class="mb-0 fs-11 op-5 text-fixed-white">Proje</p>
+                                    </div>
+                                    <div class="me-4">
+                                        <p class="fw-bold fs-20 text-fixed-white text-shadow mb-0">12.2k</p>
+                                        <p class="mb-0 fs-11 op-5 text-fixed-white">Takipçi</p>
+                                    </div>
+                                    <div class="me-4">
+                                        <p class="fw-bold fs-20 text-fixed-white text-shadow mb-0">128</p>
+                                        <p class="mb-0 fs-11 op-5 text-fixed-white">Takip Edilen</p>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                    <div class="p-4 border-bottom border-block-end-dashed">
+                        <div class="mb-4">
+                            <p class="fs-15 mb-2 fw-semibold">Açıklama:</p>
+                            <p class="fs-12 text-muted op-7 mb-0">
+                                Merhaba, ben <b class="text-default">Sonya Taylor,</b> şirketimizin kurucusu ve yönetim direktörü olarak görev yapmaktayım.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive mt-4">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row" style="width: 40%;"><i class="ri-user-line me-2"></i>İsim:</th>
+                            <td>Orhan</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="ri-user-line me-2"></i>Soyisim:</th>
+                            <td>Sezen</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="ri-building-2-line me-2"></i>Unvan:</th>
+                            <td>İcra Kurulu Başkanı (CEO)</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="ri-building-2-line me-2"></i>Şirket Türü:</th>
+                            <td>Amasya</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="ri-map-pin-line me-2"></i>Durum:</th>
+                            <td>Merkez</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="ri-map-pin-line me-2"></i>Adres:</th>
+                            <td>İhsaniye Mah. Zübeyde Hanım Cad. No :97 Amasya/Merkez</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="ri-phone-line me-2"></i>Cep Telefonu:</th>
+                            <td>+90544444444</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="ri-file-list-2-line me-2"></i>Vergi Kimlik Numarası:</th>
+                            <td>5464563542</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="ri-mail-line me-2"></i>E-posta:</th>
+                            <td>orhan@sezen.com</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><i class="ri-checkbox-circle-line me-2"></i>Aktif Durumu:</th>
+                            <td>Evet</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xxl-8 col-xl-12">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-body p-0">
+                        <div class="p-3 border-bottom border-block-end-dashed d-flex align-items-center justify-content-between">
+                            <div>
+                                <ul class="nav nav-tabs mb-0 tab-style-6 justify-content-start" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity-tab-pane" type="button" role="tab" aria-controls="activity-tab-pane" aria-selected="true"><i class="ri-file-text-line me-2"></i>Gelen Faturalar</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts-tab-pane" type="button" role="tab" aria-controls="posts-tab-pane" aria-selected="false" tabindex="-1"><i class="ri-bill-line me-1 align-middle d-inline-block"></i>Giden Faturalar</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="total-tab" data-bs-toggle="tab" data-bs-target="#total-tab-pane" type="button" role="tab" aria-controls="total-tab-pane" aria-selected="false" tabindex="-1"><i class="ri-account-box-line me-1 align-middle d-inline-block"></i>Hesap Özet</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane show active fade p-0 border-0" id="activity-tab-pane" role="tabpanel" aria-labelledby="activity-tab" tabindex="0">
+                                    <div class="card custom-card">
+                                        <div class="card-header justify-content-between">
+                                            <div class="card-title">
+                                                Gelen Faturalar
+                                            </div>
+                                            <div class="d-flex">
+                                                <button class="btn btn-sm btn-primary btn-wave waves-light waves-effect waves-light"><i class="ri-add-line fw-semibold align-middle me-1"></i> Entegre Kontrol</button>
+                                                <div class="dropdown ms-2">
+                                                    <button class="btn btn-icon btn-secondary-light btn-sm btn-wave waves-light waves-effect waves-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="ti ti-dots-vertical"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="javascript:void(0);">Tüm Faturalar</a></li>
+                                                        <li><a class="dropdown-item" href="javascript:void(0);">Ödenmiş Faturalar</a></li>
+                                                        <li><a class="dropdown-item" href="javascript:void(0);">Bekleyen Faturalar</a></li>
+                                                        <li><a class="dropdown-item" href="javascript:void(0);">Vadesi Geçmiş Faturalar</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table id="incomingInvoicedatatable" class="table text-nowrap table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Müşteri</th>
+                                                            <th scope="col">Fatura No</th>
+                                                            <th scope="col">Çıkarılma Tarihi</th>
+                                                            <th scope="col">Tutar</th>
+                                                            <th scope="col">Durum</th>
+                                                            <th scope="col">Son Ödeme Tarihi</th>
+                                                            <th scope="col">Aksiyon</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/womanprofile.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Ahmet Yılmaz</p>
+                                                                        <p class="mb-0 fs-11 text-muted">ahmetyilmaz@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032901
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                25, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺212,45
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-success-transparent">Ödenmiş</span>
+                                                            </td>
+                                                            <td>
+                                                                25, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/profileman.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Ayşe Demir</p>
+                                                                        <p class="mb-0 fs-11 text-muted">ayse.demir@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032912
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                13, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺512,99
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-warning-transparent">Beklemede</span>
+                                                            </td>
+                                                            <td>
+                                                                13, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/profileman.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Mehmet Özkan</p>
+                                                                        <p class="mb-0 fs-11 text-muted">mehmet.ozkan@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032945
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                30, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺2.199,49
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-danger-transparent">Vadesi Geçmiş</span>
+                                                            </td>
+                                                            <td>
+                                                                30, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/profileman.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Hasan Güler</p>
+                                                                        <p class="mb-0 fs-11 text-muted">hasan.guler@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032922
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                18, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺1.569,99
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-success-transparent">Ödenmiş</span>
+                                                            </td>
+                                                            <td>
+                                                                18, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/profileman.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Feyza Yıldız</p>
+                                                                        <p class="mb-0 fs-11 text-muted">feyza.yildiz@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032932
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                18, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺4.873,99
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-primary-transparent">1 Gün İçinde Ödenmeli</span>
+                                                            </td>
+                                                            <td>
+                                                                18, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/profileman.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Canan Aksoy</p>
+                                                                        <p class="mb-0 fs-11 text-muted">canan.aksoy@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032954
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                30, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺879,99
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-success-transparent">Ödenmiş</span>
+                                                            </td>
+                                                            <td>
+                                                                30, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade p-0 border-0" id="posts-tab-pane" role="tabpanel" aria-labelledby="posts-tab" tabindex="0">
+                                    <div class="card custom-card">
+                                        <div class="card-header justify-content-between">
+                                            <div class="card-title">
+                                                Giden Faturalar
+                                            </div>
+                                            <div class="d-flex">
+                                                <div class="dropdown ms-2">
+                                                    <button class="btn btn-sm btn-primary btn-wave waves-light waves-effect waves-light"><i class="ri-add-line fw-semibold align-middle me-1"></i> Entegre Kontrol</button>
+                                                    <button class="btn btn-icon btn-secondary-light btn-sm btn-wave waves-light waves-effect waves-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="ti ti-dots-vertical"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a class="dropdown-item" href="javascript:void(0);">Tüm Faturalar</a></li>
+                                                        <li><a class="dropdown-item" href="javascript:void(0);">Ödenmiş Faturalar</a></li>
+                                                        <li><a class="dropdown-item" href="javascript:void(0);">Bekleyen Faturalar</a></li>
+                                                        <li><a class="dropdown-item" href="javascript:void(0);">Vadesi Geçmiş Faturalar</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
+                                                <table id="outgoingInvoicedatatable" class="table text-nowrap table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Müşteri</th>
+                                                            <th scope="col">Fatura No</th>
+                                                            <th scope="col">Çıkarılma Tarihi</th>
+                                                            <th scope="col">Tutar</th>
+                                                            <th scope="col">Durum</th>
+                                                            <th scope="col">Son Ödeme Tarihi</th>
+                                                            <th scope="col">Aksiyon</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/profileman.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Ahmet Yılmaz</p>
+                                                                        <p class="mb-0 fs-11 text-muted">ahmetyilmaz@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032901
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                25, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺212,45
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-success-transparent">Ödenmiş</span>
+                                                            </td>
+                                                            <td>
+                                                                25, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/profileman.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Ayşe Demir</p>
+                                                                        <p class="mb-0 fs-11 text-muted">ayse.demir@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032912
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                13, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺512,99
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-warning-transparent">Beklemede</span>
+                                                            </td>
+                                                            <td>
+                                                                13, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/profileman.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Mehmet Özkan</p>
+                                                                        <p class="mb-0 fs-11 text-muted">mehmet.ozkan@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032945
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                30, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺2.199,49
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-danger-transparent">Vadesi Geçmiş</span>
+                                                            </td>
+                                                            <td>
+                                                                30, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/profileman.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Hasan Güler</p>
+                                                                        <p class="mb-0 fs-11 text-muted">hasan.guler@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032922
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                18, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺1.569,99
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-success-transparent">Ödenmiş</span>
+                                                            </td>
+                                                            <td>
+                                                                18, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/profileman.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Feyza Yıldız</p>
+                                                                        <p class="mb-0 fs-11 text-muted">feyza.yildiz@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032932
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                18, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺4.873,99
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-primary-transparent">1 Gün İçinde Ödenmeli</span>
+                                                            </td>
+                                                            <td>
+                                                                18, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="invoice-list">
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="me-2 lh-1">
+                                                                        <span class="avatar avatar-sm avatar-rounded">
+                                                                            <img src="~/images/assets/profileman.jpg" />
+                                                                        </span>
+                                                                    </div>
+                                                                    <div>
+                                                                        <p class="mb-0 fw-semibold">Canan Aksoy</p>
+                                                                        <p class="mb-0 fs-11 text-muted">canan.aksoy@gmail.com</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="javascript:void(0);" class="fw-semibold text-primary">
+                                                                    #SPK12032954
+                                                                </a>
+                                                            </td>
+                                                            <td>
+                                                                30, Kas 2022
+                                                            </td>
+                                                            <td>
+                                                                ₺879,99
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-success-transparent">Ödenmiş</span>
+                                                            </td>
+                                                            <td>
+                                                                30, Ara 2022
+                                                            </td>
+                                                            <td>
+                                                                <button class="btn btn-primary-light btn-icon btn-sm"><i class="ri-printer-line"></i></button>
+                                                                <button class="btn btn-danger-light btn-icon ms-1 btn-sm invoice-btn"><i class="ri-delete-bin-5-line"></i></button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade p-0 border-0" id="total-tab-pane" role="tabpanel" aria-labelledby="total-tab" tabindex="0">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><i class="ri-turkish-lira-line"></i> TL Hesap Özeti</h5>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">Tarih Aralığı</span>
+                                                        <input type="date" class="form-control" placeholder="Başlangıç tarihi">
+                                                        <span class="input-group-text">-</span>
+                                                        <input type="date" class="form-control" placeholder="Bitiş tarihi">
+                                                    </div>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Özellik</th>
+                                                                <th scope="col">Değer</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Toplam Satış Sayısı</td>
+                                                                <td>120 ton</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Toplam Tutar</td>
+                                                                <td><span>₺</span>500,000</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Özet</td>
+                                                                <td><span class="text-danger">-₺1,568.60</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="mt-3">
+                                                        <span class="badge bg-danger">Genel Özet: -₺1,568.60</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><i class="ri-usd-circle-line"></i> Dolar Hesap Özeti</h5>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">Tarih Aralığı</span>
+                                                        <input type="date" class="form-control" placeholder="Başlangıç tarihi">
+                                                        <span class="input-group-text">-</span>
+                                                        <input type="date" class="form-control" placeholder="Bitiş tarihi">
+                                                    </div>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Özellik</th>
+                                                                <th scope="col">Değer</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Toplam Satış Sayısı</td>
+                                                                <td>100 ton</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Toplam Tutar</td>
+                                                                <td>$50,000</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Uyarı</td>
+                                                                <td><span class="text-warning">0</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="mt-3">
+                                                        <span class="badge bg-warning">Genel Özet: $0</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title"><i class="ri-euro-circle-line"></i> Euro Hesap Özeti</h5>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">Tarih Aralığı</span>
+                                                        <input type="date" class="form-control" placeholder="Başlangıç tarihi">
+                                                        <span class="input-group-text">-</span>
+                                                        <input type="date" class="form-control" placeholder="Bitiş tarihi">
+                                                    </div>
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Özellik</th>
+                                                                <th scope="col">Değer</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Toplam Satış Sayısı</td>
+                                                                <td>80 ton</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Toplam Tutar</td>
+                                                                <td>€40,000</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Genel Özet</td>
+                                                                <td><span class="text-success">€2,356.78</span></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="mt-3">
+                                                        <span class="badge bg-success">Genel Özet: €2,356.78</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12">
+                <div class="row mt-4">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Toplam Alım Grafiği</h5>
+                                <!-- Tarih Aralığı Giriş Kutuları -->
+                                <div class="mb-3">
+                                    <label for="startDate" class="form-label">Başlangıç Tarihi</label>
+                                    <input type="date" class="form-control" id="startDate">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="endDate" class="form-label">Bitiş Tarihi</label>
+                                    <input type="date" class="form-control" id="endDate">
+                                </div>
+                                <!-- Grafik -->
+                                <div id="echart2" class="echart-charts"></div>
+                                <!-- Grafik Üzerinde Tarih Aralığı Gösterimi -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Alım Detayları</h5>
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Bahçe</th>
+                                                <th scope="col">Parsel</th>
+                                                <th scope="col">Tarla</th>
+                                                <th scope="col">İl</th>
+                                                <th scope="col">İlçe</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="detailsTableBody"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+@section Scripts{
+    <script>
+        var datatable = $('#incomingInvoicedatatable').DataTable({
+            "orderCellsTop": true,
+            "fixedHeader": true,
+            "pageLength": 25,
+            "pagingType": "full_numbers", // Tüm sayfaları göster
+            "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Tümü"]],
+            language: {
+                "url": "https://cdn.datatables.net/plug-ins/1.12.0/i18n/tr.json"
+            }, layout: {
+                topStart: {
+                    "buttons": [
+                        {
+                            extend: 'colvis',
+                            columns: ':not(.noVis)',
+                            popoverTitle: 'Sütunlar'
+                        },
+                        {
+                            extend: 'excel',
+                            exportOptions: {
+                                columns: ':visible' // Sadece görünür sütunları dışa aktar
+                            }
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            text: 'PDF',
+                            exportOptions: {
+                                columns: ':visible'
+                            },
+                            customize: function (doc) {
+                                doc.pageSize = 'A3'; // PDF boyutunu A3 olarak ayarla
+                                doc.defaultStyle.fontSize = 10; // Yazı tipi boyutunu küçült
+                            }
+                        },
+                        {
+                            extend: 'csv',
+                            exportOptions: {
+                                columns: ':visible' // Sadece görünür sütunları dışa aktar
+                            }
+                        }
+                    ]
+                }
+            },
+            "buttonsDom": {
+                "button": {
+                    "tag": "button",
+                    "className": "btn btn-outline-secondary"
+                },
+                "buttonLiner": {
+                    "tag": null
+                }
+            }
+        });
+
+        $('#incomingInvoicedatatable thead th').each(function () {
+            var title = $(this).text();
+            var classList = $(this).attr('class'); // Öğenin sınıf listesini al
+
+            if (classList && classList.indexOf('nonsearchable') !== -1) {
+                $(this).text(title);
+            } else {
+                $(this).html('<input type="text" class="form-control rounded-pill" placeholder="' + title + '" />');
+
+                $('input', this).on('keyup change', function () {
+                    if (datatable.column(i).search() !== this.value) {
+                        datatable
+                            .column(i)
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            }
+        });
+
+        var datatable = $('#outgoingInvoicedatatable').DataTable({
+            "orderCellsTop": true,
+            "fixedHeader": true,
+            "pageLength": 25,
+            "pagingType": "full_numbers", // Tüm sayfaları göster
+            "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Tümü"]],
+            language: {
+                "url": "https://cdn.datatables.net/plug-ins/1.12.0/i18n/tr.json"
+            }, layout: {
+                topStart: {
+                    "buttons": [
+                        {
+                            extend: 'colvis',
+                            columns: ':not(.noVis)',
+                            popoverTitle: 'Sütunlar'
+                        },
+                        {
+                            extend: 'excel',
+                            exportOptions: {
+                                columns: ':visible' // Sadece görünür sütunları dışa aktar
+                            }
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            text: 'PDF',
+                            exportOptions: {
+                                columns: ':visible'
+                            },
+                            customize: function (doc) {
+                                doc.pageSize = 'A3'; // PDF boyutunu A3 olarak ayarla
+                                doc.defaultStyle.fontSize = 10; // Yazı tipi boyutunu küçült
+                            }
+                        },
+                        {
+                            extend: 'csv',
+                            exportOptions: {
+                                columns: ':visible' // Sadece görünür sütunları dışa aktar
+                            }
+                        }
+                    ]
+                }
+            },
+            "buttonsDom": {
+                "button": {
+                    "tag": "button",
+                    "className": "btn btn-outline-secondary"
+                },
+                "buttonLiner": {
+                    "tag": null
+                }
+            }
+        });
+
+        $('#outgoingInvoicedatatable thead th').each(function () {
+            var title = $(this).text();
+            var classList = $(this).attr('class'); // Öğenin sınıf listesini al
+
+            if (classList && classList.indexOf('nonsearchable') !== -1) {
+                $(this).text(title);
+            } else {
+                $(this).html('<input type="text" class="form-control rounded-pill" placeholder="' + title + '" />');
+
+                $('input', this).on('keyup change', function () {
+                    if (datatable.column(i).search() !== this.value) {
+                        datatable
+                            .column(i)
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            }
+        });
+        // Initialize eCharts instance
+        var pieChart = echarts.init(document.getElementById('echart2'));
+
+        // Tarih aralığı giriş kutularının değerlerini al ve güncelle
+        document.getElementById('startDate').addEventListener('change', updateDateRange);
+        document.getElementById('endDate').addEventListener('change', updateDateRange);
+
+        // Tarih aralığını güncelleyen fonksiyon
+        function updateDateRange() {
+            let startDate = document.getElementById('startDate').value;
+            let endDate = document.getElementById('endDate').value;
+
+            if (startDate && endDate) {
+
+                // Rastgele veri oluştur ve grafiği güncelle
+                let { acceptedCount, rejectedCount, data } = getRandomData(15); // Örnek bir veri seti alıyorum, sayısı değiştirilebilir
+                updateChart(acceptedCount, rejectedCount, data);
+            } else {
+                pieChart.clear(); // Grafiği temizle
+                resetDetailsTable(); // Tabloyu temizle
+            }
+        }
+
+        // Rastgele veri seti oluşturma fonksiyonu belirli bir tarih aralığında
+        function getRandomData(count) {
+            let data = [];
+            let acceptedCount = Math.floor(Math.random() * count) + 1;
+            let rejectedCount = count - acceptedCount;
+
+            for (let i = 0; i < acceptedCount; i++) {
+                let randomBahce = "Bahçe " + (i + 1);
+                let randomParsel = "Parsel " + (Math.floor(Math.random() * 10) + 1); // 1-10 arası rastgele parsel numarası
+                let randomTarla = "Tarla " + (Math.floor(Math.random() * 5) + 1);   // 1-5 arası rastgele tarla numarası
+                let randomIl = "İl " + (Math.floor(Math.random() * 81) + 1);         // 1-81 arası rastgele il numarası (Türkiye için)
+                let randomIlce = "İlçe " + (Math.floor(Math.random() * 100) + 1);     // 1-100 arası rastgele ilçe numarası (Türkiye için)
+
+                data.push({
+                    Bahce: randomBahce,
+                    Parsel: randomParsel,
+                    Tarla: randomTarla,
+                    Il: randomIl,
+                    Ilce: randomIlce
+                });
+            }
+
+            return { acceptedCount, rejectedCount, data };
+        }
+
+        // Grafik seçeneklerini ayarla ve grafiği güncelle
+        function updateChart(acceptedCount, rejectedCount, data) {
+            let options = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b}: {c} adet ({d}%)'
+                },
+                series: [
+                    {
+                        name: 'Alım Durumu',
+                        type: 'pie',
+                        radius: '70%',
+                        center: ['50%', '50%'],
+                        data: [
+                            { value: acceptedCount, name: 'Kabul Edilen Alım' },
+                            { value: rejectedCount, name: 'Reddedilen Alım' }
+                        ],
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            };
+
+            pieChart.setOption(options);
+
+            // Grafiğe tıklama işlevselliği
+            pieChart.off('click'); // Önceki olay dinleyicisini kaldır
+            pieChart.on('click', function (params) {
+                if (params.componentType === 'series') {
+                    let type = params.data.name;
+                    let details = getRandomData(15).data; // Detayları güncel rastgele veri ile al
+                    updateDetailsTable(details);
+                }
+            });
+        }
+
+        // Detay tablosunu güncelleyen fonksiyon
+        function updateDetailsTable(data) {
+            let detailsTableBody = document.getElementById('detailsTableBody');
+            detailsTableBody.innerHTML = ''; // Önceki detayları temizle
+
+            data.forEach(item => {
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${item.Bahce}</td>
+                <td>${item.Parsel}</td>
+                <td>${item.Tarla}</td>
+                <td>${item.Il}</td>
+                <td>${item.Ilce}</td>
+            `;
+                detailsTableBody.appendChild(row);
+            });
+        }
+
+        // Detay tablosunu sıfırlayan fonksiyon
+        function resetDetailsTable() {
+            let detailsTableBody = document.getElementById('detailsTableBody');
+            detailsTableBody.innerHTML = '';
+        }
+
+        // Sayfa boyutu değiştiğinde grafik boyutunu güncelle
+        window.addEventListener('resize', function () {
+            pieChart.resize();
+        });
+
+    </script>
+}

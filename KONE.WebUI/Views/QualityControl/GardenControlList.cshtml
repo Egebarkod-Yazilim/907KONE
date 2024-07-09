@@ -1,0 +1,479 @@
+﻿
+@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Kalite Kontrol - Bahçe Kontrol Formu",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Kalite Kontrol", "Bahçe Kontrol Listesi" },
+    Url = "/Admin/Home/Index"
+})
+
+<style>
+    /* Yukarıda verdiğimiz CSS kodlarını buraya ekleyin */
+    .table-responsive {
+        overflow-x: auto;
+        position: relative;
+    }
+
+    .table thead {
+        position: sticky;
+        top: 0;
+        z-index: 2; /* Diğer içeriklerin üstünde kalması için */
+        background-color: #fff; /* Beyaz arka plan */
+    }
+
+        .table tbody td:last-child,
+        .table thead th:last-child {
+            position: sticky;
+            right: 0;
+            background-color: #fff; /* Beyaz arka plan */
+            z-index: 1; /* Diğer sütunların üstünde kalması için */
+            box-shadow: -1px 0 0 #ccc; /* Ayrıştırıcı çizgi */
+        }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                     Bahçe Kontrol Form Listesi
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="/QualityControl/Index" class="btn btn-green-knfrt"> Yeni Bahçe Formu</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="currentCarddatatable" class="table table-bordered text-nowrap w-100">
+                        <thead>
+                            <tr>
+                                <th class="nonsearchable" style="width:10px;">
+                                    <div class="form-check form-check-md d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkebox-md">
+                                    </div>
+                                </th>
+                                <th class="nonsearchable">#</th>
+                                <th>Müstahsil</th>
+                                <th>Ziyaret Tarihi</th>
+                                <th>İl / İlçe</th>
+                                <th>Yetiştirilen Ürünler</th>
+                                <th>Resimler</th>
+                                <th>Brix</th>
+                                <th>Yol ?</th>
+                                <th>Spray ?</th>
+                                <th>Durum</th>
+                                <th>İhracat Kaps.</th>
+                                <th>Kontrol Eden</th>
+                                <th class="nonsearchable">Aktif Durumu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> <input class="form-check-input" type="checkbox" value=""></td>
+                                <td>1</td>
+                                <td>Meyve Bahçesi Tarım</td>
+                                <td>01.06.2024</td>
+                                <td>Karaköprü/Şanlıurfa</td>
+                                <td>
+                                    <div class="avatar-list-stacked">
+                                        <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded" href="javascript:void(0);">
+                                            +2
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><i class="fa fa-camera" aria-hidden="true"></i> 3+</td>
+                                <td>69.5</td>
+                                <td><span class="badge bg-success-transparent">Yanında Yol Var</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-success-transparent">Var</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-success-transparent">Aktif</span></td>
+                                <td><span class="badge bg-success-transparent">15 Ton</span></td>
+                                <td>Emre Mutaf</td>
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <a href="/QualityControl/Index" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <input class="form-check-input" type="checkbox" value=""></td>
+                                <td>2</td>
+                                <td>Yeşil Yuva Tarım</td>
+                                <td>14.04.2024</td>
+                                <td>Seyhan/Adana</td>
+                                <td>
+                                    <div class="avatar-list-stacked">
+                                        <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded" href="javascript:void(0);">
+                                            +3
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><i class="fa fa-camera" aria-hidden="true"></i> 2+</td>
+                                <td>85.2</td>
+                                <td><span class="badge bg-danger-transparent">Yanında Yol Yok</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-danger-transparent">Yok</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-danger-transparent">Pasif</span></td>
+                                <td><span class="badge bg-success-transparent">20 Ton</span></td>
+                                <td>Ayşe Kara</td>
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <a href="/QualityControl/Index" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <input class="form-check-input" type="checkbox" value=""></td>
+                                <td>3</td>
+                                <td>Beyaz Tarlalar Gıda</td>
+                                <td>25.05.2024</td>
+                                <td>Haliliye/Şanlıurfa</td>
+                                <td>
+                                    <div class="avatar-list-stacked">
+                                        <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded" href="javascript:void(0);">
+                                            +4
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><i class="fa fa-camera" aria-hidden="true"></i> 5+</td>
+                                <td>77.8</td>
+                                <td><span class="badge bg-success-transparent">Yanında Yol Var</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-success-transparent">Var</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-warning-transparent">Beklemede</span></td>
+                                <td><span class="badge bg-success-transparent">12 Ton</span></td>
+                                <td>Hasan Yıldız</td>
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <a href="/QualityControl/Index" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <input class="form-check-input" type="checkbox" value=""></td>
+                                <td>4</td>
+                                <td>Organik Üretim A.Ş.</td>
+                                <td>10.03.2024</td>
+                                <td>Ceyhan/Adana</td>
+                                <td>
+                                    <div class="avatar-list-stacked">
+                                        <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded" href="javascript:void(0);">
+                                            +1
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><i class="fa fa-camera" aria-hidden="true"></i> 1+</td>
+                                <td>92.5</td>
+                                <td><span class="badge bg-danger-transparent">Yanında Yol Yok</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-danger-transparent">Yok</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-success-transparent">Aktif</span></td>
+                                <td><span class="badge bg-success-transparent">8 Ton</span></td>
+                                <td>Mehmet Kaya</td>
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <a href="/QualityControl/Index" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <input class="form-check-input" type="checkbox" value=""></td>
+                                <td>5</td>
+                                <td>Bahçe Kardeşliği Kooperatifi</td>
+                                <td>05.06.2024</td>
+                                <td>Karaköprü/Şanlıurfa</td>
+                                <td>
+                                    <div class="avatar-list-stacked">
+                                        <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded" href="javascript:void(0);">
+                                            +4
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><i class="fa fa-camera" aria-hidden="true"></i> 3+</td>
+                                <td>55.3</td>
+                                <td><span class="badge bg-success-transparent">Yanında Yol Var</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-success-transparent">Var</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-danger-transparent">Pasif</span></td>
+                                <td><span class="badge bg-success-transparent">18 Ton</span></td>
+                                <td>Fatma Demir</td>
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <a href="/QualityControl/Index" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <input class="form-check-input" type="checkbox" value=""></td>
+                                <td>6</td>
+                                <td>Doğa Tarım İşletmesi</td>
+                                <td>21.07.2024</td>
+                                <td>Sarıçam/Adana</td>
+                                <td>
+                                    <div class="avatar-list-stacked">
+                                        <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded" href="javascript:void(0);">
+                                            +2
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><i class="fa fa-camera" aria-hidden="true"></i> 6+</td>
+                                <td>44.9</td>
+                                <td><span class="badge bg-success-transparent">Yanında Yol Var</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-danger-transparent">Yok</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-warning-transparent">Beklemede</span></td>
+                                <td><span class="badge bg-success-transparent">25 Ton</span></td>
+                                <td>Selin Arslan</td>
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <a href="/QualityControl/Index" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <input class="form-check-input" type="checkbox" value=""></td>
+                                <td>7</td>
+                                <td>Bereket Tohumları Ltd.</td>
+                                <td>18.08.2024</td>
+                                <td>Hilvan/Şanlıurfa</td>
+                                <td>
+                                    <div class="avatar-list-stacked">
+                                        <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded" href="javascript:void(0);">
+                                            +3
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><i class="fa fa-camera" aria-hidden="true"></i> 2+</td>
+                                <td>95.4</td>
+                                <td><span class="badge bg-danger-transparent">Yanında Yol Yok</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-success-transparent">Var</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-success-transparent">Aktif</span></td>
+                                <td><span class="badge bg-success-transparent">10 Ton</span></td>
+                                <td>Ali Özkan</td>
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <a href="/QualityControl/Index" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <input class="form-check-input" type="checkbox" value=""></td>
+                                <td>8</td>
+                                <td>Verimli Topraklar Çiftliği</td>
+                                <td>22.09.2024</td>
+                                <td>Kozan/Adana</td>
+                                <td>
+                                    <div class="avatar-list-stacked">
+                                        <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded" href="javascript:void(0);">
+                                            +1
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><i class="fa fa-camera" aria-hidden="true"></i> 4+</td>
+                                <td>62.7</td>
+                                <td><span class="badge bg-success-transparent">Yanında Yol Var</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-danger-transparent">Yok</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-warning-transparent">Beklemede</span></td>
+                                <td><span class="badge bg-success-transparent">30 Ton</span></td>
+                                <td>Zeynep Çelik</td>
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <a href="/QualityControl/Index" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <input class="form-check-input" type="checkbox" value=""></td>
+                                <td>9</td>
+                                <td>Yeşil Hasat Üretim</td>
+                                <td>12.10.2024</td>
+                                <td>Viranşehir/Şanlıurfa</td>
+                                <td>
+                                    <div class="avatar-list-stacked">
+                                        <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded" href="javascript:void(0);">
+                                            +2
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><i class="fa fa-camera" aria-hidden="true"></i> 3+</td>
+                                <td>80.1</td>
+                                <td><span class="badge bg-danger-transparent">Yanında Yol Yok</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-success-transparent">Var</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-success-transparent">Aktif</span></td>
+                                <td><span class="badge bg-success-transparent">22 Ton</span></td>
+                                <td>Hüseyin Yılmaz</td>
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <a href="/QualityControl/Index" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <input class="form-check-input" type="checkbox" value=""></td>
+                                <td>10</td>
+                                <td>Altın Başak Tarım</td>
+                                <td>30.11.2024</td>
+                                <td>Seyhan/Adana</td>
+                                <td>
+                                    <div class="avatar-list-stacked">
+                                        <a class="avatar avatar-sm bg-primary text-fixed-white avatar-rounded" href="javascript:void(0);">
+                                            +1
+                                        </a>
+                                    </div>
+                                </td>
+                                <td><i class="fa fa-camera" aria-hidden="true"></i> 5+</td>
+                                <td>53.6</td>
+                                <td><span class="badge bg-success-transparent">Yanında Yol Var</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-danger-transparent">Yok</span> <span class="badge bg-primary"></span></td>
+                                <td><span class="badge bg-success-transparent">Aktif</span></td>
+                                <td><span class="badge bg-success-transparent">15 Ton</span></td>
+                                <td>Murat Aydın</td>
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <a href="/QualityControl/Index" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    <script>
+
+
+
+        var datatable = $('#currentCarddatatable').DataTable({
+            "fixedHeader": true,
+            "pageLength": 25,
+            "pagingType": "full_numbers", // Tüm sayfaları göster
+            "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Tümü"]],
+            language: {
+                "url": "https://cdn.datatables.net/plug-ins/1.12.0/i18n/tr.json"
+            }, layout: {
+                topStart: {
+                    "buttons": [
+                        {
+                            extend: 'colvis',
+                            columns: ':not(.noVis)',
+                            popoverTitle: 'Sütunlar'
+                        },
+                        {
+                            extend: 'excel',
+                            exportOptions: {
+                                columns: ':visible' // Sadece görünür sütunları dışa aktar
+                            }
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            text: 'PDF',
+                            exportOptions: {
+                                columns: ':visible'
+                            },
+                            customize: function (doc) {
+                                doc.pageSize = 'A3'; // PDF boyutunu A3 olarak ayarla
+                                doc.defaultStyle.fontSize = 10; // Yazı tipi boyutunu küçült
+                            }
+                        },
+                        {
+                            extend: 'csv',
+                            exportOptions: {
+                                columns: ':visible' // Sadece görünür sütunları dışa aktar
+                            }
+                        }
+                    ]
+                }
+            },
+            "buttonsDom": {
+                "button": {
+                    "tag": "button",
+                    "className": "btn btn-outline-secondary"
+                },
+                "buttonLiner": {
+                    "tag": null
+                }
+            },
+            language: {
+                buttons: {
+                    colvis: 'Sütunları Göster/Gizle' // Buton metnini burada da ekleyebilirsiniz
+                }
+            },
+            buttons: [
+                {
+                    extend: 'colvis',
+                    text: 'Sütunları Göster/Gizle', // Buton metnini buraya ekliyoruz
+                    collectionLayout: 'fixed two-column'
+                }
+            ],
+        });
+
+        $('#currentCarddatatable thead th').each(function (i) {
+            var title = $(this).text();
+            var classList = $(this).attr('class'); // Öğenin sınıf listesini al
+
+            if (classList && classList.indexOf('nonsearchable') !== -1) {
+                $(this).text(title);
+            } else {
+                $(this).html('<input type="text" class="form-control rounded-pill" placeholder="' + title + '" />');
+
+                $('input', this).on('keyup change', function () {
+                    if (datatable.column(i).search() !== this.value) {
+                        datatable
+                            .column(i)
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            }
+        });
+
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const tableContainer = document.querySelector('.table-responsive');
+            let isRightMouseDown = false;
+            let startX;
+            let scrollLeft;
+
+            tableContainer.addEventListener('contextmenu', (e) => {
+                e.preventDefault(); // Sağ tık menüsünü devre dışı bırak
+            });
+
+            tableContainer.addEventListener('mousedown', (e) => {
+                if (e.button === 2) { // Sağ tık
+                    isRightMouseDown = true;
+                    startX = e.pageX - tableContainer.offsetLeft;
+                    scrollLeft = tableContainer.scrollLeft;
+                }
+            });
+
+            tableContainer.addEventListener('mouseleave', () => {
+                isRightMouseDown = false; // Fare tablo alanından çıkarsa sağ tık kaydırmayı durdur
+            });
+
+            tableContainer.addEventListener('mouseup', () => {
+                isRightMouseDown = false; // Sağ tık bırakıldığında kaydırmayı durdur
+            });
+
+            tableContainer.addEventListener('mousemove', (e) => {
+                if (!isRightMouseDown) return; // Sağ tık basılı değilse işlem yapma
+                e.preventDefault(); // Varsayılan sürükleme davranışını engelle
+                const x = e.pageX - tableContainer.offsetLeft;
+                const walk = (x - startX) * 1; // Kaydırma hızı
+                tableContainer.scrollLeft = scrollLeft - walk;
+            });
+        });
+    </script>
+}

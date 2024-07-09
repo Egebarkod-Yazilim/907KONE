@@ -1,0 +1,370 @@
+﻿@{
+    Layout = "_Layout";
+}
+@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Numune Raporları",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Numune Raporları", "Rapor Detay" },
+    Url = "/Admin/Home/Index"
+})
+<div class="col-12 mt-3">
+    <div class="card custom-card shadow">
+        <div class="card-header justify-content-between">
+            <div class="card-title">
+                <div class="card-title">
+                     Numune Rapor Detayı
+                </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <button id="printPdf" type="button" class="btn btn-warning btn-wave waves-effect waves-light"><span class="bi bi-printer"></span> Yazdır</button>
+            </div>
+        </div>
+        <div id="printArea">
+            <div class="card-body">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td colspan="3">
+                            <div class="card">
+                                <div class="card-header konfrut-backgroundcolor-important">
+                                    <h6><span class="bi bi-file-check"></span> Genel bilgiler</h6>
+                                </div>
+                                <div class="card-body">
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <tr>
+                                            <td style="width: 33%;">
+                                                <label class="form-label"><span class="bx bx-calendar"></span> Inceleme Tarihi: </label>
+                                                <label class="form-label" id="inspectionDate"></label>
+                                                <br><br>
+                                                <label class="form-label"><span class="bx bx-calendar"></span> Hasat Tarihi: </label>
+                                                <label class="form-label" id="harvestDate"></label>
+                                                <br><br>
+                                                <label class="form-label"><span class="bx bx-key"></span> Üretici GGN: </label>
+                                                <label class="form-label" id="ggnNumber"></label>
+                                            </td>
+                                            <td style="width: 33%;">
+                                                <label class="form-label"><span class="bx bxl-apple"></span> Ürün Adı - Çeşit: </label>
+                                                <label class="form-label" id="productVariant"></label>
+                                                <br><br>
+                                                <label class="form-label"><span class="bx bx-user"></span> Yetiştirici (Grower): </label>
+                                                <label class="form-label" id="grower"></label>
+                                                <br><br>
+                                                <label class="form-label"><span class="bx bx-key"></span> T.C. NO - ID NO: </label>
+                                                <label class="form-label" id="identificationnumber"></label>
+                                            </td>
+                                            <td style="width: 33%;">
+                                                <label class="form-label"><span class="bx bx-car"></span> Araç Plakası: </label>
+                                                <label class="form-label" id="plateNumber"></label>
+                                                <br><br>
+                                                <label class="form-label"><span class="bx bx-file"></span> İrsaliye Numarası: </label>
+                                                <label class="form-label" id="irsNo"></label>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <div class="card">
+                                <div class="card-header bg-primary" id="headingSecondaryTwo">
+                                    <h6><span class="bi bi-image"></span> Numune Fotoğrafları</h6>
+                                </div>
+                                <div class="card-body">
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <tr>
+                                            <td style="width: 33%;">
+                                                <img class="img-fluid rounded" style="height:250px;" src="~/images/samples/apple.jpg" />
+                                            </td>
+                                            <td style="width: 33%;">
+                                                <img class="img-fluid rounded" style="height:250px;" src="~/images/samples/apple.jpg" />
+                                            </td>
+                                            <td style="width: 33%;">
+                                                <img class="img-fluid rounded" style="height:250px;" src="~/images/samples/apple.jpg" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 33%;">
+                                                <p>
+                                                    <span class="fw-bold fs-14"><span class="bx bx-calculator"></span> Brix Değeri: </span> <span id="brixValue"></span>
+                                                </p>
+                                                <p>
+                                                    <span class="fw-bold fs-14"><span class="bx bx-abacus"></span> STD: </span> <span id="std"></span>
+                                                </p>
+                                                <p>
+                                                    <span class="fw-bold fs-14"><span class="bx bx-arrow-from-bottom"></span> Maximum: </span> <span id="maximumVal"></span>
+                                                </p>
+                                                <p>
+                                                    <span class="fw-bold fs-14"><span class="bx bx-abacus"></span> Count: </span> <span id="count"></span>
+                                                </p>
+                                            </td>
+                                            <td style="width: 33%;">
+                                                <p>
+                                                    <span class="fw-bold fs-14"><span class="bx bx-arrow-from-top"></span> Minimum: </span> <span id="minimumVal"></span>
+                                                </p>
+                                                <p>
+                                                    <span class="fw-bold fs-14"><span class="bx bx-circle"></span> Kalibre Bilgileri: </span> <span id="caliberInfo"></span>
+                                                </p>
+                                            </td>
+                                            <td style="width: 33%;">
+                                                <p>
+                                                    <span class="fw-bold fs-14"><span class="bx bx-check"></span> Durum: </span> <span id="status"></span>
+                                                </p>
+                                                <p>
+                                                    <span class="fw-bold fs-14"><span class="bx bx-note"></span> NOTLAR: </span> <span id="notes"></span>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50%;">
+                            <div class="card">
+                                <div class="card-header" id="headingSecondaryThree">
+                                    <h6><span class="bi bi-list-check"></span> Majör Kusurlar</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h6>Majör Kusurlar - Kontrol Fotoğrafları 1</h6>
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <tr>
+                                            <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/apples1.png" /></td>
+                                            <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/apples2.jpeg" /></td>
+                                            <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/rottenapple.jpeg" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <p class="fs-14 fw-semibold mt-3" id="defact1"></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="width: 50%;">
+                            <div class="card">
+                                <div class="card-header" id="headingSecondaryFour">
+                                    <h6><span class="bi bi-credit-card"></span> Minör Kusurlar</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h6>Minör Kusurlar - Kontrol Fotoğrafları 2</h6>
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <tr>
+                                            <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/apples1.png" /></td>
+                                            <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/apples2.jpeg" /></td>
+                                            <td style="width: 33%;"><img class="img-fluid rounded" style="height:100px;" src="~/images/samples/rottenapple.jpeg" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <p class="fs-14 fw-semibold mt-3" id="defact2"></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+            var suppliers = ["Ahmet Yılmaz", "Ayşe Kaya", "Mehmet Demir", "Fatma Öztürk", "Mustafa Arslan"];
+            var products = ["Elma", "Portakal", "Muz", "Armut", "Çilek"];
+            var drivers = ["Ali Yılmaz", "Aylin Kaya", "Hakan Demir", "Gülay Öztürk", "Can Arslan"];
+            var transportTypes = ["Kamyon", "Van", "Konteyner", "Tır", "Tren"];
+            var plates = ["34 ABC 123", "35 XYZ 789", "06 DEF 456", "16 GHI 789", "67 JKL 234"];
+            const notes = [
+                "Ürün çürümemiş, gayet güzel.",
+                "Ürün taze, canlı durmakta. (Ürün meyve olduğu için buna dikkat et)",
+                "Ürün kalitesi mükemmel, hiçbir sorun yok.",
+                "Ürünler tam zamanında geldi, sağlam ve doğru şartlarda depolandı.",
+                "Ürünler beklenenden daha hızlı tedarik edildi, teşekkürler."
+            ];
+            var status = ["Onaylandı","Onaylanmadı","İşlemde","Beklemede"]
+            var brixValues = [10.0, 12.0, 14.0, 16.0, 18.0]; // Decimal değerler
+            var colorValues = ["Kırmızı", "Yeşil", "Sarı", "Mavi", "Mor"];
+
+            // Rastgele veri oluşturmak için kullanacağımız fonksiyonlar
+            function getRandomDate(start, end) {
+                var date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+                return date.toISOString().split('T')[0];
+            }
+            function getRandomNumber(min, max) {
+                return (Math.random() * (max - min) + min).toFixed(2);
+            }
+            function getRandomNumber2(min, max) {
+                return (Math.random() * (max - min) + min).toFixed(0);
+            }
+            function getRandomInt(min, max) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            function getRandomItem(arr) {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+            function generateRandomInvoiceNumber() {
+                const currentYear = new Date().getFullYear();
+                const prefix = `IRS${currentYear}`;
+                const baseNumberLength = 8;
+
+                // Rastgele bir sayı üret
+                const randomNumber = Math.floor(Math.random() * Math.pow(10, baseNumberLength));
+
+                // Rastgele sayıyı uygun formatta oluştur
+                const invoiceNumber = `${prefix}${randomNumber.toString().padStart(baseNumberLength, '0')}`;
+                return invoiceNumber;
+            }
+            function generateTC() {
+                let tc = [];
+
+                // İlk 9 haneyi rastgele oluştur
+                for (let i = 0; i < 9; i++) {
+                    tc[i] = getRandomInt(0, 9);
+                }
+
+                // TC Kimlik Numarası kuralları
+                tc[0] = getRandomInt(1, 9); // İlk hane 0 olamaz
+
+                let tenthDigit = (
+                    (tc[0] + tc[2] + tc[4] + tc[6] + tc[8]) * 7 -
+                    (tc[1] + tc[3] + tc[5] + tc[7])
+                ) % 10;
+                tc[9] = tenthDigit;
+
+                let eleventhDigit = (
+                    tc[0] + tc[1] + tc[2] + tc[3] + tc[4] + tc[5] + tc[6] + tc[7] + tc[8] + tc[9]
+                ) % 10;
+                tc[10] = eleventhDigit;
+
+                return tc.join('');
+            }
+            function generateCaliberData() {
+                const caliberRanges = [
+                    { range: "81-90 mm", count: 0, percentage: 0 },
+                    { range: "91-100 mm", count: 0, percentage: 0 },
+                    { range: "101-110 mm", count: 0, percentage: 0 },
+                ];
+
+                // Rastgele adet sayıları oluştur
+                const totalItems = 100;
+                let remainingItems = totalItems;
+
+                for (let i = 0; i < caliberRanges.length; i++) {
+                    if (i === caliberRanges.length - 1) {
+                        caliberRanges[i].count = remainingItems;
+                    } else {
+                        const count = Math.floor(Math.random() * remainingItems);
+                        caliberRanges[i].count = count;
+                        remainingItems -= count;
+                    }
+                }
+
+                // Yüzdelik değerleri hesapla
+                caliberRanges.forEach(item => {
+                    item.percentage = ((item.count / totalItems) * 100).toFixed(2);
+                });
+
+                // Toplam yüzdelik değeri hesapla
+                const totalPercentage = caliberRanges.reduce((sum, item) => sum + parseFloat(item.percentage), 0).toFixed(2);
+
+                // Sonuçları string olarak birleştir
+                let resultString = "";
+                caliberRanges.forEach(item => {
+                    resultString += `${item.range} : ${item.count} (adet sayısı) / ${item.percentage} % </br>`;
+                });
+                resultString += `Total : ${totalPercentage} % </br>`;
+
+                return resultString;
+            }
+            function generateDefectData1() {
+                const defects = [
+                    { name: "Çatlak Majör", count: getRandomInt(1, 10), percentage: getRandomFloat(1, 5).toFixed(1) },
+                    { name: "Çürükt", count: getRandomInt(1, 5), percentage: getRandomFloat(0.5, 1).toFixed(1) },
+                    { name: "Güneş Yanığı Majör", count: getRandomInt(10, 30), percentage: getRandomFloat(13, 25).toFixed(1) },
+                    { name: "Hasat hatası Majör", count: getRandomInt(1, 5), percentage: getRandomFloat(2, 3).toFixed(1) }
+                ];
+
+                // Toplam kusur yüzdesini hesapla
+                const totalPercentage = defects.reduce((sum, defect) => sum + parseFloat(defect.percentage), 0).toFixed(1);
+
+                // Sonuçları string olarak birleştir
+                let resultString = "";
+                defects.forEach(defect => {
+                    resultString += `${defect.name} (${defect.count}/${defect.percentage}%),</br>`;
+                });
+                resultString += `Total %: ${totalPercentage}%\n\n`;
+                resultString += `Total Defects % Format:\n${(totalPercentage * 2).toFixed(2)}</br>`;
+
+                return resultString;
+            }
+            function generateDefectData2() {
+                const defects = [
+                    { name: "Çatlak Minör", count: getRandomInt(1, 10), percentage: getRandomFloat(1, 5).toFixed(1) },
+                    { name: "Çürükt", count: getRandomInt(1, 5), percentage: getRandomFloat(0.5, 1).toFixed(1) },
+                    { name: "Güneş Yanığı Minör", count: getRandomInt(10, 30), percentage: getRandomFloat(13, 25).toFixed(1) },
+                    { name: "Hasat hatası Minör", count: getRandomInt(1, 5), percentage: getRandomFloat(2, 3).toFixed(1) }
+                ];
+
+                // Toplam kusur yüzdesini hesapla
+                const totalPercentage = defects.reduce((sum, defect) => sum + parseFloat(defect.percentage), 0).toFixed(1);
+
+                // Sonuçları string olarak birleştir
+                let resultString = "";
+                defects.forEach(defect => {
+                    resultString += `${defect.name} (${defect.count}/${defect.percentage}%),</br>`;
+                });
+                resultString += `Total %: ${totalPercentage}%\n\n`;
+                resultString += `Total Defects % Format:\n${(totalPercentage * 2).toFixed(2)}</br>`;
+
+                return resultString;
+            }
+
+            function getRandomFloat(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+
+            $('#inspectionDate').text(getRandomDate(new Date(2023, 0, 1), new Date()));
+            $('#harvestDate').text(getRandomDate(new Date(2023, 0, 1), new Date()));
+            $('#ggnNumber').text(getRandomNumber2(1000, 9999));
+            $('#productVariant').text(getRandomItem(products));
+            $('#grower').text(getRandomItem(suppliers));
+            $('#identificationnumber').text(getRandomNumber2(10000000000, 99999999999));
+            $('#plateNumber').text(getRandomItem(plates));
+            $('#irsNo').text(generateRandomInvoiceNumber());
+            $('#brixValue').text(getRandomItem(brixValues));
+            $('#minimumVal').text(getRandomNumber2(1, 100));
+            $('#maximumVal').text(getRandomNumber2(1,100));
+            $('#count').text(getRandomNumber2(1,100));
+            $('#status').text(getRandomItem(status));
+            $('#std').text(getRandomItem(brixValues));
+            $('#notes').text(getRandomItem(notes));
+            document.getElementById('caliberInfo').innerHTML = generateCaliberData();
+            document.getElementById('defact1').innerHTML = generateDefectData1();
+            document.getElementById('defact2').innerHTML = generateDefectData2();
+
+            $('#printPdf').click(function () {
+                var printContents = document.getElementById('printArea').innerHTML;
+                var originalContents = document.body.innerHTML;
+
+                document.body.innerHTML = printContents;
+
+                window.print();
+
+                document.body.innerHTML = originalContents;
+                window.location.reload();
+            });
+
+
+        });
+    </script>
+}

@@ -1,0 +1,185 @@
+﻿@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Sipariş",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Sipariş", "Sipariş Sevkiyat Kayıt" },
+    Url = "/Admin/Home/Index"
+})
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Select2 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!-- Custom CSS -->
+<!-- Bootstrap Css -->
+<link id="style" href="../libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* Select2 form-control-light ile uyumlu hale getirmek için ek stil */
+    .select2-container--default .select2-selection--multiple {
+        background-color: #f7f7f7; /* Form-control-light ile uyumlu renk */
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+    }
+
+    .checkbox-group {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+        .checkbox-group label {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            transition: all 0.3s ease; /* Geçiş efekti */
+        }
+
+        .checkbox-group img {
+            max-width: 100px;
+            border: 2px solid transparent;
+            margin-bottom: 5px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            display: none;
+        }
+
+    .check-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        color: transparent; /* Başlangıçta görünmez yapalım */
+        transition: all 0.3s ease; /* Geçiş efekti */
+    }
+
+    .checkbox-group label:hover img {
+        border-color: #007bff; /* Hovarda sınır rengi */
+    }
+
+    .checkbox-group input[type="checkbox"]:checked + label img {
+        border-color: #28a745; /* Kontrollü durumda sınır rengi */
+    }
+
+    .checkbox-group input[type="checkbox"]:checked + label .check-icon {
+        color: #28a745; /* Yeşil renk */
+    }
+</style>
+<link rel="stylesheet" href="../libs/flatpickr/flatpickr.min.css">
+<link rel="stylesheet" href="../libs/dropzone/dropzone.css">
+<div class="col-12">
+    <div class="card custom-card shadow">
+        <div class="card-header justify-content-between">
+            <div class="card-title">
+                <div class="card-title">
+                    @("Müstahsil Bahçe Ön Formu")
+                </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <button id="savebutton" type="button" class="btn btn-success btn-wave waves-effect waves-light"><span class="bi bi-check-all"></span> Kaydet</button>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <input type="hidden" />
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <div class="card">
+                        <div class="card-header konfrut-backgroundcolor-important">
+                            <h6><span class="bi bi-person-fill"></span> Sevkiyat Bilgileri </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label class="form-label">Gönderim Şekli</label>
+                                    <select id="mustahsil-select" class="select2 form-control form-control-light">
+                                        <option value="0">Lütfen bir firma seçin</option>
+                                        <option value="1">Araçla</option>
+                                        <option value="1">Uçakla</option>
+                                        <option value="1">Gemiyle</option>
+    
+                                    </select>
+
+                                </div>
+
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-group">
+                                        <label class="form-label">Sevkiyat Tarihleri</label>
+
+                                        <div class="input-group">
+
+                                            <div class="input-group-text text-muted"> <i class="ri-calendar-line"></i> </div>
+                                            <input type="text" class="form-control" id="daterange" placeholder="Sevkiyat Tarihleri Seçiniz">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Takip Edecek Personel</label>
+
+                                    <select class="select2 form-control form-control-light" multiple="multiple">
+
+                                        <option value="elma">Ali Veli</option>
+                                        <option value="armut">Mehmet Kara</option>
+                                        <option value="çilek">Cüneyt Lapu</option>
+                                        <option value="domates">Aslı Güven</option>
+                                        <option value="salatalık">Ayşe Fatma</option>
+                                       
+                                    </select>
+                                </div>
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6><span class="bi bi-list-check"></span> Sevkiyat Belgeleri Ekleyiniz</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="card custom-card">
+                                        <div class="card-header">
+                                            <div class="card-title">
+                                                Dosyaları Seçiniz
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <form data-single="true" method="post" action="https://httpbin.org/post" class="dropzone"></form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+

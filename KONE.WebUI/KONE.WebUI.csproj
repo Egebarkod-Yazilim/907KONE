@@ -1,0 +1,96 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\Theme\HTML\dist\assets\images\flags\tr-flag.jpg\**" />
+    <Content Remove="wwwroot\Theme\HTML\dist\assets\images\flags\tr-flag.jpg\**" />
+    <EmbeddedResource Remove="wwwroot\Theme\HTML\dist\assets\images\flags\tr-flag.jpg\**" />
+    <None Remove="wwwroot\Theme\HTML\dist\assets\images\flags\tr-flag.jpg\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\Theme\HTML\src\assets\icon-fonts\bootstrap-icons\icons\.github\preview.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="35.5.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\KONE.Business\KONE.Business.csproj" />
+    <ProjectReference Include="..\KONE.Shared\KONE.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Product\Index.cshtml" />
+    <None Include="Views\Product\ProductDetail.cshtml" />
+    <None Include="Views\Product\ProductUpdate.cshtml" />
+    <None Include="Views\Role\AddOrUpdateRole.cshtml" />
+    <None Include="Views\Role\AllRolePermission.cshtml" />
+    <None Include="Views\Role\Index.cshtml" />
+    <None Include="Views\Shared\Components\AddOrUpdateRoleClaimViewComponents\Default.cshtml" />
+    <None Include="Views\Shared\Components\AddOrUpdateRoleViewComponents\Default.cshtml" />
+    <None Include="Views\Shared\Components\AddOrUpdateUserViewComponents\Default.cshtml" />
+    <None Include="Views\Shared\Components\RoleListViewComponents\Default.cshtml" />
+    <None Include="Views\Shared\Components\UserActivityViewComponents\Default.cshtml" />
+    <None Include="Views\Shared\Components\UserCardViewComponents\Default.cshtml" />
+    <None Include="Views\Shared\Components\UserListViewComponents\Default.cshtml" />
+    <None Include="Views\Shared\Components\UserLoginHistoryViewComponents\Default.cshtml" />
+    <None Include="Views\Shipment\Index.cshtml" />
+    <None Include="Views\StatisticsVisualization\Graphs.cshtml" />
+    <None Include="Views\StatisticsVisualization\OrderTrack.cshtml" />
+    <None Include="Views\StatisticsVisualization\OrderTrackDetail.cshtml" />
+    <None Include="Views\StatisticsVisualization\PurchaseReports.cshtml" />
+    <None Include="Views\StatisticsVisualization\Reports.cshtml" />
+    <None Include="Views\StatisticsVisualization\SaleReports.cshtml" />
+    <None Include="Views\StatisticsVisualization\SampleReportDetail.cshtml" />
+    <None Include="Views\StatisticsVisualization\SampleReports.cshtml" />
+    <None Include="Views\StatisticsVisualization\WareHouseReports.cshtml" />
+    <None Include="Views\StatisticsVisualization\WareHouseReportsDetail.cshtml" />
+    <None Include="Views\User\AddOrUpdateUser.cshtml" />
+    <None Include="Views\User\Index.cshtml" />
+    <None Include="Views\User\UserDetail.cshtml" />
+    <None Include="wwwroot\font\Flaticon.svg" />
+    <None Include="wwwroot\font\Flaticon.woff2" />
+    <None Include="wwwroot\Theme\HTML\src\assets\icon-fonts\bootstrap-icons\icons\.github\dependabot.yml" />
+    <None Include="wwwroot\Theme\HTML\src\assets\icon-fonts\bootstrap-icons\icons\.github\ISSUE_TEMPLATE\bug_report.md" />
+    <None Include="wwwroot\Theme\HTML\src\assets\icon-fonts\bootstrap-icons\icons\.github\ISSUE_TEMPLATE\icon-request.md" />
+    <None Include="wwwroot\Theme\HTML\src\assets\icon-fonts\bootstrap-icons\icons\.github\release-drafter.yml" />
+    <None Include="wwwroot\Theme\HTML\src\assets\icon-fonts\bootstrap-icons\icons\.github\workflows\codeql.yml" />
+    <None Include="wwwroot\Theme\HTML\src\assets\icon-fonts\bootstrap-icons\icons\.github\workflows\deploy.yml" />
+    <None Include="wwwroot\Theme\HTML\src\assets\icon-fonts\bootstrap-icons\icons\.github\workflows\release-notes.yml" />
+    <None Include="wwwroot\Theme\HTML\src\assets\icon-fonts\bootstrap-icons\icons\.github\workflows\test.yml" />
+    <None Include="wwwroot\Theme\HTML\src\assets\icon-fonts\boxicons\.github\FUNDING.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="Views\CurrentCard\Components\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\chart.js\docs\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\choices.js\src\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\datatables.net-bs5\types\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\flatpickr\types\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\flatpickr\utils\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\gmaps\docs\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\gmaps\examples\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\gmaps\test\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\gridjs\src\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\particles.js\demo\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\rater-js\example\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\rater-js\test\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\swiper\angular\angular\src\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\swiper\angular\esm2020\angular\src\" />
+    <Folder Include="wwwroot\Theme\HTML\dist\assets\libs\swiper\types\modules\" />
+  </ItemGroup>
+
+</Project>

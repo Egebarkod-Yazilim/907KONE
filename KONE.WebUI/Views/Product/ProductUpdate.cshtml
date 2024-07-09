@@ -1,0 +1,142 @@
+﻿@{
+    Layout = "_Layout";
+}
+@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Ürünler",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Ürün", "Güncelle/Oluştur" },
+    Url = "/Admin/Home/Index"
+})
+
+<div class="col-12">
+    <div class="card custom-card shadow">
+        <div class="card-header justify-content-between">
+            <div class="card-title">
+                <div class="card-title">
+                     Ürün Düzenle/Oluştur Ekranı
+                </div>
+            </div>
+
+        </div>
+        <div class="card-body">
+            <form id="currentcardform" asp-controller="CurrentCard" asp-action="AddOrUpdateCurrentCard" method="post">
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <div class="card-header konfrut-backgroundcolor-important">
+                                <h6> Ürün Bilgileri</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Ürün Adı</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Ürün Adı" aria-label="Adı">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Ürün Açıklaması</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Ürün Açıklaması" aria-label="Ürün Açıklaması">
+                                    </div>
+                                    <div class="col-md-6 mb-3 ">
+                                        <label class="form-label">Ürün Tipi</label>
+
+                                        <div class="d-flex">
+
+                                            <div class="product">
+                                                <input type="radio" class="form-check-input" id="apple" name="product" value="apple">
+                                                <label for="apple">
+                                                    <img src="~/images/elma.png" class="img-fluid" style="max-width: 50px;" />
+                                                    Elma
+                                                </label>
+                                            </div>
+
+                                            <div class="product" style="margin-left:5px;">
+                                                <input type="radio" class="form-check-input" id="pear" name="product" value="pear">
+                                                <label for="pear">
+                                                    <img src="~/images/karpuz.png" class="img-fluid" style="max-width: 50px;" />
+                                                    Karpuz
+                                                </label>
+                                            </div>
+
+                                            <div class="product" style="margin-left:5px;">
+                                                <input type="radio" class="form-check-input" id="watermelon" name="product" value="watermelon">
+                                                <label for="watermelon">
+                                                    <img src="~/images/pomegranate.png" class="img-fluid" style="max-width: 50px;" />
+                                                    Nar
+                                                </label>
+                                            </div>
+
+                                            <div class="product" style="margin-left:5px;">
+                                                <input type="radio" class="form-check-input" id="strawberry" name="product" value="strawberry">
+                                                <label for="strawberry">
+                                                    <img src="~/images/strawberry.png" class="img-fluid" style="max-width: 50px;" />
+                                                    Çilek
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Erp Kodu</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Erp Kodu" aria-label="Erp Kodu">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Depo Ömrü</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Ürün Adı" aria-label="Adı">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Raf Ömrü</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Erp Kodu" aria-label="Erp Kodu">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Derece Durumu</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Ürün Açıklaması" aria-label="Ürün Açıklaması">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <div class="card">
+                            <div class="card-header" id="headingSecondaryThree">
+                                <h6><span class="bi bi-list-check"></span> Entegrasyon Bilgileri</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Özel Kod 1</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Özel Kod 1" aria-label="Adı">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Özel Kod 2</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Özel Kod 2" aria-label="Adı">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Özel Kod 3</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Özel Kod 3" aria-label="Adı">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Özel Kod 4</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Özel Kod 4" aria-label="Adı">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Özel Kod 5</label>
+                                        <input type="text" class="form-control form-control-light" placeholder="Özel Kod 5" aria-label="Adı">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button id="savebutton" type="button" class="btn btn-green-knfrt"><span class="bi bi-check-all"></span> Kaydet</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

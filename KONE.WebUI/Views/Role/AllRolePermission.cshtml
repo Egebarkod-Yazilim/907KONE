@@ -1,0 +1,74 @@
+﻿@model RolePermissionModel
+@{
+    Layout = "_Layout";
+}
+@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Roller Erişim Listesi",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Index", "Roller Erişim Listesi" },
+    Url = "/Admin/Home/Index"
+})
+<div class="col-xl-12">
+    <div class="card custom-card">
+        <form asp-controller="Role" asp-action="AllRolePermission" method="post">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Rol Erişim Ayarları
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    <button type="submit" class="btn btn-success btn-wave waves-effect waves-light"><span class="bi bi-check-all">Kaydet</span></button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="roleclaimtable" class="table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    Erişim Adı
+                                </th>
+                                @for(int i = 0; i < Model.Roles.Count(); i++)
+                                {
+                                    <th scope="col">
+                                        <input type="hidden" asp-for="@Model.Roles[i].Id" />
+                                        <input type="hidden" asp-for="@Model.Roles[i].Name" />
+                                        @Model.Roles[i].Name
+                                    </th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int i = 0; i < Model.RolePermissions.Count(); i++)
+                            {
+                                <tr>
+                                    <th scope="row">
+                                        <div class="form-check form-check-md d-flex align-items-center">
+
+                                            @Model.RolePermissions[i].PermissionNote
+                                            <input type="hidden" asp-for="@Model.RolePermissions[i].PermissionId" />
+                                            <input type="hidden" asp-for="@Model.RolePermissions[i].PermissionName" />
+                                            <input type="hidden" asp-for="@Model.RolePermissions[i].PermissionNote" />
+                                        </div>
+                                    </th>
+
+                                    @for (int j = 0; j < Model.RolePermissions[i].PermissionRoleClaims.Count(); j++)
+                                    {
+                                        <td>
+                                            <input type="hidden" asp-for="@Model.RolePermissions[i].PermissionRoleClaims[j].RoleId" />
+                                            <input type="hidden" asp-for="@Model.RolePermissions[i].PermissionRoleClaims[j].RoleName" />
+                                            <input class="form-check-input" type="checkbox"
+                                                asp-for="@Model.RolePermissions[i].PermissionRoleClaims[j].IsSelected">
+                                        </td>
+                                    }
+                                   
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer d-none border-top-0">
+            </div>
+        </form>
+    </div>
+</div>

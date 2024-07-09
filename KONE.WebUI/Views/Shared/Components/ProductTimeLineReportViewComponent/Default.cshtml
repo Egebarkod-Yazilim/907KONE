@@ -1,0 +1,69 @@
+﻿<div class="row">
+    <div class="col-md-3">
+        <div class="card custom-card">
+            <div class="card-header  justify-content-between">
+                <div class="card-title">
+                    Müstahsiller
+                </div>
+                <div class="dropdown">
+                    <a aria-label="anchor" href="javascript:void(0);" class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="javascript:void(0);">Haftalık</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Aylık</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Yıllık</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="currentuserstimeline" class="table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th scope="col">Müstahsil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-user="Aslı">
+                                <th scope="row"><span class="bx bx-user"></span> Aslı</th>
+                            </tr>
+                            <tr data-user="Murat">
+                                <th scope="row"><span class="bx bx-user"></span> Murat</th>
+                            </tr>
+                            <tr data-user="Orhan">
+                                <th scope="row"><span class="bx bx-user"></span> Orhan</th>
+                            </tr>
+                            <tr data-user="Oktay">
+                                <th scope="row"><span class="bx bx-user"></span> Oktay</th>
+                            </tr>
+                            <tr data-user="Nuray">
+                                <th scope="row"><span class="bx bx-user"></span> Nuray</th>
+                            </tr>
+                            <tr data-user="Ece">
+                                <th scope="row"><span class="bx bx-user"></span> Ece</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="dropdown mt-3">
+                    <div class="col-md-12">
+                        <select class="form-select" id="productDropdownTimeLine" onchange="createTimeline()">
+                            <option value="">Lütfen Müstahsil Seçiniz</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card custom-card">
+            <div class="card-header">
+                <div class="card-title">Ürün Zaman Çizelgesi</div>
+            </div>
+            <div class="card-body">
+                <div class="timelinediv"></div>
+            </div>
+        </div>
+    </div>
+</div>

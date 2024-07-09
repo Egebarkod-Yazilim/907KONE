@@ -1,0 +1,1021 @@
+﻿@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Kalite Kontrol - Hammadde Girdi Kontrol",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Kalite Kontrol", "Hammadde Girdi Kontrol" },
+    Url = "/Admin/Home/Index"
+})
+<style>
+    /* Yukarıda verdiğimiz CSS kodlarını buraya ekleyin */
+    .table-responsive {
+        overflow-x: auto;
+        position: relative;
+    }
+
+    .table thead {
+        position: sticky;
+        top: 0;
+        z-index: 2; /* Diğer içeriklerin üstünde kalması için */
+        background-color: #fff; /* Beyaz arka plan */
+    }
+
+        .table tbody td:last-child,
+        .table thead th:last-child {
+            position: sticky;
+            right: 0;
+            background-color: #fff; /* Beyaz arka plan */
+            z-index: 1; /* Diğer sütunların üstünde kalması için */
+            box-shadow: -1px 0 0 #ccc; /* Ayrıştırıcı çizgi */
+        }
+</style>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">Hammade Girdi Kontrol Listesi</div>
+                <div class="prism-toggle">
+
+                    <a class="btn btn btn-green-knfrt" href="/QualityControl/RawMaterialInputControlInput">
+                        Yeni Hammadde Giri Kontrol
+                    </a>
+
+
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="currentCarddatatable" class="table table-bordered text-nowrap w-100">
+                        <thead>
+                            <tr>
+                                <th>Hasat Tarihi</th>
+                                <th>Paketleme Tarihi</th>
+                                <th>Yetiştirici</th>
+                                <th>Müşteri Adı</th>
+                                <th>Ürün</th>
+                                <th>Renk</th>
+                                <th>Görünüş</th>
+                                <th>Brix</th>
+                                <th>Tat</th>
+                                <th>Majör Kusurlar</th>
+                                <th>Minör Kusurlar</th>
+                                <th>Kusur %</th>
+                                <th>Durum</th>
+                                <th>KKP</th>
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                        <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/elma.png" alt="img">
+                                    </span> Elma
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/elma.png" alt="img">
+                                    </span> Elma
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/elma.png" alt="img">
+                                    </span> Elma
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/elma.png" alt="img">
+                                    </span> Elma
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td>30-10-2023</td>
+                                <td>01-12-2023</td>
+                                <td>Fevzi Satan</td>
+                                <td>OGL/DE</td>
+                                <td>
+                                    <span class="avatar avatar-sm avatar-rounded">
+                                        <img src="../images/nar.png" alt="img">
+                                    </span> Nar
+                                </td>
+                                <td>
+                                    <span class="badge bg-danger-transparent">Kırmızı</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    17.15
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Uygun</span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+                                <td>
+                                    <span class="icons-list-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="fe fe-camera"><i class="fe fe-camera"></i></span>
+                                </td>
+
+                                <td>5.56</td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Kabul</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success-transparent">Emre Mutaf</span>
+                                </td>
+
+                                <td>
+                                    <div class="hstack gap-2 fs-15">
+                                        <button data-bs-effect="effect-rotate-left" data-bs-toggle="modal" data-id="1" class="btn btn-icon btn-sm btn-primary-transparent rounded-pill modal-effect btn-print-barcode"><i class='bx bx-barcode-reader'></i></button>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-success-transparent rounded-pill"><i class="ri-download-2-line"></i></a>
+                                         <a href="/QualityControl/RawMaterialInputControlInput" class="btn btn-icon btn-sm btn-info-transparent rounded-pill"><i class="ri-edit-line"></i></a>
+                                        <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-transparent rounded-pill"><i class="ri-delete-bin-line"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+<script>
+
+
+
+        var datatable = $('#currentCarddatatable').DataTable({
+            "fixedHeader": true,
+            "pageLength": 25,
+            "pagingType": "full_numbers", // Tüm sayfaları göster
+            "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Tümü"]],
+            language: {
+                "url": "https://cdn.datatables.net/plug-ins/1.12.0/i18n/tr.json"
+            }, layout: {
+                topStart: {
+                    "buttons": [
+                        {
+                            extend: 'colvis',
+                            columns: ':not(.noVis)',
+                            popoverTitle: 'Sütunlar'
+                        },
+                        {
+                            extend: 'excel',
+                            exportOptions: {
+                                columns: ':visible' // Sadece görünür sütunları dışa aktar
+                            }
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            text: 'PDF',
+                            exportOptions: {
+                                columns: ':visible'
+                            },
+                            customize: function (doc) {
+                                doc.pageSize = 'A3'; // PDF boyutunu A3 olarak ayarla
+                                doc.defaultStyle.fontSize = 10; // Yazı tipi boyutunu küçült
+                            }
+                        },
+                        {
+                            extend: 'csv',
+                            exportOptions: {
+                                columns: ':visible' // Sadece görünür sütunları dışa aktar
+                            }
+                        }
+                    ]
+                }
+            },
+            "buttonsDom": {
+                "button": {
+                    "tag": "button",
+                    "className": "btn btn-outline-secondary"
+                },
+                "buttonLiner": {
+                    "tag": null
+                }
+            },
+            language: {
+                buttons: {
+                    colvis: 'Sütunları Göster/Gizle' // Buton metnini burada da ekleyebilirsiniz
+                }
+            },
+            buttons: [
+                {
+                    extend: 'colvis',
+                    text: 'Sütunları Göster/Gizle', // Buton metnini buraya ekliyoruz
+                    collectionLayout: 'fixed two-column'
+                }
+            ],
+        });
+
+        $('#currentCarddatatable thead th').each(function (i) {
+            var title = $(this).text();
+            var classList = $(this).attr('class'); // Öğenin sınıf listesini al
+
+            if (classList && classList.indexOf('nonsearchable') !== -1) {
+                $(this).text(title);
+            } else {
+                $(this).html('<input type="text" class="form-control rounded-pill" placeholder="' + title + '" />');
+
+                $('input', this).on('keyup change', function () {
+                    if (datatable.column(i).search() !== this.value) {
+                        datatable
+                            .column(i)
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            }
+        });
+
+        $(function () {
+            const url = '/QualityControl/PrintBarkod';
+            $(document).on('click', '.btn-print-barcode', function (event) {
+                const id = $(this).attr('data-id');
+                var iframe = document.createElement('iframe');
+                iframe.style.display = "none";
+
+                iframe.src = window.location.origin + "/QualityControl/RawMaterialInputControlInputPrintBarcode?id=" + id;
+
+                iframe.id = Math.random().toString(36).substring(7);
+                document.body.appendChild(iframe);
+                var z = document.getElementById(iframe.id).contentWindow;
+                z.focus();
+                z.print();
+            });
+        })
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const tableContainer = document.querySelector('.table-responsive');
+            let isRightMouseDown = false;
+            let startX;
+            let scrollLeft;
+
+            tableContainer.addEventListener('contextmenu', (e) => {
+                e.preventDefault(); // Sağ tık menüsünü devre dışı bırak
+            });
+
+            tableContainer.addEventListener('mousedown', (e) => {
+                if (e.button === 2) { // Sağ tık
+                    isRightMouseDown = true;
+                    startX = e.pageX - tableContainer.offsetLeft;
+                    scrollLeft = tableContainer.scrollLeft;
+                }
+            });
+
+            tableContainer.addEventListener('mouseleave', () => {
+                isRightMouseDown = false; // Fare tablo alanından çıkarsa sağ tık kaydırmayı durdur
+            });
+
+            tableContainer.addEventListener('mouseup', () => {
+                isRightMouseDown = false; // Sağ tık bırakıldığında kaydırmayı durdur
+            });
+
+            tableContainer.addEventListener('mousemove', (e) => {
+                if (!isRightMouseDown) return; // Sağ tık basılı değilse işlem yapma
+                e.preventDefault(); // Varsayılan sürükleme davranışını engelle
+                const x = e.pageX - tableContainer.offsetLeft;
+                const walk = (x - startX) * 1; // Kaydırma hızı
+                tableContainer.scrollLeft = scrollLeft - walk;
+            });
+        });
+    </script>
+}

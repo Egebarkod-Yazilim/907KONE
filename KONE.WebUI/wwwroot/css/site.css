@@ -1,0 +1,295 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /*margin-bottom: 60px;*/
+}
+
+
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.konfrut-color-important {
+    color: #5669ab !important;
+}
+
+
+.konfrut-backgroundcolor-important {
+    background-color: #5669ab !important;
+}
+
+.main-profile-cover:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #163257;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    inset-block-start: 0;
+    inset-block-end:  0;
+}
+
+.bg-konfrut-dark-1 {
+    background-color: rgb(16,17,41) !important;
+}
+
+    .bg-konfrut-dark-1.bg-opacity-10 {
+        background-color: rgba(16,17,41, 0.1) !important;
+    }
+
+    .bg-konfrut-dark-1.bg-opacity-25 {
+        background-color: rgba(16,17,41, 0.25) !important;
+    }
+
+    .bg-konfrut-dark-1.bg-opacity-50 {
+        background-color: rgba(16,17,41, 0.5) !important;
+    }
+
+    .bg-konfrut-dark-1.bg-opacity-75 {
+        background-color: rgba(16,17,41, 0.75) !important;
+    }
+
+    .bg-konfrut-dark-1.bg-opacity-100 {
+        background-color: rgba(16,17,41, 1) !important;
+    }
+
+.bg-konfrut-dark-2 {
+    background-color: rgb(00,75,142) !important;
+}
+
+    .bg-konfrut-dark-2.bg-opacity-10 {
+        background-color: rgba(00,75,142, 0.1) !important;
+    }
+
+    .bg-konfrut-dark-2.bg-opacity-25 {
+        background-color: rgba(00,75,142, 0.25) !important;
+    }
+
+    .bg-konfrut-dark-2.bg-opacity-50 {
+        background-color: rgba(00,75,142, 0.5) !important;
+    }
+
+    .bg-konfrut-dark-2.bg-opacity-75 {
+        background-color: rgba(00,75,142, 0.75) !important;
+    }
+
+    .bg-konfrut-dark-2.bg-opacity-100 {
+        background-color: rgba(00,75,142, 1) !important;
+    }
+
+.bg-konfrut-dark-3 {
+    background-color: rgb(48,46,47) !important;
+}
+
+    .bg-konfrut-dark-3.bg-opacity-10 {
+        background-color: rgba(48,46,47, 0.1) !important;
+    }
+
+    .bg-konfrut-dark-3.bg-opacity-25 {
+        background-color: rgba(48,46,47, 0.25) !important;
+    }
+
+    .bg-konfrut-dark-3.bg-opacity-50 {
+        background-color: rgba(48,46,47, 0.5) !important;
+    }
+
+    .bg-konfrut-dark-3.bg-opacity-75 {
+        background-color: rgba(48,46,47, 0.75) !important;
+    }
+
+    .bg-konfrut-dark-3.bg-opacity-100 {
+        background-color: rgba(48,46,47, 1) !important;
+    }
+
+
+.bg-konfrut-light-1 {
+    background-color: rgb(69,191,231) !important;
+}
+
+    .bg-konfrut-light-1.bg-opacity-10 {
+        background-color: rgba(69,191,231, 0.1) !important;
+    }
+
+    .bg-konfrut-light-1.bg-opacity-25 {
+        background-color: rgba(69,191,231, 0.25) !important;
+    }
+
+    .bg-konfrut-light-1.bg-opacity-50 {
+        background-color: rgba(69,191,231, 0.5) !important;
+    }
+
+    .bg-konfrut-light-1.bg-opacity-75 {
+        background-color: rgba(69,191,231, 0.75) !important;
+    }
+
+    .bg-konfrut-light-1.bg-opacity-100 {
+        background-color: rgba(69,191,231, 1) !important;
+    }
+
+.bg-konfrut-light-2 {
+    background-color: rgb(165,222,99) !important;
+}
+
+    .bg-konfrut-light-2.bg-opacity-10 {
+        background-color: rgba(165,222,99, 0.1) !important;
+    }
+
+    .bg-konfrut-light-2.bg-opacity-25 {
+        background-color: rgba(165,222,99, 0.25) !important;
+    }
+
+    .bg-konfrut-light-2.bg-opacity-50 {
+        background-color: rgba(165,222,99, 0.5) !important;
+    }
+
+    .bg-konfrut-light-2.bg-opacity-75 {
+        background-color: rgba(165,222,99, 0.75) !important;
+    }
+
+    .bg-konfrut-light-2.bg-opacity-100 {
+        background-color: rgba(165,222,99, 1) !important;
+    }
+
+.bg-konfrut-light-3 {
+    background-color: rgb(67,205,164) !important;
+}
+
+    .bg-konfrut-light-3.bg-opacity-10 {
+        background-color: rgba(67,205,164, 0.1) !important;
+    }
+
+    .bg-konfrut-light-3.bg-opacity-25 {
+        background-color: rgba(67,205,164, 0.25) !important;
+    }
+
+    .bg-konfrut-light-3.bg-opacity-50 {
+        background-color: rgba(67,205,164, 0.5) !important;
+    }
+
+    .bg-konfrut-light-3.bg-opacity-75 {
+        background-color: rgba(67,205,164, 0.75) !important;
+    }
+
+    .bg-konfrut-light-3.bg-opacity-100 {
+        background-color: rgba(67,205,164, 1) !important;
+    }
+
+.bg-konfrut-light-4 {
+    background-color: rgb(254,192,113) !important;
+}
+
+    .bg-konfrut-light-4.bg-opacity-10 {
+        background-color: rgba(254,192,113, 0.1) !important;
+    }
+
+    .bg-konfrut-light-4.bg-opacity-25 {
+        background-color: rgba(254,192,113, 0.25) !important;
+    }
+
+    .bg-konfrut-light-4.bg-opacity-50 {
+        background-color: rgba(254,192,113, 0.5) !important;
+    }
+
+    .bg-konfrut-light-4.bg-opacity-75 {
+        background-color: rgba(254,192,113, 0.75) !important;
+    }
+
+    .bg-konfrut-light-4.bg-opacity-100 {
+        background-color: rgba(254,192,113, 1) !important;
+    }
+
+.bg-konfrut-light-5 {
+    background-color: rgb(207,209,210) !important;
+}
+
+    .bg-konfrut-light-5.bg-opacity-10 {
+        background-color: rgba(207,209,210, 0.1) !important;
+    }
+
+    .bg-konfrut-light-5.bg-opacity-25 {
+        background-color: rgba(207,209,210, 0.25) !important;
+    }
+
+    .bg-konfrut-light-5.bg-opacity-50 {
+        background-color: rgba(207,209,210, 0.5) !important;
+    }
+
+    .bg-konfrut-light-5.bg-opacity-75 {
+        background-color: rgba(207,209,210, 0.75) !important;
+    }
+
+    .bg-konfrut-light-5.bg-opacity-100 {
+        background-color: rgba(207,209,210, 1) !important;
+    }
+
+.text-konfrut-dark-1 {
+    color: rgb(16,17,41) !important;
+    ;
+}
+
+.text-konfrut-dark-2 {
+    color: rgb(00,75,142) !important;
+}
+
+.text-konfrut-dark-3 {
+    color: rgb(48,46,47) !important;
+}
+
+.text-konfrut-light-1 {
+    color: rgb(69,191,231) !important;
+}
+
+.text-konfrut-light-2 {
+    color: rgb(165,222,99) !important;
+}
+
+.text-konfrut-light-3 {
+    color: rgb(67,205,164) !important;
+}
+
+.text-konfrut-light-4 {
+    color: rgb(254,192,113) !important;
+}
+
+.text-konfrut-light-5 {
+    color: rgb(207,209,210)   !important;
+}
+
+/* buttons */
+
+.btn.btn-konfrut-light-1 {
+    background-color: rgba(69,191,231,0.25);
+    color: rgb(69,191,231);
+}
+
+
+.btn.btn-konfrut-light-2 {
+    background-color: rgba(0,70,1407,0.25);
+    color: rgb(0,70,140);
+}
+
+.btn.btn-konfrut-light-4 {
+    background-color: rgba(254,192,113,0.25);
+    color: rgb(254,192,113);
+}

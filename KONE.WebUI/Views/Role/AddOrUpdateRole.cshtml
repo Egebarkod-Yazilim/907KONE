@@ -1,0 +1,16 @@
+﻿@model AddOrUpdateRole
+@{
+    Layout = "_Layout";
+}
+@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Roller",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Index", "Roller" },
+    Url = "/Admin/Home/Index"
+})
+@await Component.InvokeAsync("AddOrUpdateRoleViewComponents")
+
+@if(Model.Id != 0)
+{
+    @await Component.InvokeAsync("AddOrUpdateRoleClaimViewComponents", new {roleId = Model.Id})
+}

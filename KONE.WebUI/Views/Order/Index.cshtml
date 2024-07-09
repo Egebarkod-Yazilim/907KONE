@@ -1,0 +1,685 @@
+﻿@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Sipariş",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Sipariş", "Sipariş Oluşturma" },
+    Url = "/Admin/Home/Index"
+})
+
+
+
+
+
+<div class="row">
+
+
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                    Sipariş Oluştur
+                </div>
+                <div class="prism-toggle">
+
+                    <a class="btn btn-soil-knfrt" href="/Order/OrderList">
+                        Sipariş Listesini Gör
+                    </a>
+
+
+                    <button class="btn btn-blue-knfrt">Siparişi ERP İle Bağla<i class="ri-code-line ms-2 d-inline-block align-middle"></i></button>
+                    <button id="printPdf" class="btn btn-soil-knfrt">Yazdır <i class="ri-printer-fill ms-2 d-inline-block align-middle"></i></button>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="card-body">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <ul class="nav nav-tabs justify-content-center mb-5 tab-style-3" id="myTab2" role="tablist">
+                    <li class="nav-item me-0" role="presentation">
+                        <button class="nav-link home py-1 active" id="order-tab" data-bs-toggle="tab" data-bs-target="#order-tab-pane" type="button" role="tab" aria-controls="order-tab-pane" aria-selected="true">Sipariş Bilgileri</button>
+                    </li>
+                    <li class="nav-item me-0" role="presentation">
+                        <button class="nav-link about py-1" id="confirmed-tab" data-bs-toggle="tab" data-bs-target="#confirm-tab-pane" type="button" role="tab" aria-controls="confirm-tab-pane" aria-selected="false" tabindex="-1">Sipariş Sepet</button>
+                    </li>
+                    <li class="nav-item me-0" role="presentation">
+                        <button class="nav-link services py-1" id="shipped-tab" data-bs-toggle="tab" data-bs-target="#shipped-tab-pane" type="button" role="tab" aria-controls="shipped-tab-pane" aria-selected="false" tabindex="-1">Sonuç </button>
+                    </li>
+                </ul>
+
+
+
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active text-muted" id="order-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+
+
+
+                        <div class="row gy-4">
+
+
+                            <div class="col-xl-6" style="padding:5px;">
+                                <label for="input-placeholder" class="form-label">Ürün Seçiniz</label>
+
+                                <select class="form-select" id="specificSizeSelect">
+                                    <option selected="">Ürün Seçiniz</option>
+                                    <option value="1">ARMUT</option>
+                                    <option value="2">KARPUZ</option>
+                                    <option value="2">ELMA</option>
+                                    <option value="2">NAR</option>
+                                    <option value="2">LİMON</option>
+                                </select>
+                            </div>
+
+                            <div class="col-xl-6" style="padding:5px;">
+                                <label for="input-placeholder" class="form-label">Alıcı Seçiniz</label>
+
+                                <select class="form-select" id="specificSizeSelect">
+                                    <option selected="">HDDB</option>
+                                    <option value="1">OIUW</option>
+                                    <option value="2">CSSA</option>
+                                    <option value="2">ASD</option>
+                                    <option value="2">UYRT</option>
+                                    <option value="2">EDFS</option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="col-xl-6" style="padding:5px;">
+                                <label for="input-placeholder" class="form-label">Yükleme Noktası Seçiniz</label>
+
+                                <select class="form-select" id="specificSizeSelect">
+                                    <option selected="">Tarsus</option>
+                                    <option value="1">İstnabul</option>
+                                    <option value="2">Amasya</option>
+                                    <option value="2">Muğla</option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="col-xl-6" style="padding:5px;">
+                                <label for="input-placeholder" class="form-label">Ödeme Tipi Seçiniz</label>
+
+                                <select class="form-select" id="specificSizeSelect">
+                                    <option selected="">Ödeme Tipi </option>
+                                    <option value="1">30 Gün Vade</option>
+                                    <option value="2">60 Gün Vade</option>
+                                    <option value="2">Peşin</option>
+                                    <option value="2">Ürün Yola Çıktığında</option>
+                                    <option value="2">Ürün Ulaştığında</option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                <label class="form-label">Diğer Notlar</label>
+                                <textarea class="form-control form-control-light">
+                                            </textarea>
+                            </div>
+
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                            </div>
+
+
+
+                            <div class="col-auto">
+                                <button class="btn btn-green-knfrt" onclick="nextTab('confirmed-tab')"><span class="bi bi-check-all"></span> Kaydet</button>
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                    <div class="tab-pane fade  text-muted" id="confirm-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+
+
+
+
+
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Ürün İsmi
+                                        </th>
+                                        <th>
+                                            Fiyat
+                                        </th>
+                                        <th>
+                                            Adet/Ton
+                                        </th>
+                                        <th>
+                                            Toplam
+                                        </th>
+                                        <th>
+                                            İşlemler
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-3">
+                                                    <span class="avatar avatar-xxl bg-light">
+                                                        <img src="~/images/cilek.png" />
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <div class="mb-1 fs-14 fw-semibold">
+                                                        <a href="javascript:void(0);">Taze Çilek</a>
+                                                    </div>
+                                                    <div class="mb-1">
+                                                        <span class="me-1">Boyut:</span><span class="fw-semibold text-muted">10</span>
+                                                    </div>
+                                                    <div class="mb-1">
+                                                        <span class="me-1">Renk:</span><span class="fw-semibold text-muted">Kırmızı<span class="badge bg-danger-transparent ms-3">Zorunlu</span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fw-semibold fs-14">
+                                                $459
+                                            </div>
+                                        </td>
+                                        <td class="product-quantity-container">
+                                            <div class="input-group rounded flex-nowrap">
+                                                <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-minus border-end-0"><i class="ri-subtract-line"></i></button>
+                                                <input type="text" class="form-control form-control-sm text-center w-100" aria-label="quantity" id="product-quantity" value="2">
+                                                <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-plus border-start-0"><i class="ri-add-line"></i></button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fs-14 fw-semibold">
+                                                $918
+                                            </div>
+                                        </td>
+                                        <td>
+
+                                            <button class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Sepetten Sil">
+                                                <i class="ri-delete-bin-line"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-3">
+                                                    <span class="avatar avatar-xxl bg-light">
+                                                        <img src="../images/nar.png" alt="">
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <div class="mb-1 fs-14 fw-semibold">
+                                                        <a href="javascript:void(0);">Karpuz</a>
+                                                    </div>
+                                                    <div class="mb-1">
+                                                        <span class="me-1">Boyut:</span><span class="fw-semibold text-muted">7</span>
+                                                    </div>
+                                                    <div class="mb-1">
+                                                        <span class="me-1">Renk:</span><span class="fw-semibold text-muted">Yeşil Çizgili<span class="badge bg-danger-transparent ms-3">Zorunlu</span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fw-semibold fs-14">
+                                                $129
+                                            </div>
+                                        </td>
+                                        <td class="product-quantity-container">
+                                            <div class="input-group rounded flex-nowrap">
+                                                <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-minus border-end-0"><i class="ri-subtract-line"></i></button>
+                                                <input type="text" class="form-control form-control-sm text-center w-100" aria-label="quantity" id="product-quantity1" value="1">
+                                                <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-plus border-start-0"><i class="ri-add-line"></i></button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fs-14 fw-semibold">
+                                                $129
+                                            </div>
+                                        </td>
+                                        <td>
+
+                                            <button class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove From cart">
+                                                <i class="ri-delete-bin-line"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-3">
+                                                    <span class="avatar avatar-xxl bg-light">
+                                                        <img src="../images/elma.png" alt="">
+                                                    </span>
+                                                </div>
+                                                <div>
+                                                    <div class="mb-1 fs-14 fw-semibold">
+                                                        <a href="javascript:void(0);">Elma</a>
+                                                    </div>
+                                                    <div class="mb-1">
+                                                        <span class="me-1">Boyut:</span><span class="fw-semibold text-muted">5</span>
+                                                    </div>
+                                                    <div class="mb-1">
+                                                        <span class="me-1">Renk:</span><span class="fw-semibold text-muted">Kırmızı<span class="badge bg-danger-transparent ms-3">Zorunlu</span></span>
+                                                    </div>
+                                                    <div class="mb-1">
+                                                        <span class="me-1">Cins:</span><span class="fw-semibold text-muted">Amasya :)<span class="badge bg-danger-transparent ms-3">Zorunlu</span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fw-semibold fs-14">
+                                                $249
+                                            </div>
+                                        </td>
+                                        <td class="product-quantity-container">
+                                            <div class="input-group rounded flex-nowrap">
+                                                <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-minus border-end-0"><i class="ri-subtract-line"></i></button>
+                                                <input type="text" class="form-control form-control-sm text-center w-100" aria-label="quantity" id="product-quantity2" value="2">
+                                                <button class="btn btn-icon btn-light input-group-text flex-fill product-quantity-plus border-start-0"><i class="ri-add-line"></i></button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="fs-14 fw-semibold">
+                                                $498
+                                            </div>
+                                        </td>
+                                        <td>
+
+                                            <button class="btn btn-icon btn-danger btn-delete" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove From cart">
+                                                <i class="ri-delete-bin-line"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <div class="d-grid gap-2 mb-4">
+                                <button class="btn btn-soil-knfrt" type="button">Yeni Ürün Ekle</button>
+                            </div>
+                            <br /> <br />
+                            <a class="btn btn-btn btn-green-knfrt" href="/Order/OrderList">
+                                <span class="bi bi-check-all"></span> Siparişi Oluştur
+                            </a>
+                        </div>
+
+
+
+                    </div>
+                    <div class="tab-pane fade text-muted" id="shipped-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                        <ul class="ps-3 mb-0">
+
+                            <div class="alert alert-success d-flex align-items-center" role="alert">
+                                <svg class="flex-shrink-0 me-2 svg-success" xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 0 24 24" width="1.5rem" fill="#000000"><path d="M0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none"></path><path d="M16.59 7.58L10 14.17l-3.59-3.58L5 12l5 5 8-8zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path></svg>
+                                <div>
+                                    SİPARİŞİNİZ OLUŞTURULUP İLGİLİ ÜRETİCİYE BİLDİRİLMİŞTİR !
+                                </div>
+                            </div>
+                        </ul>
+                        <div class="row">
+                            <div class="col-md-12" id="printPdfArea">
+                                <div style=" display: flex; justify-content: center; align-items: center; padding-left: 20px; padding-right: 20px; padding-bottom: 20px; padding-top: 5px; height: 100vh;">
+                                    <div style=" border: 2px solid black; /* Tabloyu saran border */ padding: 4px; /* Tabloyu saran padding */ background-color: white;">
+                                        <table class="slipTable" style="border: 1px solid black;padding:3px;color:black;" width="420" height="400">
+                                            <tr>
+                                                <td style="text-align:center;font-size:22px;color:black;" colspan="2"><strong><b>Sipariş No: 896456789412 </b></strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: center; font-size: 16px; color: black;" colspan="2"><strong><b>Sipariş Tarihi: @DateTime.Now.ToShortDateString()</b> </strong></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="font-size:18px">Gönderici Bilgileri</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td> Firma: </td>
+                                                <td style="text-align:left; padding-left:15px"> Konfrut AG</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td> Telefon:  </td>
+                                                <td style="text-align:left; padding-left:15px">  +905443603636</td>
+                                            <tr>
+                                                <td> Adres: </td>
+                                                <td style="text-align:left; padding-left:15px">
+                                                    1. Anafartalar Mah. Ergen Cad. No:2 45020 ŞEHZADELER / MANİSA
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td colspan="2" style="font-size:18px"> Alıcı Bilgileri</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>İsim</td>
+                                                <td style="text-align:left; padding-left:15px"> Orhan Veli</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Telefon</td>
+                                                <td style="text-align:left; padding-left:15px">
+                                                    +9059603636
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td> Adres </td>
+                                                <td style="text-align:left; padding-left:15px">
+                                                    1. Anafartalar Mah. Ergen Cad. No:2 45020 ŞEHZADELER / MANİSA
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="font-size:18px"> Üretici(ler) Bilgileri</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ürün</td>
+                                                <td style="text-align:left; padding-left:15px"> Nar</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GGN</td>
+                                                <td style="text-align:left; padding-left:15px"> 99686</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Tarla</td>
+                                                <td style="text-align:left; padding-left:15px">
+                                                    Manisa / Samandağ 40 Ada 10 Parsel
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Hasat Tarihi</td>
+                                                <td style="text-align:left; padding-left:15px">
+                                                    @DateTime.Now.ToShortDateString()
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="font-size:18px"> Sevkiyat Bilgileri</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Şoför</td>
+                                                <td style="text-align:left; padding-left:15px"> Orhan Veli</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Plaka</td>
+                                                <td style="text-align:left; padding-left:15px">
+                                                    35 ARL 937
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td> Palet Sayısı </td>
+                                                <td style="text-align:left; padding-left:15px">
+                                                    5
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td> Paket Sayısı </td>
+                                                <td style="text-align:left; padding-left:15px">
+                                                    150
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td> Toplam Ağırlık</td>
+                                                <td style="text-align:left; padding-left:15px">
+                                                    1 Ton
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="120"> Sevkiyat Yapan Firma</td>
+                                                <td style="text-align:left; padding-left:15px"> GREEN PORT </td>
+                                            </tr>
+
+                                            @*<tr>
+
+                                                    <td width="120"> Ödeme Tipi:</td>
+
+                                                    <td style="text-align:left; padding-left:15px">
+                                                        Kapıda Nakit Ödeme<strong style="font-size:16px;">120TL</strong>
+                                                    </td>
+
+                                                </tr>*@
+
+
+
+                                            @*<tr>
+                                                    <td width="120"> Ödeme Türü</td>
+                                                    <td style="text-align:left; padding-left:15px"> Gönderici Ödemeli</td>
+                                                </tr>*@
+
+                                            <tr>
+                                            <tr>
+                                                <td colspan="2" style="padding-top:10px">
+                                                    <img src="" />
+                                                    Paket Barkod No : <span id="barcode">896456789412</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="padding-top:10px">
+                                                    <img src="" />
+                                                    Entegrasyon No : 9849851298
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td width="120">
+                                                    Parça Sayısı:
+                                                </td>
+                                                <td style="text-align:center;font-size:larger;">
+                                                    1 / 1
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="font-size:18px;text-align:center;">
+                                                    <img src="https://barcode.tec-it.com/barcode.ashx?data=353517849526&translate-esc=on " style="width: 300px; height: auto; padding: 10px;" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <div class="pagebreak"></div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+            </div>
+            <div class="card-footer d-none border-top-0">
+
+
+
+                <div class="card custom-card">
+                    <div class="card-header justify-content-between">
+                        <div class="card-title">
+                            Entegrasyon Bilgileri
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+
+                        <form class="row gx-3 gy-2 align-items-center mt-0">
+                            <div class="col-sm-3">
+                                <label class="visually-hidden" for="specificSizeInputName">Sipariş No</label>
+                                <input type="text" class="form-control" id="specificSizeInputName" placeholder="Vergi No">
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" class="btn btn-secondary-light btn-wave waves-effect waves-light">Sipariş No'ya Göre Kontrol</button>
+
+                            </div>
+                            <div class="col-sm-3">
+                                <select class="form-select" id="specificSizeSelect">
+                                    <option selected="">Erp'den Sipariş Kart Seçiniz...</option>
+                                    <option value="1">Emre MUTAF</option>
+                                    <option value="2">Egebarkod Bilgisayar Ltd.</option>
+                                    <option value="2">Konfrut AG Ltd.</option>
+                                    <option value="2">Entaze Ürünler Ltd. Şti.</option>
+                                    <option value="2">Egebarkod Bilgisayar Ltd.</option>
+                                    <option value="3">Muaz Şen</option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+                                    <label class="form-check-label" for="autoSizingCheck2">
+                                        Yeni Olarak Siparişi Oluştur!
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary">Kaydet Sipariş Başlığını Oluştur</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script>
+
+
+
+    // Gelecek sekmeye geçiş yapma işlevi
+    function nextTab(tabId) {
+        // Sekme düğmesine tıklama işlemi
+        document.getElementById(tabId).click();
+    }
+
+    // İlk tab'da "Kaydet" butonuna tıklanınca ikinci tab'a geçiş yap
+    document.querySelector('#home-tab-pane .btn-success').addEventListener('click', function () {
+        nextTab('profile-tab');
+    });
+
+    // İkinci tab'da "Kaydet" butonuna tıklanınca üçüncü tab'a geçiş yap
+    document.querySelector('#profile-tab-pane .btn-success').addEventListener('click', function () {
+        nextTab('contact-tab');
+    });
+</script>
+
+@section Styles{
+    <style>
+        .printArea {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            padding-top: 5px;
+            height: 100vh; /* Ekranı kaplaması için */
+        }
+
+        .slipTable {
+            font-family: 'Arial Narrow Bold', sans-serif;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .pagebreak {
+            clear: both;
+            page-break-after: always;
+            margin: 0px;
+        }
+
+        .slipTable th,
+        .slipTable td {
+            border: 1px solid black;
+        }
+
+        .outerTable {
+            border: 2px solid black; /* Tabloyu saran border */
+            padding: 4px; /* Tabloyu saran padding */
+            background-color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+@section Scripts{
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('#printPdf').click(function () {
+            var printContents = document.getElementById('printPdfArea').innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+            window.location.reload();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#specificSizeSelect1').select2();
+            $('#specificSizeSelect2').select2();
+            $('#specificSizeSelect3').select2();
+            $('#specificSizeSelect4').select2();
+        });
+    </script>
+}

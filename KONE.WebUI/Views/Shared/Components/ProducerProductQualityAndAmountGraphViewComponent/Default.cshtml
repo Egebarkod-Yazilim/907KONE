@@ -1,0 +1,92 @@
+﻿<div class="row">
+    <div class="col-md-3">
+        <div class="card custom-card">
+            <div class="card-header  justify-content-between">
+                <div class="card-title">
+                    Müstahsiller
+                </div>
+                <div class="dropdown">
+                    <a aria-label="anchor" href="javascript:void(0);" class="btn btn-icon btn-sm btn-light" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fe fe-more-vertical"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="javascript:void(0);">Haftalık</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Aylık</a></li>
+                        <li><a class="dropdown-item" href="javascript:void(0);">Yıllık</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="col-xl-12" style="padding:5px;">
+                    <label for="input-placeholder" class="form-label">Müstahsiller</label>
+
+                    <select class="select2 form-control form-control-light" id="specificSizeSelectCurrentUsers">
+                        <option selected="">Ürün Seçiniz</option>
+                        <option data-user="Aslı" selected="">Aslı</option>
+                        <option data-user="Murat" selected="">Murat</option>
+                        <option data-user="Orhan" selected="">Orhan</option>
+                        <option data-user="Oktay" selected="">Oktay</option>
+                        <option data-user="Nuray" selected="">Nuray</option>
+                        <option data-user="Ece" selected="">Ece</option>
+                    </select>
+                </div>
+                @*<div class="table-responsive">
+                    <table id="currentusers" class="table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th scope="col">Müstahsil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-user="Aslı">
+                                <th scope="row"><span class="bx bx-user"></span> Aslı</th>
+                            </tr>
+                            <tr data-user="Murat">
+                                <th scope="row"><span class="bx bx-user"></span> Murat</th>
+                            </tr>
+                            <tr data-user="Orhan">
+                                <th scope="row"><span class="bx bx-user"></span> Orhan</th>
+                            </tr>
+                            <tr data-user="Oktay">
+                                <th scope="row"><span class="bx bx-user"></span> Oktay</th>
+                            </tr>
+                            <tr data-user="Nuray">
+                                <th scope="row"><span class="bx bx-user"></span> Nuray</th>
+                            </tr>
+                            <tr data-user="Ece">
+                                <th scope="row"><span class="bx bx-user"></span> Ece</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>*@
+                <div class="dropdown mt-3">
+                    <div class="col-md-12">
+                        <select class="select2 form-control form-control-light" id="productDropdown" onchange="createChart2()">
+                            <option value="">Lütfen Müstahsil Seçiniz</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card custom-card">
+            <div class="card-header d-md-flex d-block">
+                <div class="h5 mb-0 d-sm-flex d-bllock align-items-center">
+                    <div class="ms-sm-2 ms-0 mt-sm-0 mt-2">
+                        <div class="h6 fw-semibold mb-0">Müstahsil Ürün Kalite Dağılımı</div>
+                    </div>
+                </div>
+                <div class="ms-auto mt-md-0 mt-2">
+                    <button id="printPdf4" type="button" class="btn btn-soil-knfrt btn-wave waves-effect waves-light"><span class="bi bi-printer"></span> Yazdır</button>
+                </div>
+            </div>
+            <div id="printArea4">
+
+            <div class="card-body">
+                <div id="echart3" class="echart-charts" _echarts_instance_="ec_1718866577205" style="user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><div style="position: relative; width: 748px; height: 320px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="748" height="320" style="position: absolute; left: 0px; top: 0px; width: 748px; height: 320px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div></div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

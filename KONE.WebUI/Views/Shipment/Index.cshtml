@@ -1,0 +1,602 @@
+﻿@{
+    Layout = "_Layout";
+}
+@await Html.PartialAsync("_Breadcrumb", new KONE.KOne.WebUI.Models.BreadCrumb.BreadCrumbViewModel
+{
+    HeaderTitle = "Sevkiyatlar",
+    PageNames = new List<string>() { "Admin", "Anasayfa", "Index", "Sevkiyatlar", "Gelen Sevkiyatlar" },
+    Url = "/Admin/Home/Index"
+})
+
+
+<style>
+    /* Yukarıda verdiğimiz CSS kodlarını buraya ekleyin */
+    .table-responsive {
+        overflow-x: auto;
+        position: relative;
+    }
+
+    .table thead {
+        position: sticky;
+        top: 0;
+        z-index: 2; /* Diğer içeriklerin üstünde kalması için */
+        background-color: #fff; /* Beyaz arka plan */
+    }
+
+        .table tbody td:last-child,
+        .table thead th:last-child {
+            position: sticky;
+            right: 0;
+            background-color: #fff; /* Beyaz arka plan */
+            z-index: 1; /* Diğer sütunların üstünde kalması için */
+            box-shadow: -1px 0 0 #ccc; /* Ayrıştırıcı çizgi */
+        }
+</style>
+<!-- Modal Yapısı -->
+<!-- Modal Yapısı -->
+<div class="modal fade" id="relationalContractModal" tabindex="-1" aria-labelledby="relationalContractModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="relationalContractModalLabel">Bağlı Sözleşme Detayları</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sözleşme No</th>
+                                <th>Cari</th>
+                                <th>Tarih</th>
+                                <th>Başlangıç Tarih</th>
+                                <th>Bitiş Tarih</th>
+                                <th>Materyal Kodu</th>
+                                <th>Sözleşme Miktarı</th>
+                                <th>Bölge Kodu</th>
+                                <th>Sözleşme Durumu</th>
+                                <th>Aktif Durumu</th>
+                                <th>Hammadde Fiyatı</th>
+                                <th>Stopaj Fiyatı</th>
+                                <th>Komisyon Fiyatı</th>
+                                <th>Yol Fire Oranı</th>
+                                <th>Nakliye Fiyatı</th>
+                                <th>Kaydeden Kullanıcı Kodu</th>
+                                <th>Nakliye Şekli</th>
+                                <th>Notlar</th>
+                                <th>Sözleşme Türü</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contractTableBody">
+                            <!-- Dinamik olarak doldurulacak -->
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="resourcecontrolmodal" tabindex="-1" aria-labelledby="relationalContractModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="relationalContractModalLabel">Bağlı Sözleşme Detayları</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <select tabindex="-1" id="contractStatusSelect" class="select2 form-control form-control-light">
+                    <option value="1">İşleme Alındı</option>
+                    <option value="2">Tamamlandı</option>
+                    <option value="3">İptal Edildi</option>
+                </select>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kapat</button>
+                <button type="button" class="btn btn-green-knfrt" data-bs-dismiss="modal">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card custom-card">
+            <div class="card-header justify-content-between">
+                <div class="card-title">
+                     Sevkiyatlar
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="/CurrentCard/AddOrUpdateCurrentCard" class="btn btn-blue-knfrt"><span class="ri-refresh-line"></span> Entegre Eşle</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="shipmentsDataTable" class="table table-bordered text-nowrap w-100">
+                        <thead>
+                            <tr>
+                                <th class="nonsearchable" style="width:10px;">
+                                    <div class="form-check form-check-md d-flex align-items-center">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkebox-md">
+                                    </div>
+                                </th>
+                                <th class="nonsearchable">#</th>
+                                <th>Site No</th>
+                                <th>Evrak No</th>
+                                <th>Materyal Kodu</th>
+                                <th>Materyal Adi</th>
+                                <th>Giren Evrak No</th>
+                                <th>Hesap kodu</th>
+                                <th>Unvan</th>
+                                <th>Plaka</th>
+                                <th>Durum</th>
+                                <th>Bolge Kodu</th>
+                                <th>Bolge Adı</th>
+                                <th>Teslim Eden</th>
+                                <th class="nonsearchable">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const tableContainer = document.querySelector('.table-responsive');
+        let isRightMouseDown = false;
+        let startX;
+        let scrollLeft;
+
+        tableContainer.addEventListener('contextmenu', (e) => {
+            e.preventDefault(); // Sağ tık menüsünü devre dışı bırak
+        });
+
+        tableContainer.addEventListener('mousedown', (e) => {
+            if (e.button === 2) { // Sağ tık
+                isRightMouseDown = true;
+                startX = e.pageX - tableContainer.offsetLeft;
+                scrollLeft = tableContainer.scrollLeft;
+            }
+        });
+
+        tableContainer.addEventListener('mouseleave', () => {
+            isRightMouseDown = false; // Fare tablo alanından çıkarsa sağ tık kaydırmayı durdur
+        });
+
+        tableContainer.addEventListener('mouseup', () => {
+            isRightMouseDown = false; // Sağ tık bırakıldığında kaydırmayı durdur
+        });
+
+        tableContainer.addEventListener('mousemove', (e) => {
+            if (!isRightMouseDown) return; // Sağ tık basılı değilse işlem yapma
+            e.preventDefault(); // Varsayılan sürükleme davranışını engelle
+            const x = e.pageX - tableContainer.offsetLeft;
+            const walk = (x - startX) * 1; // Kaydırma hızı
+            tableContainer.scrollLeft = scrollLeft - walk;
+        });
+    });
+</script>
+
+@section Scripts{
+    <script>
+        var datatable = $('#shipmentsDataTable').DataTable({
+            "orderCellsTop": true,
+            "fixedHeader": true,
+            "pageLength": 25,
+            "pagingType": "full_numbers", // Tüm sayfaları göster
+            "lengthMenu": [[25, 50, 100, -1], [25, 50, 100, "Tümü"]],
+            "initComplete": function (settings, json) {
+                applyRowDetails();
+            },
+            "drawCallback": function (settings) {
+                applyRowDetails();
+            },
+            "columnDefs": [
+                {
+                    "targets": [0],
+                    "render": function (data, type, row, meta) {
+                        return '<div class="hstack gap-2">' +
+                            '<button class="btn btn-icon btn-wave waves-effect waves-light btn-sm btn-primary-light details-control"><i class="ri-edit-line" data-bs-toggle="tooltip" data-bs-placement="top" title="Detay Göster"></i></button>' +
+                            '</div>';
+                    }
+                },
+                {
+                    "targets": [14],
+                    "render": function (data, type, row, meta) {
+                        return '<div class="hstack gap-2">' +
+                            '<button aria-label="İşleme Alındı" class="btn btn-icon btn-wave waves-effect waves-light btn-sm btn-primary-light" data-bs-toggle="tooltip" data-bs-placement="top" title="İşleme Alındı"><i class="ri-time-line"></i></button>' +
+                            '<button aria-label="Tamamlandı" class="btn btn-icon btn-wave waves-effect waves-light btn-sm btn-success-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Tamamlandı"><i class="ri-check-line"></i></button>' +
+                            '<button aria-label="Reddedildi" class="btn btn-icon btn-wave waves-effect waves-light btn-sm btn-danger-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Reddedildi"><i class="ri-close-line"></i></button>' +
+                            '<button aria-label="Kısmen Kabul Edildi" class="btn btn-icon btn-wave waves-effect waves-light btn-sm btn-warning-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Kısmen Kabul Edildi"><i class="ri-checkbox-indeterminate-line"></i></button>' +
+                            '<button aria-label="Bekliyor" class="btn btn-icon btn-wave waves-effect waves-light btn-sm btn-secondary-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Bekliyor"><i class="ri-time-line"></i></button>' +
+                            '<button aria-label="Hammadde Girdi Kontrol" class="btn btn-icon btn-wave waves-effect waves-light btn-sm btn-info-light resourcecontrol" data-bs-toggle="tooltip" data-bs-placement="top" title="Hammadde Girdi Kontrol"><i class="ri-file-list-3-line"></i></button>' +
+                            '<button aria-label="Bağlı Sözleşme" class="btn btn-icon btn-wave waves-effect waves-light btn-sm btn-dark-light relationalcontract" data-bs-toggle="tooltip" data-bs-placement="top" title="Bağlı Sözleşme"><i class="ri-contract-line"></i></button>' +
+                            '</div>';
+                    }
+                }
+                ,
+            ],
+            language: {
+                "url": "https://cdn.datatables.net/plug-ins/1.12.0/i18n/tr.json"
+            }, layout: {
+                topStart: {
+                    "buttons": [
+                        {
+                            extend: 'colvis',
+                            columns: ':not(.noVis)',
+                            popoverTitle: 'Sütunlar'
+                        },
+                        {
+                            extend: 'excel',
+                            exportOptions: {
+                                columns: ':visible' // Sadece görünür sütunları dışa aktar
+                            }
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            text: 'PDF',
+                            exportOptions: {
+                                columns: ':visible'
+                            },
+                            customize: function (doc) {
+                                doc.pageSize = 'A3'; // PDF boyutunu A3 olarak ayarla
+                                doc.defaultStyle.fontSize = 10; // Yazı tipi boyutunu küçült
+                            }
+                        },
+                        {
+                            extend: 'csv',
+                            exportOptions: {
+                                columns: ':visible' // Sadece görünür sütunları dışa aktar
+                            }
+                        }
+                    ]
+                }
+            },
+            "buttonsDom": {
+                "button": {
+                    "tag": "button",
+                    "className": "btn btn-outline-secondary"
+                },
+                "buttonLiner": {
+                    "tag": null
+                }
+            },
+            language: {
+                buttons: {
+                    colvis: 'Sütunları Göster/Gizle' // Buton metnini burada da ekleyebilirsiniz
+                }
+            },
+            buttons: [
+                {
+                    extend: 'colvis',
+                    text: 'Sütunları Göster/Gizle', // Buton metnini buraya ekliyoruz
+                    collectionLayout: 'fixed two-column'
+                }
+            ],
+        });
+
+        $('#shipmentsDataTable thead th').each(function (i) {
+            var title = $(this).text();
+            var classList = $(this).attr('class'); // Öğenin sınıf listesini al
+
+            if (classList && classList.indexOf('nonsearchable') !== -1) {
+                $(this).text(title);
+            } else {
+                $(this).html('<input type="text" class="form-control rounded-pill" placeholder="' + title + '" />');
+
+                $('input', this).on('keyup change', function () {
+                    if (datatable.column(i).search() !== this.value) {
+                        datatable
+                            .column(i)
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            }
+        });
+
+        // Rastgele isim oluşturma fonksiyonu
+        function getRandomName() {
+            var names = ['Ahmet', 'Mehmet', 'Ayşe', 'Fatma', 'Mustafa', 'Zeynep', 'Emir', 'Aslı', 'Can', 'İpek'];
+            return names[Math.floor(Math.random() * names.length)];
+        }
+
+        // Rastgele harf/sayı dizisi oluşturma fonksiyonu
+        function getRandomString(length) {
+            var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var result = '';
+            for (var i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        // Rastgele tarih oluşturma fonksiyonu
+        function getRandomDate() {
+            var year = 2024;
+            var month = Math.floor(Math.random() * 12) + 1;
+            var day = Math.floor(Math.random() * 28) + 1; // Şubat ayı için sadece
+            return year + '-' + (month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day);
+        }
+
+        // Rastgele veri oluşturma fonksiyonu
+        function getRandomData() {
+            var status = Math.random();
+            var statusHtml;
+            if (status < 0.3) {
+                statusHtml = '<span class="badge bg-primary-transparent"><i class="ri-check-line"></i> Sözleşme Yapıldı</span>';
+            } else if (status < 0.6) {
+                statusHtml = '<span class="badge bg-warning-transparent"><i class="ri-time-line"></i> Bekliyor</span>';
+            } else {
+                statusHtml = '<span class="badge bg-success-transparent"><i class="ri-close-line"></i> Sözleşme Tamamlandı</span>';
+            }
+
+            return {
+                siteNo: Math.floor(Math.random() * 10000),
+                evrakNo: 'Cari ' + Math.floor(Math.random() * 100),
+                materyalKodu: 'MK' + Math.floor(Math.random() * 100),
+                materyalAdi: new Date().toISOString().slice(0, 10),
+                girenEvrakNo: 'EN' + Math.floor(Math.random() * 100),
+                hesapKodu: 'HK' + Math.floor(Math.random() * 100),
+                unvan: getRandomName(Math.random()),
+                plaka: Math.floor(Math.random() * 81) + '-HK-' + Math.floor(Math.random() * 999),
+                durum: statusHtml,
+                bolgeKodu: 'B' + Math.floor(Math.random() * 10),
+                bolgeAdi: 'Bölge ' + Math.floor(Math.random() * 10),
+                teslimEden: getRandomName(Math.random()),
+            };
+        }
+
+        function contractRandomData() {
+            var contractType = Math.random() < 0.5 ? 'Serbest Alım' : 'Tahhütlü Alım';
+            var contractTypeBadge = contractType === 'Serbest Alım' ? '<span class="badge bg-success-transparent">' + contractType + '</span>' : '<span class="badge bg-primary-transparent">' + contractType + '</span>';
+
+            var nakliye = Math.random() < 0.5 ? 'Konfrut' : 'Kendisine Ait';
+            var nakliyeBadge = contractType === 'Konfrut' ? '<span class="badge bg-success-transparent">' + nakliye + '</span>' : '<span class="badge bg-primary-transparent">' + nakliye + '</span>';
+
+            return {
+                sozlesmeNo: Math.floor(Math.random() * 10000),
+                cari: 'Cari ' + Math.floor(Math.random() * 100),
+                tarih: new Date().toISOString().slice(0, 10),
+                baslangicTarih: new Date().toISOString().slice(0, 10),
+                bitisTarih: new Date(new Date().setDate(new Date().getDate() + Math.floor(Math.random() * 30))).toISOString().slice(0, 10),
+                materyalKodu: 'MK' + Math.floor(Math.random() * 100),
+                sozlesmeMiktari: Math.floor(Math.random() * 1000),
+                bolgeKodu: 'B' + Math.floor(Math.random() * 10),
+                sozlesmeDurumu: Math.floor(Math.random() * 2),
+                aktifDurumu: Math.floor(Math.random() * 2),
+                HammaddeFiyati: (Math.random() * 10).toFixed(2),
+                StopajFiyati: (Math.random() * 10).toFixed(2),
+                KomisyonFiyati: (Math.random() * 1).toFixed(2),
+                YolFireOrani: (Math.random() * 5).toFixed(2),
+                NakliyeFiyati: (Math.random() * 5).toFixed(2),
+                KaydedenKullaniciKodu: getRandomName((Math.random() * 5).toFixed(2)),
+                NakliyeSekli: nakliyeBadge,
+                Notlar: 'Not ' + Math.floor(Math.random() * 100),
+                SozlesmeTuru: contractTypeBadge
+            };
+        }
+
+        $(document).on('click', '.btn-dark-light', function () {
+            // Modalı göster
+            $('#relationalContractModal').modal('show');
+            const data = contractRandomData();
+            const tableRow = `<tr>
+            <td>${data.sozlesmeNo}</td>
+            <td>${data.cari}</td>
+            <td>${data.tarih}</td>
+            <td>${data.baslangicTarih}</td>
+            <td>${data.bitisTarih}</td>
+            <td>${data.materyalKodu}</td>
+            <td>${data.sozlesmeMiktari}</td>
+            <td>${data.bolgeKodu}</td>
+            <td>${data.sozlesmeDurumu}</td>
+            <td>${data.aktifDurumu}</td>
+            <td>${data.HammaddeFiyati}</td>
+            <td>${data.StopajFiyati}</td>
+            <td>${data.KomisyonFiyati}</td>
+            <td>${data.YolFireOrani}</td>
+            <td>${data.NakliyeFiyati}</td>
+            <td>${data.KaydedenKullaniciKodu}</td>
+            <td>${data.NakliyeSekli}</td>
+            <td>${data.Notlar}</td>
+            <td>${data.SozlesmeTuru}</td>
+</tr>`;
+
+            $('#contractTableBody').html(tableRow);
+            $('#relationalContractModal').modal('show');
+        });
+
+        $(document).on('click', '.resourcecontrol', function () {
+            // Modalı göster
+            $('#resourcecontrolmodal').modal('show');
+        });
+
+
+
+
+        // 100 satır için örneğin tabloyu doldurma
+        for (var i = 0; i < 100; i++) {
+            var data = getRandomData();
+            datatable.row.add([
+                '<div class="form-check form-check-md d-flex align-items-center"><input class="form-check-input" type="checkbox" value="" id="checkebox-md"></div>',
+                i + 1,
+                data.siteNo,
+                data.evrakNo,
+                data.materyalKodu,
+                data.materyalAdi,
+                data.girenEvrakNo,
+                data.hesapKodu,
+                data.unvan,
+                data.plaka,
+                data.durum,
+                data.bolgeKodu,
+                data.bolgeAdi,
+                data.teslimEden,
+                ''
+            ]).draw(false);
+        }
+
+        $('.details-control').click(function () {
+            var tr = $(this).closest('tr');
+            var row = datatable.row(tr);
+
+            if (row.child.isShown()) {
+                // Detay gösterme alanı zaten açıksa kapat
+                row.child.hide();
+                tr.removeClass('shown');
+            } else {
+                // Detay gösterme alanını oluştur ve göster
+                row.child(format(getRandomData2())).show();
+                tr.addClass('shown');
+            }
+        });
+
+        function applyRowDetails() {
+            $('.details-control').off('click').on('click', function () {
+                var tr = $(this).closest('tr');
+                var row = datatable.row(tr);
+
+                if (row.child.isShown()) {
+                    // Detay gösterme alanı zaten açıksa kapat
+                    row.child.hide();
+                    tr.removeClass('shown');
+                } else {
+                    // Detay gösterme alanını oluştur ve göster
+                    row.child(format(getRandomData2())).show();
+                    tr.addClass('shown');
+                }
+            });
+        }
+
+
+        function getRandomData2() {
+            function getRandomDate() {
+                const start = new Date(2023, 0, 1);
+                const end = new Date();
+                const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = date.getFullYear();
+                return `${day}.${month}.${year}`;
+            }
+
+            function getRandomTime() {
+                const hours = String(Math.floor(Math.random() * 24)).padStart(2, '0');
+                const minutes = String(Math.floor(Math.random() * 60)).padStart(2, '0');
+                return `${hours}:${minutes}`;
+            }
+
+            function getRandomBatchNo() {
+                return 'NZ' + Math.floor(Math.random() * 1000000).toString().padStart(6, '0');
+            }
+
+            function getRandomPaletNo() {
+                return 'PN' + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            }
+
+            function getRandomLotNo() {
+                return 'LN' + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            }
+
+            function getRandomAracNo() {
+                return 'NAG' + Math.floor(Math.random() * 10000000).toString().padStart(7, '0');
+            }
+
+            return {
+                BasariliMiktar: (Math.random() * 100000).toFixed(6),
+                BrutMiktar: (Math.random() * 100000).toFixed(6),
+                BatchNo: getRandomBatchNo(),
+                IlkTartim: (Math.random() * 100000).toFixed(6),
+                SonTartim: (Math.random() * 100000).toFixed(6),
+                FireOrani: (Math.random() * 100).toFixed(6),
+                FireMiktari: (Math.random() * 100000).toFixed(6),
+                FireNedeni: "",
+                CikisTarih: getRandomDate(),
+                CikisSaat: getRandomTime(),
+                PaletNo: getRandomPaletNo(),
+                LotNo: getRandomLotNo(),
+                BildirilenTonajKullanimi: Math.floor(Math.random() * 100),
+                BildirilenTonajMiktari: (Math.random() * 1000).toFixed(2).replace('.', ','),
+                AracNo: getRandomAracNo(),
+                KaydedenKullaniciKodu: null
+            };
+        }
+
+
+        // Detay gösterim fonksiyonu
+        function format(data) {
+            return '<tr class="detail-row">' +
+                '<td colspan="16">' +
+                '<table class="table table-bordered" style="width: 100%;">' +
+                '<thead>' +
+                '<tr>' +
+                '<th>Basarili Miktar</th>' +
+                '<th>Brut Miktar</th>' +
+                '<th>Batch No</th>' +
+                '<th>Ilk Tartim</th>' +
+                '<th>Son Tartim</th>' +
+                '<th>Fire Orani</th>' +
+                '<th>Fire Miktari</th>' +
+                '<th>Fire Nedeni</th>' +
+                '<th>Cikis Tarih</th>' +
+                '<th>Cikis Saat</th>' +
+                '<th>Palet No</th>' +
+                '<th>Lot No</th>' +
+                '<th>Bildirilen Tonaj Kullanimi</th>' +
+                '<th>Bildirilen Tonaj Miktari</th>' +
+                '<th>Arac No</th>' +
+                '<th>Kaydeden Kullanici Kodu</th>' +
+                '</tr>' +
+                '</thead>' +
+                '<tbody>' +
+                '<tr>' +
+                '<td>' + data.BasariliMiktar + '</td>' +
+                '<td>' + data.BrutMiktar + '</td>' +
+                '<td>' + data.BatchNo + '</td>' +
+                '<td>' + data.IlkTartim + '</td>' +
+                '<td>' + data.SonTartim + '</td>' +
+                '<td>' + data.FireOrani + '</td>' +
+                '<td>' + data.FireMiktari + '</td>' +
+                '<td>' + data.FireNedeni + '</td>' +
+                '<td>' + data.CikisTarih + '</td>' +
+                '<td>' + data.CikisSaat + '</td>' +
+                '<td>' + data.PaletNo + '</td>' +
+                '<td>' + data.LotNo + '</td>' +
+                '<td>' + data.BildirilenTonajKullanimi + '</td>' +
+                '<td>' + data.BildirilenTonajMiktari + '</td>' +
+                '<td>' + data.AracNo + '</td>' +
+                '<td>' + data.KaydedenKullaniciKodu + '</td>' +
+                '</tr>' +
+                '</tbody>' +
+                '</table>' +
+                '</td>' +
+                '</tr>';
+        }
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2();
+        });
+
+    </script>
+}
+@section Styles{
+    <style>
+        .select2-container--open {
+            z-index: 9999 !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
